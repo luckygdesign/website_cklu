@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Navigation from '../components/navigation'
 import UeberUns from '../components/ueber-uns'
+import Projekte from '../components/projects'
+
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -37,8 +39,10 @@ class IndexPage extends Component {
         </header>
 
         <UeberUns />
+
+        <Projekte />
         
-        <footer className="Footer">
+        <footer id="Footer">
           <div className="Container">
             <span>Christliches Kinderhilfswerk Luwero - Uganda e.V.</span>
           </div>

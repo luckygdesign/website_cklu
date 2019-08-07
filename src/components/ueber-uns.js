@@ -27,24 +27,30 @@ export default () => (
 		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
 					<FontAwesomeIcon icon="praying-hands" inverse className="fa-stack-1x" />
 	  			</span>
-	  			<span className="heading">Beten</span>
-	  			<span>Herzlich willkommen auf unserer Website!</span>
+	  			<span className="content">
+	  				<span className="heading">Beten</span>
+	  				<span>Herzlich willkommen auf unserer Website!</span>
+  				</span>
 	  		</div>
 	  		<div>
 	  			<span className="icon fa-stack fa-3x">
 		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
 					<FontAwesomeIcon icon="hands-helping" inverse className="fa-stack-1x" />
 	  			</span>
-	  			<span className="heading">Patenschaften</span>
-	  			<span>Herzlich willkommen auf unserer Website!</span>
+	  			<span className="content">
+		  			<span className="heading">Patenschaften</span>
+		  			<span>Herzlich willkommen auf unserer Website!</span>
+	  			</span>
 	  		</div>
 	  		<div>
 	  			<span className="icon fa-stack fa-3x">
 		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
 					<FontAwesomeIcon icon="donate" inverse className="fa-stack-1x" />
 	  			</span>
-	  			<span className="heading">Spenden</span>
-	  			<span>Herzlich willkommen auf unserer Website!</span>
+	  			<span className="content">
+		  			<span className="heading">Spenden</span>
+		  			<span>Herzlich willkommen auf unserer Website!</span>
+	  			</span>
 	  		</div>
 	  	</div>
 	  </div>

@@ -62,6 +62,11 @@ h1 {
   font-size: 32pt;
 }
 
+h2 {
+  color: $secondarycolor;
+  font-size: 28pt;
+}
+
 h3 {
   margin: 40px 0 20px 0;
   color: $primarycolor;
@@ -126,7 +131,7 @@ button:hover, button:focus {
 // FOOTER
 // ======
 
-.Footer {
+#Footer {
   position: fixed;
   bottom: 0px;
   width: 100%;
