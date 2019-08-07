@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+$primarycolor: #d9e021;
+$secondarycolor: #29abe2;
+
+
+// =======
+// GENERAL
+// =======
+
+.Container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.HeroImage {
+  height: 450px;
+  padding: 50px 0px;
+  background-size: cover;
+}
+
+.LogoImage {
+  width: 300px;
+  float: left;
+}
+
+.LogoImage img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .HeroImage {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 375px) {
+  .HeroImage {
+    max-height: 200px;
+  }
+  .LogoImage {
+    width: 150px;
+  }
+}
+
+h1 {
+  color: $secondarycolor;
+  font-size: 32pt;
+}
+
+h3 {
+  margin: 40px 0 20px 0;
+  color: $primarycolor;
+  font-size: 18pt;
+}
+
+p, span {
+  color: #666;
+  margin: 10px 0;
+  font-size: 14pt;
+}
+
+button, button:hover, button:focus, button:active {
+  color: #fff;
+  background: #D9E021;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.5s;
+  display: block;
+  margin-bottom: 20px;
+
+}
+
+button:hover, button:focus {
+  background: rgb(179, 184, 32)
+}
+
+
+// ==========
+// NAVIGATION
+// ==========
+
+#Navigation {
+  float: right;
+
+  ul {
+    list-style-image: none;
+  }
+
+  li {
+    float: left;
+    margin: 0 20px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16pt;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  a:hover, a:focus {
+    color: $primarycolor;
+  }
+}
+
+// ======
+// FOOTER
+// ======
+
+.Footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #333;
+  color: #666;
+  padding: 20px 0;
+  font-size: 12px;
+}
+

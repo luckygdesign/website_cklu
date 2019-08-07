@@ -1,0 +1,36 @@
+@import './index.scss';
+
+
+// =====
+// ABOUT
+// =====
+
+.About-GetInTouch {
+  display: grid;
+  list-style-type: none;
+  margin: 0;
+  justify-content: space-between;
+  grid-template-columns: auto auto auto;
+
+  div {
+    span:first-child {
+      color: $primarycolor;
+    }
+
+    span {
+      width: 67%;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    .heading {
+      text-transform: uppercase;
+      color: $primarycolor;
+      margin-top: 20px;
+    }
+
+
+  }
+
+}
