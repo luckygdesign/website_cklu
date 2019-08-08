@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-import Navigation from '../components/navigation'
-import UeberUns from '../components/ueber-uns'
-import Projekte from '../components/projects'
-import News from '../components/news'
+import Navigation from '../components/navigation';
+import UeberUns from '../components/ueber-uns';
+import Projekte from '../components/projects';
+import News from '../components/news';
+import Events from '../components/events';
 
 
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTools } from '@fortawesome/free-solid-svg-icons'
-import { faHandPointRight } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools } from '@fortawesome/free-solid-svg-icons';
+import { faHandPointRight } from '@fortawesome/free-solid-svg-icons';
 
 
 import logo from '../images/logo.png';
-import eyecatcher from '../images/schoolchildren.jpg'
+import eyecatcher from '../images/schoolchildren.jpg';
 
 import '../styles/home.scss';
 
@@ -78,7 +79,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulNews {
+    allContentfulNews(sort: {fields: publishDate, order: DESC}, limit: 5) {
       edges {
         node {
           title

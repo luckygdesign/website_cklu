@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-import Navigation from '../components/navigation'
-import News from '../components/news'
+import Navigation from '../components/navigation';
+import News from '../components/news';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
