@@ -1,15 +1,23 @@
 import React from 'react';
 
-export default () => (
-	<section id="HomeProjects">
+const ProjectThumb = ({ node }) => (
+  <div>
+    <h4>{node.node.title}</h4>
+  </div>
+)
+
+export default ({ projects }) => (
+  <section id="HomeProjects">
 		<div className="Container">
+
 			<h2>Unsere Projekte</h2>
 
-
 			<div className="projectoverview">
-				<div>Projekt 1</div>
-				<div>Projekt 2</div>
+				{projects.map(singleproject => (
+			      <ProjectThumb key={singleproject.node.title} node={singleproject} />
+			    ))}
 			</div>
+
 		</div>
 	</section>
-);
+)

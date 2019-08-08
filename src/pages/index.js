@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 
 import Navigation from '../components/navigation'
 import UeberUns from '../components/ueber-uns'
@@ -25,6 +26,9 @@ var eyecatcherBackground = {
 
 class IndexPage extends Component {
   render() {
+
+    const { edges } = this.props.data.allContentfulProject
+
     return (
       <div className="App">
         <header className="HeroImage" style={eyecatcherBackground}>
@@ -40,7 +44,7 @@ class IndexPage extends Component {
 
         <UeberUns />
 
-        <Projekte />
+        <Projekte projects={edges}/>
         
         <footer id="Footer">
           <div className="Container">
@@ -55,4 +59,18 @@ class IndexPage extends Component {
 
 export default IndexPage;
 
-
+export const pageQuery = graphql`
+  query indexPageQuery {
+    allContentfulProject {
+      edges {
+        node {
+          id,
+          title,
+          heroImage {
+            title
+          }
+        }
+      }
+    }
+  }
+`
