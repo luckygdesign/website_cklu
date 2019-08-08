@@ -2,35 +2,22 @@ import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
 import Navigation from '../components/navigation'
-import UeberUns from '../components/ueber-uns'
-import Projekte from '../components/projects'
 import News from '../components/news'
-
-
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTools } from '@fortawesome/free-solid-svg-icons'
-import { faHandPointRight } from '@fortawesome/free-solid-svg-icons'
-
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
 
-import '../styles/home.scss';
-
-library.add(faTools, faHandPointRight)
+import '../styles/news.scss';
 
 
 var eyecatcherBackground = {
   backgroundImage: "url(" + eyecatcher + ")"
 };
 
-class IndexPage extends Component {
+class NewsPage extends Component {
   render() {
 
-    const projects = this.props.data.allContentfulProject.edges;
-    const news = this.props.data.allContentfulNews.edges;
+    const { edges } = this.props.data.allContentfulNews
 
     return (
       <div className="App">
@@ -45,12 +32,6 @@ class IndexPage extends Component {
           </div>
         </header>
 
-        <UeberUns />
-
-        <Projekte projects={projects} />
-
-        <News news={news} />
-
         
         <footer id="Footer">
           <div className="Container">
@@ -63,21 +44,11 @@ class IndexPage extends Component {
   }
 }
 
-export default IndexPage;
+export default NewsPage;
+
 
 export const pageQuery = graphql`
-  query indexPageQuery {
-    allContentfulProject {
-      edges {
-        node {
-          id,
-          title,
-          heroImage {
-            title
-          }
-        }
-      }
-    }
+  query newsPageQuery {
     allContentfulNews {
       edges {
         node {
@@ -85,7 +56,7 @@ export const pageQuery = graphql`
           slug
           publishDate
           heroImage {
-            fixed(width: 300) {
+            fixed(width: 240) {
               width
               height
               src
@@ -101,3 +72,4 @@ export const pageQuery = graphql`
     }
   }
 `
+

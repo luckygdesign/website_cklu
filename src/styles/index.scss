@@ -14,7 +14,11 @@ code {
 }
 
 $primarycolor: #d9e021;
+$primarycolor2: #8e9437;
 $secondarycolor: #29abe2;
+
+$borderradius1: 5px;
+$borderradius2: 12px;
 
 
 // =======
@@ -41,6 +45,7 @@ $secondarycolor: #29abe2;
 .LogoImage img {
   max-width: 100%;
 }
+
 
 @media (max-width: 768px) {
   .HeroImage {
@@ -73,7 +78,7 @@ h3 {
   font-size: 18pt;
 }
 
-p, span {
+p, span, a, h4 {
   color: #666;
   margin: 10px 0;
   font-size: 14pt;
@@ -92,8 +97,17 @@ button, button:hover, button:focus, button:active {
 
 }
 
-button:hover, button:focus {
+button:hover, button:focus, {
   background: rgb(179, 184, 32)
+}
+
+.readmore, .readmore:hover, .readmore:focus, .readmore:visited {
+  color: $primarycolor;
+  font-style: italic;
+}
+
+.readmore:hover, .readmore:focus {
+  color: $primarycolor2
 }
 
 

@@ -44,3 +44,38 @@
   background-color: #eee;
   padding: 60px 0;
 }
+
+
+// ====
+// NEWS
+// ====
+
+#News {
+  padding: 60px 0;
+
+  .NewsFeed {
+    padding-top: 40px;
+    display: grid;
+    grid-row-gap: 40px;
+
+    article {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-column-gap: 20px;
+
+      .gatsby-image-wrapper {
+        float: left;
+      }
+
+      h4 {
+        color: $secondarycolor;
+        margin: 20px 0;
+      }
+
+      img {
+        border-radius: $borderradius1;
+      }
+    }
+  }
+
+}
