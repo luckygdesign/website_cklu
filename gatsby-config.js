@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'EE Deutschland',
+    title: 'CKL Uganda',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

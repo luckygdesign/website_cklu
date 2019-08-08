@@ -7,8 +7,6 @@ import Projekte from '../components/projects';
 import News from '../components/news';
 import Events from '../components/events';
 
-
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
@@ -32,6 +30,7 @@ class IndexPage extends Component {
 
     const projects = this.props.data.allContentfulProject.edges;
     const news = this.props.data.allContentfulNews.edges;
+    const events = this.props.data.allContentfulEvents.edges;
 
     return (
       <div className="App">
@@ -51,6 +50,8 @@ class IndexPage extends Component {
         <Projekte projects={projects} />
 
         <News news={news} />
+
+        <Events events={events} />
 
         
         <footer id="Footer">
@@ -97,6 +98,16 @@ export const pageQuery = graphql`
           summary {
             summary
           }
+        }
+      }
+    }
+    allContentfulEvents(sort: {fields: startDate, order: ASC}, limit: 10) {
+      edges {
+        node {
+          title
+          slug
+          startDate
+          location
         }
       }
     }
