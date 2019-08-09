@@ -6,6 +6,7 @@ import UeberUns from '../components/ueber-uns';
 import Projekte from '../components/projects';
 import News from '../components/news';
 import Events from '../components/events';
+import Spenden from '../components/spenden';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,6 +53,8 @@ class IndexPage extends Component {
         <News news={news} />
 
         <Events events={events} />
+
+        <Spenden />
 
         
         <footer id="Footer">

@@ -77,5 +77,133 @@
       }
     }
   }
+}
+
+
+// ======
+// EVENTS
+// ======
+
+#Events {
+  width: 330px;
+  padding: 20px;
+  position: absolute;
+  background-color: $secondarycolor;
+  border-radius: $borderradius2;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .eventinfo {
+    width: 100%;
+    overflow-y: hidden;
+    margin: 20px 0;
+    cursor: pointer;
+
+    // display day and month in square
+    .eventdate {
+      float: left;
+      background-color: #fff;
+      border-radius: $borderradius2;
+      height: 60px;
+      width: 60px;
+      text-align: center;
+      padding-top: 9px;
+      box-sizing: border-box;
+      margin-right: 10px;
+      opacity: 1;
+      transition: opacity 0.15s;
+
+      span {
+        color: $secondarycolor;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+
+      .eventday {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .eventmonth {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+
+    // display name and location and time
+    .eventcontent {
+
+      span, time {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    
+      .eventtitle {
+        font-weight: bold;
+        display: block;
+      }
+
+      .eventtime {
+        padding-left: 0.5em;
+        margin-left: 0.5em;
+        border-left: #fff 1px solid; 
+      }
+
+    }
+
+  }
+
+  .eventsfeed {
+    margin-bottom: 40px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+    color: $secondarycolor;
+  }
+
+  // hover / focus effect
+  .eventinfo:hover, .eventinfo:focus,
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+
+
+}
+
+// =======
+// Spenden
+// =======
+
+#Spenden {
+  width: 330px;
+  padding: 20px;
+  position: absolute;
+  background-color: $primarycolor;
+  border-radius: $borderradius2;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+    color: $primarycolor;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+
 
 }
