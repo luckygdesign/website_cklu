@@ -27,7 +27,7 @@ const EventInfo = ({ node }) => {
 }
 
 export default ({ events }) => (
-  	<section id="Events">
+  	<section id="Events" className="content-sidebar">
 		<h3>Termine</h3>
 
 		<p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>

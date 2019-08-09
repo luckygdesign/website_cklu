@@ -13,6 +13,12 @@ code {
     monospace;
 }
 
+/* === Breakpoints === */
+$device-xl: 1440px;
+$device-l: 1084px;
+$device-m: 880px;
+$device-s: 425px;
+
 $primarycolor: #d9e021;
 $primarycolor2: #8e9437;
 $secondarycolor: #29abe2;
@@ -84,6 +90,13 @@ p, span, a, h4, time {
   margin: 10px 0;
   font-size: 14pt;
 }
+
+@media (max-width: $device-m) {
+  p, span, a, h4, time {
+    font-size: 12pt;
+  }
+}
+
 
 .button, .button:hover, .button:focus, .button:active {
   color: #fff;

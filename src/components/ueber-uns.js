@@ -10,7 +10,7 @@ import { faDonate } from '@fortawesome/free-solid-svg-icons'
 library.add(faCircle, faPrayingHands, faHandsHelping, faDonate)
 
 export default () => (
-	<section className="About">
+	<section id="About">
 	  <div className="Container">
 	    
 	    <h1>Christliches Kinderhilfswerk Luwero - Uganda</h1>

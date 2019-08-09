@@ -1,40 +1,77 @@
 @import './index.scss';
 
 
+
 // =====
 // ABOUT
 // =====
 
-.About {
+#About {
   padding: 60px 0;
-}
+  
+  .About-GetInTouch {
+    display: grid;
+    list-style-type: none;
+    margin: 0;
+    justify-content: space-between;
+    grid-template-columns: auto auto auto;
 
-.About-GetInTouch {
-  display: grid;
-  list-style-type: none;
-  margin: 0;
-  justify-content: space-between;
-  grid-template-columns: auto auto auto;
-
-  div {
-    .icon {
-      color: $primarycolor;
-      float: left;
+    @media (max-width: $device-s) {
+      grid-template-columns: auto;
     }
 
-    .content {
-      span {
-        display: block;
+
+    @media (min-width: $device-l) {
+    
+      div {
+        .icon {
+          color: $primarycolor;
+          float: left;
+        }
+
+        .content {
+          span {
+            display: block;
+          }
+        }
+
+        .heading {
+          text-transform: uppercase;
+          color: $primarycolor;
+          margin-top: 20px;
+        }
       }
     }
 
-    .heading {
-      text-transform: uppercase;
-      color: $primarycolor;
-      margin-top: 20px;
+    @media (max-width: $device-l) {
+      div {
+
+        text-align: center;
+
+        .icon {
+          color: $primarycolor;
+          margin: 0;
+          padding: 0;
+          font-size: 2em;
+        }
+
+        .content {
+          span {
+            display: block;
+          }
+        }
+
+        .heading {
+          text-transform: uppercase;
+          color: $primarycolor;
+          margin-top: 20px;
+        }
+      }
     }
   }
 }
+
+
 
 // ========
 // PROJECTS
@@ -45,6 +82,45 @@
   padding: 60px 0;
 }
 
+
+
+// STRUCTURE
+#Content > div {
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @media (min-width: $device-m) {
+    grid-template-columns: 3fr 2fr;
+    grid-column-gap: 20px;
+
+    #News {
+      grid-row-end: span 3;
+    }
+
+    #Events {
+      position: relative;
+      top: -60px;
+    }
+
+    #Spenden {
+      position: relative;
+      top: -20px;
+    }
+
+  }
+
+  @media (min-width: $device-l) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+
+
+
+}
 
 // ====
 // NEWS
@@ -63,6 +139,10 @@
       grid-template-columns: auto auto;
       grid-column-gap: 20px;
 
+      @media (max-width: $device-m) {
+        grid-template-columns: auto;
+      }
+
       .gatsby-image-wrapper {
         float: left;
       }
@@ -80,21 +160,36 @@
 }
 
 
-// ======
-// EVENTS
-// ======
-
-#Events {
-  width: 330px;
-  padding: 20px;
-  position: absolute;
-  background-color: $secondarycolor;
+.content-sidebar {
   border-radius: $borderradius2;
+  padding: 40px 20px;
 
   p, span, a, h3, time, div {
     color: #fff;
     text-decoration: none;
   }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+}
+
+// ======
+// EVENTS
+// ======
+
+#Events {
+  background-color: $secondarycolor;
 
   .eventinfo {
     width: 100%;
@@ -164,13 +259,11 @@
 
   .button-primary, .button-primary:hover,
   .button-primary:focus, .button-primary:active {
-    background-color: #fff;
     color: $secondarycolor;
   }
 
   // hover / focus effect
-  .eventinfo:hover, .eventinfo:focus,
-  .button-primary:hover, .button-primary:focus {
+  .eventinfo:hover, .eventinfo:focus {
     opacity: 0.85;
   }
 
@@ -182,27 +275,11 @@
 // =======
 
 #Spenden {
-  width: 330px;
-  padding: 20px;
-  position: absolute;
   background-color: $primarycolor;
-  border-radius: $borderradius2;
-
-  p, span, a, h3, time, div {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-  }
 
   .button-primary, .button-primary:hover,
   .button-primary:focus, .button-primary:active {
-    background-color: #fff;
     color: $primarycolor;
-  }
-
-  // hover / focus effect
-  .button-primary:hover, .button-primary:focus {
-    opacity: 0.85;
   }
 
 

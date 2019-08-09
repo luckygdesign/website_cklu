@@ -50,11 +50,13 @@ class IndexPage extends Component {
 
         <Projekte projects={projects} />
 
-        <News news={news} />
-
-        <Events events={events} />
-
-        <Spenden />
+        <div id="Content" className="Container">
+          <div>
+            <News news={news} />
+            <Events events={events} />
+            <Spenden />
+          </div>
+        </div>
 
         
         <footer id="Footer">

@@ -15,19 +15,17 @@ const ArticleThumb = ({ node }) => (
  )
 
 export default ({ news }) => (
-  <section id="News">
-		<div className="Container">
+ 	<section id="News">
 
-			<h2>Aktuelle Nachrichten</h2>
+		<h2>Aktuelle Nachrichten</h2>
 
-			<p>Freuen Sie sich über regelmäßige Neuigkeiten und Nachrichten aus Afrika. Wir freuen uns, wenn Sie die Nachrichten auch im Gebet bewegen - als Dank und Bitte. </p>
+		<p>Freuen Sie sich über regelmäßige Neuigkeiten und Nachrichten aus Afrika. Wir freuen uns, wenn Sie die Nachrichten auch im Gebet bewegen - als Dank und Bitte. </p>
 
-			<div className="NewsFeed">
-				{news.map(article => (
-			      <ArticleThumb key={article.node.title} node={article} />
-			    ))}
-			</div>
-
+		<div className="NewsFeed">
+			{news.map(article => (
+		      <ArticleThumb key={article.node.title} node={article} />
+		    ))}
 		</div>
+
 	</section>
 )
