@@ -1,4 +1,4 @@
-@import './index.scss';
+@import './params.scss';
 
 
 // =====
@@ -11,7 +11,66 @@
 // PROJECTS
 // ========
 
-#HomeNews {
-  background-color: #eee;
-  padding: 60px 0;
-}
+  // STRUCTURE
+  #Content > div {
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    @media (min-width: $device-m) {
+      grid-template-columns: 3fr 2fr;
+      grid-column-gap: 20px;
+
+      #News {
+        grid-row-end: span 3;
+      }
+
+      #Events {
+        position: relative;
+        top: -60px;
+      }
+
+      #Spenden {
+        position: relative;
+        top: -20px;
+      }
+
+    }
+
+    @media (min-width: $device-l) {
+      grid-template-columns: 2fr 1fr;
+    }
+
+  }
+
+  .NewsFeed {
+	margin-top: 60px;
+  }
+
+  .sidebar {
+  	background-color: $primarycolor;
+    border-radius: $borderradius2;
+    padding: 40px 20px;
+
+    p, span, a, h3, time, div {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    .button-primary, .button-primary:hover,
+    .button-primary:focus, .button-primary:active {
+      background-color: #fff;
+    }
+
+    // hover / focus effect
+    .button-primary:hover, .button-primary:focus {
+      opacity: 0.85;
+    }
+  }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-import Navigation from '../components/navigation';
-import News from '../components/news';
+import Layout from '../components/layout';
+import News, { NewsList } from '../components/news';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
@@ -17,29 +17,22 @@ var eyecatcherBackground = {
 class NewsPage extends Component {
   render() {
 
-    const { edges } = this.props.data.allContentfulNews
+    const news = this.props.data.allContentfulNews.edges
 
     return (
-      <div className="App">
-        <header className="HeroImage" style={eyecatcherBackground}>
-          <div className="Container">
-            <div className="LogoImage" >
-              <img alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} ></img>
-            </div>
-            <div id="Navigation">
-              <Navigation />
-            </div>
-          </div>
-        </header>
+      <Layout location={this.props.location} >
+          <div id="Content" className="Container">
 
-        
-        <footer id="Footer">
-          <div className="Container">
-            <span>Christliches Kinderhilfswerk Luwero - Uganda e.V.</span>
-          </div>
-        </footer>
+            <div>
+              <News news={news} />
 
-      </div>
+              <div className="sidebar">
+                <h3>Alle News</h3>
+                <NewsList news={news} />
+              </div>
+            </div>
+          </div> 
+      </Layout>
     );
   }
 }
@@ -49,14 +42,14 @@ export default NewsPage;
 
 export const pageQuery = graphql`
   query newsPageQuery {
-    allContentfulNews {
+    allContentfulNews(sort: {fields: publishDate, order: DESC}, limit: 5) {
       edges {
         node {
           title
           slug
           publishDate
           heroImage {
-            fixed(width: 240) {
+            fixed(width: 300) {
               width
               height
               src

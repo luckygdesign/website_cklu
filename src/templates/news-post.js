@@ -1,35 +1,43 @@
-import React from 'react';
+import React from 'react'
+import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import get from 'lodash/get'
+import Img from 'gatsby-image'
+
+import Layout from '../components/layout'
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const options = {};
 
-const ArticleThumb = ({ node }) => { 
+class NewsPostTemplate extends React.Component {
+  render() {
+    const post = get(this.props, 'data.contentfulNews')
+   	const content = documentToReactComponents(post.content.json, options)
 
-	const content = documentToReactComponents(node.node.content.json, options)
 
-	return(
-		<article>
-		    <h4>{node.node.title}</h4>
-		    <div>{content}</div>
-		</article>
-  )
-  
+    return (
+    	<Layout location={this.props.location} >
+
+        	<div className="Container">
+	        	<h2>{post.title}</h2>
+	        	<div>{content}</div>
+        	</div>
+        </Layout>
+    )
+  }
 }
 
-export default ({ news }) => (
-  <section id="News">
-		<div className="Container">
+export default NewsPostTemplate;
 
-			<h2>Unsere Projekte</h2>
-
-			<div className="projectoverview">
-				{news.map(article => (
-			      <ArticleThumb key={article.node.title} node={article} />
-			    ))}
-			</div>
-
-		</div>
-	</section>
-)
+export const pageQuery = graphql`
+  query NewsPostBySlug($slug: String!) {
+    contentfulNews(slug: { eq: $slug }) {
+      title
+      content {
+      	json
+      }
+    }
+  }
+`

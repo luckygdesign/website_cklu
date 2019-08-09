@@ -1,286 +1,317 @@
-@import './index.scss';
+@import './params.scss';
 
+#LandingPage {
 
-
-// =====
-// ABOUT
-// =====
-
-#About {
-  padding: 60px 0;
-  
-  .About-GetInTouch {
-    display: grid;
-    list-style-type: none;
-    margin: 0;
-    justify-content: space-between;
-    grid-template-columns: auto auto auto;
-
-    @media (max-width: $device-s) {
-      grid-template-columns: auto;
+  // Navigation
+  #Navigation {
+    a, a:visited, a:active {
+      color: #fff;
     }
+    a:hover, a:focus {
+      color: $primarycolor;
+    }
+  }
 
 
-    @media (min-width: $device-l) {
+  .HeroImage {
+    height: 450px;
+    padding: 50px 0px;
+    background-size: cover;
+  }
+
+  @media (max-width: 768px) {
+    .HeroImage {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .HeroImage {
+      max-height: 200px;
+    }
+    .LogoImage {
+      width: 150px;
+    }
+  }
+
+
+  // =====
+  // ABOUT
+  // =====
+
+  #About {
+    padding: 60px 0;
     
-      div {
-        .icon {
-          color: $primarycolor;
-          float: left;
-        }
-
-        .content {
-          span {
-            display: block;
-          }
-        }
-
-        .heading {
-          text-transform: uppercase;
-          color: $primarycolor;
-          margin-top: 20px;
-        }
-      }
-    }
-
-    @media (max-width: $device-l) {
-      div {
-
-        text-align: center;
-
-        .icon {
-          color: $primarycolor;
-          margin: 0;
-          padding: 0;
-          font-size: 2em;
-        }
-
-        .content {
-          span {
-            display: block;
-          }
-        }
-
-        .heading {
-          text-transform: uppercase;
-          color: $primarycolor;
-          margin-top: 20px;
-        }
-      }
-    }
-  }
-}
-
-
-
-// ========
-// PROJECTS
-// ========
-
-#HomeProjects {
-  background-color: #eee;
-  padding: 60px 0;
-}
-
-
-
-// STRUCTURE
-#Content > div {
-
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-
-  @media (min-width: $device-m) {
-    grid-template-columns: 3fr 2fr;
-    grid-column-gap: 20px;
-
-    #News {
-      grid-row-end: span 3;
-    }
-
-    #Events {
-      position: relative;
-      top: -60px;
-    }
-
-    #Spenden {
-      position: relative;
-      top: -20px;
-    }
-
-  }
-
-  @media (min-width: $device-l) {
-    grid-template-columns: 2fr 1fr;
-  }
-
-
-
-
-}
-
-// ====
-// NEWS
-// ====
-
-#News {
-  padding: 60px 0;
-
-  .NewsFeed {
-    padding-top: 40px;
-    display: grid;
-    grid-row-gap: 40px;
-
-    article {
+    .About-GetInTouch {
       display: grid;
-      grid-template-columns: auto auto;
-      grid-column-gap: 20px;
+      list-style-type: none;
+      margin: 0;
+      justify-content: space-between;
+      grid-template-columns: auto auto auto;
 
-      @media (max-width: $device-m) {
+      @media (max-width: $device-s) {
         grid-template-columns: auto;
       }
 
-      .gatsby-image-wrapper {
-        float: left;
+
+      @media (min-width: $device-l) {
+      
+        div {
+          .icon {
+            color: $primarycolor;
+            float: left;
+          }
+
+          .content {
+            span {
+              display: block;
+            }
+          }
+
+          .heading {
+            text-transform: uppercase;
+            color: $primarycolor;
+            margin-top: 20px;
+          }
+        }
       }
 
-      h4 {
-        color: $secondarycolor;
-        margin: 20px 0;
-      }
+      @media (max-width: $device-l) {
+        div {
 
-      img {
-        border-radius: $borderradius1;
+          text-align: center;
+
+          .icon {
+            color: $primarycolor;
+            margin: 0;
+            padding: 0;
+            font-size: 2em;
+          }
+
+          .content {
+            span {
+              display: block;
+            }
+          }
+
+          .heading {
+            text-transform: uppercase;
+            color: $primarycolor;
+            margin-top: 20px;
+          }
+        }
       }
     }
   }
-}
 
 
-.content-sidebar {
-  border-radius: $borderradius2;
-  padding: 40px 20px;
 
-  p, span, a, h3, time, div {
-    color: #fff;
-    text-decoration: none;
+  // ========
+  // PROJECTS
+  // ========
+
+  #HomeProjects {
+    background-color: #eee;
+    padding: 60px 0;
   }
 
-  h3 {
-    margin-top: 0px;
+
+
+  // STRUCTURE
+  #Content > div {
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    @media (min-width: $device-m) {
+      grid-template-columns: 3fr 2fr;
+      grid-column-gap: 20px;
+
+      #News {
+        grid-row-end: span 3;
+      }
+
+      #Events {
+        position: relative;
+        top: -60px;
+      }
+
+      #Spenden {
+        position: relative;
+        top: -20px;
+      }
+
+    }
+
+    @media (min-width: $device-l) {
+      grid-template-columns: 2fr 1fr;
+    }
+
   }
 
-  .button-primary, .button-primary:hover,
-  .button-primary:focus, .button-primary:active {
-    background-color: #fff;
+  // ====
+  // NEWS
+  // ====
+
+  #News {
+    padding: 60px 0;
+
+    .NewsFeed {
+      padding-top: 40px;
+      display: grid;
+      grid-row-gap: 40px;
+
+      article {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 20px;
+
+        @media (max-width: $device-m) {
+          grid-template-columns: auto;
+        }
+
+        .gatsby-image-wrapper {
+          float: left;
+        }
+
+        h4 {
+          color: $secondarycolor;
+          margin: 20px 0;
+        }
+
+        img {
+          border-radius: $borderradius1;
+        }
+      }
+    }
   }
 
-  // hover / focus effect
-  .button-primary:hover, .button-primary:focus {
-    opacity: 0.85;
-  }
-}
 
-// ======
-// EVENTS
-// ======
+  .content-sidebar {
+    border-radius: $borderradius2;
+    padding: 40px 20px;
 
-#Events {
-  background-color: $secondarycolor;
+    p, span, a, h3, time, div {
+      color: #fff;
+      text-decoration: none;
+    }
 
-  .eventinfo {
-    width: 100%;
-    overflow-y: hidden;
-    margin: 20px 0;
-    cursor: pointer;
+    h3 {
+      margin-top: 0px;
+    }
 
-    // display day and month in square
-    .eventdate {
-      float: left;
+    .button-primary, .button-primary:hover,
+    .button-primary:focus, .button-primary:active {
       background-color: #fff;
-      border-radius: $borderradius2;
-      height: 60px;
-      width: 60px;
-      text-align: center;
-      padding-top: 9px;
-      box-sizing: border-box;
-      margin-right: 10px;
-      opacity: 1;
-      transition: opacity 0.15s;
-
-      span {
-        color: $secondarycolor;
-        display: block;
-        padding: 0;
-        margin: 0;
-      }
-
-      .eventday {
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .eventmonth {
-        font-size: 15px;
-        font-weight: bold;
-      }
     }
 
-    // display name and location and time
-    .eventcontent {
+    // hover / focus effect
+    .button-primary:hover, .button-primary:focus {
+      opacity: 0.85;
+    }
+  }
 
-      span, time {
-        margin: 0;
-        padding: 0;
-        border: 0;
-      }
-    
-      .eventtitle {
-        font-weight: bold;
-        display: block;
+  // ======
+  // EVENTS
+  // ======
+
+  #Events {
+    background-color: $secondarycolor;
+
+    .eventinfo {
+      width: 100%;
+      overflow-y: hidden;
+      margin: 20px 0;
+      cursor: pointer;
+
+      // display day and month in square
+      .eventdate {
+        float: left;
+        background-color: #fff;
+        border-radius: $borderradius2;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        padding-top: 9px;
+        box-sizing: border-box;
+        margin-right: 10px;
+        opacity: 1;
+        transition: opacity 0.15s;
+
+        span {
+          color: $secondarycolor;
+          display: block;
+          padding: 0;
+          margin: 0;
+        }
+
+        .eventday {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .eventmonth {
+          font-size: 15px;
+          font-weight: bold;
+        }
       }
 
-      .eventtime {
-        padding-left: 0.5em;
-        margin-left: 0.5em;
-        border-left: #fff 1px solid; 
+      // display name and location and time
+      .eventcontent {
+
+        span, time {
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+      
+        .eventtitle {
+          font-weight: bold;
+          display: block;
+        }
+
+        .eventtime {
+          padding-left: 0.5em;
+          margin-left: 0.5em;
+          border-left: #fff 1px solid; 
+        }
+
       }
 
     }
 
+    .eventsfeed {
+      margin-bottom: 40px;
+    }
+
+    .button-primary, .button-primary:hover,
+    .button-primary:focus, .button-primary:active {
+      color: $secondarycolor;
+    }
+
+    // hover / focus effect
+    .eventinfo:hover, .eventinfo:focus {
+      opacity: 0.85;
+    }
+
+
   }
 
-  .eventsfeed {
-    margin-bottom: 40px;
+  // =======
+  // Spenden
+  // =======
+
+  #Spenden {
+    background-color: $primarycolor;
+
+    .button-primary, .button-primary:hover,
+    .button-primary:focus, .button-primary:active {
+      color: $primarycolor;
+    }
+
+
   }
-
-  .button-primary, .button-primary:hover,
-  .button-primary:focus, .button-primary:active {
-    color: $secondarycolor;
-  }
-
-  // hover / focus effect
-  .eventinfo:hover, .eventinfo:focus {
-    opacity: 0.85;
-  }
-
-
-}
-
-// =======
-// Spenden
-// =======
-
-#Spenden {
-  background-color: $primarycolor;
-
-  .button-primary, .button-primary:hover,
-  .button-primary:focus, .button-primary:active {
-    color: $primarycolor;
-  }
-
-
 }

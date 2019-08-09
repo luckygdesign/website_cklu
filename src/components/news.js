@@ -1,5 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 import { ReadMoreButton } from './misc'
 
@@ -9,12 +10,24 @@ const ArticleThumb = ({ node }) => (
 	    <content>
 	    	<h4>{node.node.title}</h4>
 	   		<p>{node.node.summary.summary}</p>
-	    	<ReadMoreButton link={`/blog/${node.node.slug}`} />
+	    	<ReadMoreButton link={`/news/${node.node.slug}`} />
     	</content>
 	</article>
  )
 
-export default ({ news }) => (
+const NewsList = ({news}) => (
+		<ul className="newslist">
+			{news.map(article => (
+					<li key={article.node.slug}>
+						<Link to={`/news/${article.node.slug}`}>
+							<span>{article.node.title}</span>
+						</Link>
+					</li>
+				))}
+		</ul>
+	)
+
+const NewsOverview = ({ news }) => (
  	<section id="News">
 
 		<h2>Aktuelle Nachrichten</h2>
@@ -29,3 +42,6 @@ export default ({ news }) => (
 
 	</section>
 )
+
+export default NewsOverview;
+export { NewsList };
