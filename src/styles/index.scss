@@ -1,4 +1,5 @@
 @import './params.scss';
+@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css"); /* FA CSS import */
 
 body {
   margin: 0;
@@ -110,6 +111,16 @@ button:hover, button:focus, {
   color: $primarycolor2
 }
 
+.icon-pseudo:before, .news-nav-next:after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
 
 // ==========
 // NAVIGATION
@@ -141,6 +152,106 @@ button:hover, button:focus, {
   }
 }
 
+// ========
+// NEWS NAV
+// ========
+
+.news-article {
+  header {
+
+    width: 100%;
+    float: left;
+    margin-bottom: 40px;
+
+    .news-title {
+      width: 100%;
+      border-bottom: #ccc 2px solid;
+      padding-bottom: 20px;
+      margin-bottom: 5px;
+    }
+
+    .news-publishDate {
+      float: left;
+    }
+
+    .news-publishDate:before {
+      content: "\f073";
+      padding-right: 0.5em;
+    }
+
+    .news-nav {
+      float: right;
+      margin-top: 10px;
+
+      a:last-child {
+        margin-left: 2em;
+      }
+
+      a {
+        color: $primarycolor;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      .news-nav-prev:before {
+        content: "\f104";
+        padding-right: 0.5em;
+      }
+      .news-nav-next:after {
+        content: "\f105";
+        padding-left: 0.5em;
+      }
+
+      a:hover, a:focus {
+        color: $primarycolor2;
+      }
+
+      @media (max-width: $device-s) {
+        display: none;
+      }
+    }
+  }
+
+  content {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+ul.news-list {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 5px 0;
+  }
+
+  .title:before {
+    content: "\f105";
+    margin-right: 0.2em;
+    transition: content 0.2;
+  }
+
+  .publishDate {
+    font-size: 12pt;
+    opacity: 0.75;
+    margin-left: 1em;
+  }
+  .publishDate:before {
+    font-size: 0.8em;
+    content: "\f073";
+    padding-right: 0.5em;
+  }
+
+  li:hover {
+    .title:before {
+      content: "\f054";
+    }
+  }
+}
+
+
 // ======
 // FOOTER
 // ======
@@ -149,6 +260,7 @@ button:hover, button:focus, {
   /*position: fixed;
   bottom: 0px;
   */
+  display: none;
   width: 100%;
   background-color: #333;
   color: #666;

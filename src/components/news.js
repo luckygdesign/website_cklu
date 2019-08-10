@@ -1,6 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
+import moment from 'moment';
 
 import { ReadMoreButton } from './misc'
 
@@ -17,17 +18,39 @@ const ArticleThumb = ({ node }) => (
 	</article>
  )
 
-const NewsList = ({news}) => (
-		<ul className="newslist">
-			{news.map(article => (
-					<li key={article.node.slug}>
-						<Link to={`/news/${article.node.slug}`}>
-							<span>{article.node.title}</span>
-						</Link>
-					</li>
-				))}
-		</ul>
-	)
+const NewsList = () => (
+
+	 <StaticQuery
+	    query={graphql`
+	      query moduleNewsList {
+	        allContentfulNews(sort: {fields: publishDate, order: DESC}) {
+		      edges {
+		        node {
+		          title
+		          slug
+		          publishDate
+		        }
+		      }
+		    }
+	      }
+	    `}
+	    render={data => (
+	  		<div id="NewsList" className="sidebar">
+                <h3>Alle News</h3>
+				<ul className="news-list">
+					{data.allContentfulNews.edges.map(article => (
+							<li key={article.node.slug}>
+								<Link to={`/news/${article.node.slug}`}>
+									<span className="icon-pseudo title">{article.node.title}</span>
+									<span className="icon-pseudo publishDate">{moment(article.node.publishDate).format('MMM YYYY')}</span>
+								</Link>
+							</li>
+						))}
+				</ul>
+			</div>
+		)}
+	/>
+)
 
 const NewsOverview = ({ news }) => (
  	<section id="News">

@@ -10,11 +10,18 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allContentfulNews {
+            allContentfulNews(sort: {fields: publishDate, order: DESC}) {
               edges {
                 node {
-                  title
                   slug
+                }
+                next {
+                  slug
+                  title
+                }
+                previous {
+                  slug
+                  title
                 }
               }
             }
@@ -32,7 +39,9 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/news/${post.node.slug}/`,
             component: newsPost,
             context: {
-              slug: post.node.slug
+              slug: post.node.slug,
+              next: post.next,
+              prev: post.previous
             },
           })
         })

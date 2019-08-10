@@ -28,16 +28,9 @@
         grid-row-end: span 3;
       }
 
-      #Events {
-        position: relative;
-        top: -60px;
+      > article {
+        grid-row-end: span 3;
       }
-
-      #Spenden {
-        position: relative;
-        top: -20px;
-      }
-
     }
 
     @media (min-width: $device-l) {
@@ -54,6 +47,7 @@
   	background-color: $primarycolor;
     border-radius: $borderradius2;
     padding: 40px 20px;
+    overflow: hidden;
 
     p, span, a, h3, time, div {
       color: #fff;

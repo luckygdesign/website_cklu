@@ -17,19 +17,16 @@ var eyecatcherBackground = {
 class NewsPage extends Component {
   render() {
 
-    const news = this.props.data.allContentfulNews.edges
+    const latest = this.props.data.latest.edges
 
     return (
       <Layout location={this.props.location} >
           <div id="Content" className="Container">
 
             <div>
-              <News news={news} />
+              <News news={latest} />
 
-              <div className="sidebar">
-                <h3>Alle News</h3>
-                <NewsList news={news} />
-              </div>
+              <NewsList />
             </div>
           </div> 
       </Layout>
@@ -42,7 +39,7 @@ export default NewsPage;
 
 export const pageQuery = graphql`
   query newsPageQuery {
-    allContentfulNews(sort: {fields: publishDate, order: DESC}, limit: 5) {
+    latest: allContentfulNews(sort: {fields: publishDate, order: DESC}, limit: 5) {
       edges {
         node {
           title
