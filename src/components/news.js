@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import moment from 'moment';
 
-import { ReadMoreButton } from './misc'
+import { ReadMoreButton, MiscButton } from './misc'
 
 const ArticleThumb = ({ node }) => (
 	<article>
@@ -64,6 +64,8 @@ const NewsOverview = ({ news }) => (
 		      <ArticleThumb key={article.node.title} node={article} />
 		    ))}
 		</div>
+
+		<MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" />
 
 	</section>
 )

@@ -160,9 +160,10 @@
     padding: 60px 0;
 
     .NewsFeed {
-      padding-top: 40px;
+      padding: 20px 0;
       display: grid;
       grid-row-gap: 40px;
+      margin-bottom: 40px;
 
       article {
 
@@ -181,7 +182,7 @@
 
         h4 {
           color: $secondarycolor;
-          margin: 20px 0;
+          margin: 0;
         }
 
         img {
@@ -192,6 +193,16 @@
           margin-left: 0.5em;
         }
       }
+    }
+
+    .button-primary {
+      margin-top: 40px;
+      background-color: #bbb;
+    }
+
+    .button-primary:hover,
+    .button-primary:focus,{
+      background-color: $secondarycolor;
     }
   }
 

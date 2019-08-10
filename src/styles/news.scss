@@ -6,65 +6,100 @@
 // =====
 
 
+// STRUCTURE
+#Content > div {
 
-// ========
-// PROJECTS
-// ========
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 
-  // STRUCTURE
-  #Content > div {
-
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
+  @media (min-width: $device-m) {
+    grid-template-columns: 3fr 2fr;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
 
-    @media (min-width: $device-m) {
-      grid-template-columns: 3fr 2fr;
-      grid-column-gap: 20px;
-
-      #News {
-        grid-row-end: span 3;
-      }
-
-      > article {
-        grid-row-end: span 3;
-      }
+    #News {
+      grid-row-end: span 3;
     }
 
-    @media (min-width: $device-l) {
-      grid-template-columns: 2fr 1fr;
+    > article {
+      grid-row-end: span 3;
     }
-
   }
 
+  @media (min-width: $device-l) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+}
+
+#News {
   .NewsFeed {
-	margin-top: 60px;
+    padding: 20px 0;
+    display: grid;
+    grid-row-gap: 40px;
+    margin-bottom: 40px;
+
+    article {
+
+      .gatsby-image-wrapper {
+        float: left;
+        margin-right: 20px;
+      }
+
+      @media (max-width: $device-m) {
+        .gatsby-image-wrapper {
+          float: none;
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+
+      h4 {
+        color: $secondarycolor;
+        margin: 0;
+      }
+
+      img {
+        border-radius: $borderradius1;
+        margin-bottom: 20px;
+      }
+
+      a {
+        margin-left: 0.5em;
+      }
+    }
   }
 
-  .sidebar {
-  	background-color: $primarycolor;
-    border-radius: $borderradius2;
-    padding: 40px 20px;
-    overflow: hidden;
-
-    p, span, a, h3, time, div {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    h3 {
-      margin-top: 0px;
-    }
-
-    .button-primary, .button-primary:hover,
-    .button-primary:focus, .button-primary:active {
-      background-color: #fff;
-    }
-
-    // hover / focus effect
-    .button-primary:hover, .button-primary:focus {
-      opacity: 0.85;
-    }
+  .button-primary {
+    display: none;
   }
+} 
+
+
+.sidebar {
+	background-color: $primarycolor;
+  border-radius: $borderradius2;
+  padding: 40px 20px;
+  overflow: hidden;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+}
