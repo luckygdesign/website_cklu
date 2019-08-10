@@ -165,16 +165,18 @@
       grid-row-gap: 40px;
 
       article {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-column-gap: 20px;
-
-        @media (max-width: $device-m) {
-          grid-template-columns: auto;
-        }
 
         .gatsby-image-wrapper {
           float: left;
+          margin-right: 20px;
+        }
+
+        @media (max-width: $device-m) {
+          .gatsby-image-wrapper {
+            float: none;
+            margin-right: 0;
+            width: 100%;
+          }
         }
 
         h4 {
@@ -184,6 +186,10 @@
 
         img {
           border-radius: $borderradius1;
+        }
+
+        a {
+          margin-left: 0.5em;
         }
       }
     }

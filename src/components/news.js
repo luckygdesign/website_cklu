@@ -9,8 +9,10 @@ const ArticleThumb = ({ node }) => (
 	    <Img alt={node.node.heroImage.title} fixed={node.node.heroImage.fixed} />
 	    <content>
 	    	<h4>{node.node.title}</h4>
-	   		<p>{node.node.summary.summary}</p>
-	    	<ReadMoreButton link={`/news/${node.node.slug}`} />
+	   		<p>
+	   			{node.node.summary.summary}
+	   			<ReadMoreButton link={`/news/${node.node.slug}`} />
+	   		</p>
     	</content>
 	</article>
  )
