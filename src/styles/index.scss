@@ -31,15 +31,6 @@ code {
   margin-bottom: 60px;
 }
 
-.LogoImage {
-  width: 300px;
-  float: left;
-}
-
-.LogoImage img {
-  max-width: 100%;
-}
-
 .HeroImage {
   height: 200px;
   padding: 50px 0px;
@@ -122,36 +113,125 @@ button:hover, button:focus, {
 }
 
 
+
+// ==========
+// LOGO IMAGE
+// ==========
+.LogoImage img {
+  max-width: 100%;
+}
+.LogoImage {
+  width: 150px;
+  float: left;
+}
+
+@media (max-width: $device-m) {
+  .LogoImage {
+    width: 100px;
+    float: left;
+  }
+}
+
 // ==========
 // NAVIGATION
 // ==========
 
-#Navigation {
-  float: right;
 
-  ul {
-    list-style-type: none;
+@media (min-width: $device-m) {
+
+  #Navigation {
+    float: right;
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      margin: 0 20px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16pt;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    a:hover, a:focus {
+      color: $primarycolor;
+    }
   }
 
-  li {
-    float: left;
-    margin: 0 20px;
+  #NavigationToggle {
+    display: none;
   }
 
-  a {
+}
+
+@media (max-width: $device-m) {
+
+  #Navigation {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #bbb;
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 0.5s;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16pt;
+      cursor: pointer;
+      transition: color 0.15s;
+      padding: 20px;
+      display: block;
+    }
+
+    a:hover, a:focus {
+      color: $primarycolor;
+    }
+  }
+
+  .menu-collapse {
+    max-height: 0px !important;
+
+  }
+
+  #NavigationToggle {
+    color: #fff;
+    background: transparent;
+    padding: 10px 15px;
+    border-radius: $borderradius1;
+    text-decoration: none;
+    border: 2px #fff solid;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16pt;
     cursor: pointer;
-    transition: color 0.15s;
+    transition: color 0.15s border-color 0.15s;
+    display: block;
+    float: right;
   }
 
-  a:hover, a:focus {
+  #NavigationToggle:hover, #NavigationToggle:focus {
     color: $primarycolor;
+    border-color: $primarycolor;
   }
 }
-
 // ========
 // NEWS NAV
 // ========

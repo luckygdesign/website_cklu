@@ -2,20 +2,49 @@ import React from 'react'
 
 import Navigation from './navigation'
 
-import logo from '../images/logo.png';
+import logo from '../images/logo-xs.png';
 import eyecatcher from '../images/schoolchildren.jpg';
 
 var eyecatcherBackground = {
   backgroundImage: "url(" + eyecatcher + ")"
 };
 
-export default () => (
-    <header className="HeroImage" style={eyecatcherBackground}>
-      <div className="Container">
-        <div className="LogoImage" >
-          <img alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} ></img>
-        </div>
-        <Navigation />
-      </div>
-    </header>
-);
+class Header extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {navbar: 'menu-collapse'};
+    	// This binding is necessary to make `this` work in the callback
+    	this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick() {
+		if (this.state.navbar === 'menu-collapse') {
+			this.setState( state => ({navbar: ''}));
+		} else {
+			this.setState( state => ({navbar: 'menu-collapse'}));
+		}
+	}
+
+
+	render() {
+
+		return(
+			<header className="HeroImage" style={eyecatcherBackground}>
+		      <div className="Container">
+		        <div className="LogoImage" >
+		          <img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} />
+		        </div>
+	        	<button id="NavigationToggle" onClick={this.handleClick}>Menü</button>
+		        <div  onClick={this.handleClick} id="Navigation" className={this.state.navbar}>
+		        	<Navigation />
+		    	</div>
+		      </div>
+		    </header>
+		)
+
+	} 
+
+}
+
+export default Header;
