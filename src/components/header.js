@@ -32,7 +32,7 @@ class Header extends React.Component {
 		return(
 			<header className="HeroImage" style={eyecatcherBackground}>
 		      <div className="Container">
-		        <div className="LogoImage" >
+		        <div id="LogoImage" >
 		          <img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} />
 		        </div>
 	        	<button id="NavigationToggle" onClick={this.handleClick}>Menü</button>
@@ -42,9 +42,7 @@ class Header extends React.Component {
 		      </div>
 		    </header>
 		)
-
 	} 
-
 }
 
 export default Header;

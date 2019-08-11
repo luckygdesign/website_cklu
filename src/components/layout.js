@@ -4,9 +4,13 @@ import { Link } from 'gatsby'
 import Header from './header'
 import Footer from './footer'
 
-import logo from '../images/logo.png';
-
 import '../styles/index.scss'
+
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
 
 class Template extends React.Component {
   render() {
