@@ -70,8 +70,6 @@ const ProjectThumb = ({ project }) => {
 
 const ProjectDetails = ({ project }) => {
 
-	console.log(project)
-
 	return (
 		<article id={project.slug}>
 
