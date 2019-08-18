@@ -78,6 +78,11 @@ p, span, a, h4, time {
 }
 
 
+.text img {
+  width: 100%;
+  max-width: 600px;
+}
+
 .button, .button:hover, .button:focus, .button:active {
   color: #fff;
   background: #D9E021;
