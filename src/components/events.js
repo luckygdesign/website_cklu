@@ -26,7 +26,12 @@ const EventInfo = ({ node }) => {
 	)
 }
 
-export default ({ events }) => (
+
+const EventsList = () => (
+	<h2>Events List</h2>
+)
+
+const EventsOverview = ({ events }) => (
   	<section id="Events" className="content-sidebar">
 		<h3>Termine</h3>
 
@@ -42,3 +47,6 @@ export default ({ events }) => (
 		<MiscButton link="/events" cssclass="button button-primary" text="Alle Termine" />
 	</section>
 )
+
+export default EventsOverview;
+export { EventsList };
