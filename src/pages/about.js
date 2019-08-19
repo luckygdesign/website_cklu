@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import Layout from '../components/layout';
-import { ProjectDetails } from '../components/projects'
+import { ProjectDetails , ProjectList , ProjectThumb} from '../components/projects'
 
 import family from '../images/family.jpg';
 
@@ -16,6 +17,10 @@ class Projects extends Component {
   render() {
 
     const projects = this.props.data.projects.edges
+    let currentHash = this.props.location.hash.substr(1).toLowerCase()
+    let currentProject = projects.filter(project => {
+      return project.node.slug.toLowerCase() === currentHash
+    })[0]
 
     return (
       <Layout location={this.props.location} >
@@ -37,10 +42,19 @@ class Projects extends Component {
             </section>
 
             <section id="AboutProjects">
+
               <h2>Unsere Projekte</h2>
-              {projects.map(project => (
-                <ProjectDetails project={project.node} key={project.node.slug} />
-              ))}
+
+              <ul className="projects-list">
+                {projects.map(project => (
+                  <ProjectList project={project.node} key={project.node.slug} />
+                ))}
+              </ul>
+
+              { currentProject ? (
+                <ProjectDetails project={currentProject.node} />
+              ) : null }
+    
             </section>
           </div> 
       </Layout>

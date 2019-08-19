@@ -31,6 +31,30 @@ const EventsList = () => (
 	<h2>Events List</h2>
 )
 
+
+const EventDetails = ({ event }) => {
+
+	return (
+
+		<div className="event-item">
+			<h3>{event.title}</h3>
+
+			<div className="event-item-info">
+				<span className="event-item-location">{event.location}</span>
+				<span className="event-item-day">{moment(event.startDate).format('D. MMMM')}</span>
+				<span className="event-item-time">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+			</div>
+
+			<div className="event-item-link">
+				<span>mehr Infos</span>
+			</div>
+		</div>
+
+	)
+
+}
+
+
 const EventsOverview = ({ events }) => (
   	<section id="Events" className="content-sidebar">
 		<h3>Termine</h3>
@@ -49,4 +73,4 @@ const EventsOverview = ({ events }) => (
 )
 
 export default EventsOverview;
-export { EventsList };
+export { EventsList , EventDetails };

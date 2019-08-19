@@ -68,6 +68,14 @@ const ProjectThumb = ({ project }) => {
 	)
 }
 
+const ProjectList = ({ project }) => {
+	return (
+		<li>
+			<Link to={`/about#${project.slug}`} className="project-link">{project.title}</Link>
+		</li>
+	)
+}
+
 const ProjectDetails = ({ project }) => {
 
 	return (
@@ -140,4 +148,4 @@ export default ({ projects }) => (
 )
 
 
-export { ProjectDetails };
+export { ProjectDetails, ProjectList , ProjectThumb};

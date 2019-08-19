@@ -9,6 +9,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "react-router-dom": "latest",
     "contentful": "^7.9.1",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.53",

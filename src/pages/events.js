@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import Events, { EventsList } from '../components/events';
+import Events, { EventsList , EventDetails } from '../components/events';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
 
-import '../styles/news.scss';
+import '../styles/events.scss';
 
 
 var eyecatcherBackground = {
@@ -23,11 +23,17 @@ class EventsPage extends Component {
       <Layout location={this.props.location} >
           <div id="Content" className="Container">
 
-            <div>
-              <Events events={latest} />
+              <h2>Herzliche Einladung</h2>
+              <p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
 
-              <EventsList />
-            </div>
+              <section id="UpcomingEvents">
+
+                {latest.map(event => (
+                  <EventDetails event={event.node} />
+                ))}
+
+              </section>
+
           </div> 
       </Layout>
     );
