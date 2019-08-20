@@ -40,9 +40,9 @@ const EventDetails = ({ event }) => {
 			<h3>{event.title}</h3>
 
 			<div className="event-item-info">
-				<span className="event-item-location">{event.location}</span>
-				<span className="event-item-day">{moment(event.startDate).format('D. MMMM')}</span>
-				<span className="event-item-time">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+				<span className="event-item-location icon-pseudo">{event.location}</span>
+				<span className="event-item-date icon-pseudo">{moment(event.startDate).format('D. MMMM')}</span>
+				<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
 			</div>
 
 			<div className="event-item-link">

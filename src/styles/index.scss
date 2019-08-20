@@ -279,12 +279,10 @@ button:hover, button:focus, {
       }
 
       .news-nav-prev:before {
-        font-family: "Font Awesome 5 Solid";
         content: "\f104";
         padding-right: 0.5em;
       }
       .news-nav-next:after {
-        font-family: "Font Awesome 5 Solid";
         content: "\f105";
         padding-left: 0.5em;
       }
@@ -315,7 +313,6 @@ ul.news-list {
   }
 
   .title:before {
-    font-family: "Font Awesome 5 Solid";
     content: "\f105";
     margin-right: 0.2em;
     transition: content 0.2;
