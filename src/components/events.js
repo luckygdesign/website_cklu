@@ -32,26 +32,57 @@ const EventsList = () => (
 )
 
 
-const EventDetails = ({ event }) => {
+class EventDetails extends React.Component {
 
-	return (
+	state = {
+		event: this.props.event,
+		open: false,
+	}
 
-		<div className="event-item">
-			<h3>{event.title}</h3>
+	handleClick = () => {
+		if (this.state.open === false) {
+			this.setState({open: true})
+		} else {
+			this.setState({open: false})
+		}
+		console.log('klick');
+	}
 
-			<div className="event-item-info">
-				<span className="event-item-location icon-pseudo">{event.location}</span>
-				<span className="event-item-date icon-pseudo">{moment(event.startDate).format('D. MMMM')}</span>
-				<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+
+	render() {
+
+		let { event } = this.state;
+
+		return (
+
+			<div className="event-item">
+				<h3>{event.title}</h3>
+
+				<div className="event-item-info">
+					<span className="event-item-location icon-pseudo">{event.location}</span>
+					<span className="event-item-date icon-pseudo">{moment(event.startDate).format('D. MMMM')}</span>
+					<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+				</div>
+
+				<div className="event-item-link">
+					<button onClick={this.handleClick} >mehr Infos {this.state.status}</button>
+					
+				</div>
+
+				{this.state.open ? (
+					<div className="event-item-content">
+						<span className="event-item-address">Adresse: {event.address}</span>
+						<p>{event.description.description}</p>
+					</div>
+
+				) : null }
+
+
+				
 			</div>
 
-			<div className="event-item-link">
-				<span>mehr Infos</span>
-			</div>
-		</div>
-
-	)
-
+		)
+	}	
 }
 
 

@@ -29,7 +29,7 @@ class EventsPage extends Component {
               <section id="UpcomingEvents">
 
                 {latest.map(event => (
-                  <EventDetails event={event.node} />
+                  <EventDetails event={event.node} key={event.node.slug} />
                 ))}
 
               </section>
@@ -52,6 +52,10 @@ export const pageQuery = graphql`
           slug
           startDate
           location
+          description {
+            description
+          }
+          address
         }
       }
     }
