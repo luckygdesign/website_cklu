@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import News, { NewsList } from '../components/news';
+import News, { NewsList , ArticleThumb } from '../components/news';
+import { MiscButton } from '../components/misc';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
@@ -24,8 +25,21 @@ class NewsPage extends Component {
           <div id="Content" className="Container">
 
             <div>
-              <News news={latest} />
+              <section id="News">
 
+                <h2>Aktuelle Nachrichten</h2>
+
+                <p>Freuen Sie sich über regelmäßige Neuigkeiten und Nachrichten aus Afrika. Wir freuen uns, wenn Sie die Nachrichten auch im Gebet bewegen - als Dank und Bitte. </p>
+
+                <div className="NewsFeed">
+                  {latest.map(article => (
+                      <ArticleThumb key={article.node.title} node={article} />
+                    ))}
+                </div>
+
+                <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" />
+
+              </section>
               <NewsList />
             </div>
           </div> 

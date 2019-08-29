@@ -1,5 +1,21 @@
 @import './params.scss';
 
+
+#Content > div {
+
+  @media (min-width: $device-m) {
+    #Events {
+      grid-row-end: span 3;
+    }
+
+    > article {
+      grid-row-end: span 3;
+    }
+  }
+  
+}
+
+
 // Upcoming Events
 
 #UpcomingEvents {
@@ -33,9 +49,29 @@
 		content: "\f017";
 	}
 
-	.event-item-link span {
-		color: $primarycolor;
-    	font-style: italic;
+	.event-item-content {
+
+		margin: 20px 0;
+		span, p, a {
+			color: #999;
+		}
 	}
+
+	.event-item-link { 
+		a {
+			color: $primarycolor;
+	    	font-style: italic;
+	    	cursor: pointer;
+	    	transition: color 0.15s;
+	    }
+
+    	a:hover, a:focus {
+    		color: $primarycolor2;
+    	}
+
+
+	}
+
+
 
 }

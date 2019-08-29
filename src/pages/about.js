@@ -10,7 +10,7 @@ import { ProjectDetails , ProjectList , ProjectThumb} from '../components/projec
 
 import family from '../images/family.jpg';
 
-import '../styles/news.scss';
+import '../styles/about.scss';
 
 
 class Projects extends Component {

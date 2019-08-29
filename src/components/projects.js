@@ -71,7 +71,12 @@ const ProjectThumb = ({ project }) => {
 const ProjectList = ({ project }) => {
 	return (
 		<li>
-			<Link to={`/about#${project.slug}`} className="project-link">{project.title}</Link>
+			<Link
+				to={`/about#${project.slug}`}
+				className={`project-link icon-pseudo icon-project-${project.slug}`}
+				>
+				{project.title}
+			</Link>
 		</li>
 	)
 }

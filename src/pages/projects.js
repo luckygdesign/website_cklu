@@ -62,8 +62,8 @@ export const pageQuery = graphql`
     allContentfulProject {
       edges {
         node {
-          id,
-          title,
+          id
+          title
           heroImage {
             title
           }

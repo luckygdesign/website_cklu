@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import Events, { EventsList , EventDetails } from '../components/events';
+import Events, { EventsList , EventDetails , GebetsanliegenOverview } from '../components/events';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
@@ -17,22 +17,28 @@ var eyecatcherBackground = {
 class EventsPage extends Component {
   render() {
 
-    const latest = this.props.data.upcoming.edges
+    const latest = this.props.data.upcoming.edges;
+    const gebetsanliegen = this.props.data.allContentfulGebetsanliegen.edges;
 
     return (
       <Layout location={this.props.location} >
           <div id="Content" className="Container">
+            <div>
+              <section id="Events">
 
-              <h2>Herzliche Einladung</h2>
-              <p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
+                <h2>Herzliche Einladung</h2>
+                <p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
 
-              <section id="UpcomingEvents">
+                <div id="UpcomingEvents">
 
-                {latest.map(event => (
-                  <EventDetails event={event.node} key={event.node.slug} />
-                ))}
+                  {latest.map(event => (
+                    <EventDetails event={event.node} key={event.node.slug} />
+                  ))}
 
+                </div>
               </section>
+              <GebetsanliegenOverview anliegen={gebetsanliegen} />
+            </div>
 
           </div> 
       </Layout>
@@ -56,6 +62,19 @@ export const pageQuery = graphql`
             description
           }
           address
+        }
+      }
+    }
+    allContentfulGebetsanliegen {
+      edges {
+        node {
+          endDate
+          slug
+          title
+          startDate
+          description {
+            description
+          }
         }
       }
     }

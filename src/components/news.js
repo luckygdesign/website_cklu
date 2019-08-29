@@ -53,7 +53,7 @@ const NewsList = () => (
 )
 
 const NewsOverview = ({ news }) => (
- 	<section id="News">
+ 	<section id="NewsOverview">
 
 		<h2>Aktuelle Nachrichten</h2>
 
@@ -71,4 +71,4 @@ const NewsOverview = ({ news }) => (
 )
 
 export default NewsOverview;
-export { NewsList };
+export { NewsList , ArticleThumb };

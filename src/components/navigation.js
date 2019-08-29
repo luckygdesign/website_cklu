@@ -7,6 +7,6 @@ export default () => (
 		<li><Link to="/news">News</Link></li>
 		<li><Link to="/events">Events</Link></li>
 		<li><Link to="/about">About</Link></li>
-		<li><Link to="/kontakt">Kontakt</Link></li>
+		<li><Link to="/contact">Kontakt</Link></li>
 	</ul>
 );

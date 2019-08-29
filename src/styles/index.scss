@@ -1,5 +1,7 @@
+@charset "UTF-8"; 
 @import './params.scss';
-//@import url("https://use.fontawesome.com/releases/v5.0.6/css/all.css"); /* FA CSS import */
+@import url("https://use.fontawesome.com/releases/v5.10.0/css/all.css"); /* FA CSS import */
+@import './icons.scss';
 
 body {
   margin: 0;
@@ -113,7 +115,7 @@ button:hover, button:focus, {
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
+  font-family: Font Awesome\ 5 Free;
   font-weight: 900;
 }
 
@@ -237,6 +239,8 @@ button:hover, button:focus, {
     border-color: $primarycolor;
   }
 }
+
+
 // ========
 // NEWS NAV
 // ========
@@ -304,38 +308,298 @@ button:hover, button:focus, {
   }
 }
 
-ul.news-list {
-  list-style-type: none;
-  padding: 0;
+// ========================
+// === SIDEBAR ============
+// ========================
 
-  li {
-    margin: 5px 0;
-  }
 
-  .title:before {
-    content: "\f105";
-    margin-right: 0.2em;
-    transition: content 0.2;
-  }
+// STRUCTURE
+#Content > div {
 
-  .publishDate {
-    font-size: 12pt;
-    opacity: 0.75;
-    margin-left: 1em;
-  }
-  .publishDate:before {
-    font-size: 0.8em;
-    content: "\f073";
-    padding-right: 0.5em;
-  }
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 
-  li:hover {
-    .title:before {
-      content: "\f054";
+  @media (min-width: $device-m) {
+    grid-template-columns: 3fr 2fr;
+    grid-column-gap: 20px;
+
+    #NewsOverview {
+      grid-row-end: span 3;
     }
+
+  }
+
+  @media (min-width: $device-l) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+}
+
+
+
+// ====
+// NEWS
+// ====
+
+#NewsOverview {
+  padding: 60px 0;
+
+  .NewsFeed {
+    padding: 20px 0;
+    display: grid;
+    grid-row-gap: 40px;
+    margin-bottom: 40px;
+
+    article {
+
+      .gatsby-image-wrapper {
+        float: left;
+        margin-right: 20px;
+      }
+
+      @media (max-width: $device-m) {
+        .gatsby-image-wrapper {
+          float: none;
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+
+      h4 {
+        color: $secondarycolor;
+        margin: 0;
+      }
+
+      img {
+        border-radius: $borderradius1;
+      }
+
+      a {
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+  .button-primary {
+    margin-top: 40px;
+    background-color: #bbb;
+  }
+
+  .button-primary:hover,
+  .button-primary:focus,{
+    background-color: $secondarycolor;
   }
 }
 
+
+.sidebar {
+  border-radius: $borderradius2;
+  padding: 40px 20px;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+}
+
+// ======
+// EVENTS
+// ======
+
+#EventsOverview, #GebetsanliegenOverview {
+  background-color: $secondarycolor;
+
+  .eventinfo {
+    width: 100%;
+    overflow-y: hidden;
+    margin: 20px 0;
+    cursor: pointer;
+
+    // display day and month in square
+    .eventdate {
+      float: left;
+      background-color: #fff;
+      border-radius: $borderradius2;
+      height: 60px;
+      width: 60px;
+      text-align: center;
+      padding-top: 9px;
+      box-sizing: border-box;
+      margin-right: 10px;
+      opacity: 1;
+      transition: opacity 0.15s;
+
+      span {
+        color: $secondarycolor;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+
+      .eventday {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .eventmonth {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+
+    // display name and location and time
+    .eventcontent {
+
+      span, time {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    
+      .eventtitle {
+        font-weight: bold;
+        display: block;
+      }
+
+      .eventtime {
+        padding-left: 0.5em;
+        margin-left: 0.5em;
+        border-left: #fff 1px solid; 
+      }
+
+    }
+
+  }
+
+  .eventsfeed {
+    margin-bottom: 40px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    color: $secondarycolor;
+  }
+
+  // hover / focus effect
+  .eventinfo:hover, .eventinfo:focus {
+    opacity: 0.85;
+  }
+
+
+}
+
+#GebetsanliegenOverview {
+  background-color: $primarycolor;
+
+  .eventinfo {
+    cursor: default;
+  }
+
+  .eventinfo .eventdate span {
+    color: $primarycolor;
+  }
+
+  .eventinfo .eventcontent .eventtime {
+    padding-left: 0;
+    margin-left: 0;
+    border-left: 0px;
+  }
+}
+
+// =======
+// Spenden
+// =======
+
+#Spenden {
+  background-color: $grey1;
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    color: $grey1;
+    display: inline-block;
+  }
+}
+
+// ========
+// NEWSLIST
+// ========
+
+#NewsList {
+
+  background-color: $grey1;
+  border-radius: $borderradius2;
+  padding: 40px 20px;
+  overflow: hidden;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+
+
+  ul.news-list {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 5px 0;
+    }
+
+    .title:before {
+      content: "\f105";
+      margin-right: 0.2em;
+      transition: content 0.2;
+    }
+
+    .publishDate {
+      font-size: 12pt;
+      opacity: 0.75;
+      margin-left: 1em;
+    }
+    .publishDate:before {
+      font-size: 0.8em;
+      content: "\f073";
+      padding-right: 0.5em;
+    }
+
+    li:hover {
+      .title:before {
+        content: "\f054";
+      }
+    }
+  }
+}
 
 // ======
 // FOOTER
@@ -352,4 +616,3 @@ ul.news-list {
   padding: 20px 0;
   font-size: 12px;
 }
-

@@ -26,10 +26,22 @@ const EventInfo = ({ node }) => {
 	)
 }
 
+const GebetInfo = ({ node }) => {
+	let gebet = node.node;
 
-const EventsList = () => (
-	<h2>Events List</h2>
-)
+	return (
+		<div className="eventinfo">
+			<div className="eventdate">
+	            <span className="eventday">{moment(gebet.startDate).format('D.')}</span>
+	            <span className="eventmonth">{moment(gebet.startDate).format('MMM')}</span>
+			</div>
+			<div className="eventcontent">
+	    		<span className="eventtitle">{gebet.title}</span>
+	            <span className="eventtime">{`${moment(gebet.startDate).format('D. MMM')} bis ${moment(gebet.endDate).format('D. MMM')}`}</span>
+	    	</div>
+		</div>	
+	)
+}
 
 
 class EventDetails extends React.Component {
@@ -64,11 +76,6 @@ class EventDetails extends React.Component {
 					<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
 				</div>
 
-				<div className="event-item-link">
-					<button onClick={this.handleClick} >mehr Infos {this.state.status}</button>
-					
-				</div>
-
 				{this.state.open ? (
 					<div className="event-item-content">
 						<span className="event-item-address">Adresse: {event.address}</span>
@@ -76,6 +83,14 @@ class EventDetails extends React.Component {
 					</div>
 
 				) : null }
+
+				<div className="event-item-link">
+					<a className="" onClick={this.handleClick}>
+					{this.state.open ? "weniger lesen" : "mehr lesen"}
+
+					</a>
+					
+				</div>
 
 
 				
@@ -87,7 +102,7 @@ class EventDetails extends React.Component {
 
 
 const EventsOverview = ({ events }) => (
-  	<section id="Events" className="content-sidebar">
+  	<section id="EventsOverview" className="sidebar">
 		<h3>Termine</h3>
 
 		<p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
@@ -103,5 +118,20 @@ const EventsOverview = ({ events }) => (
 	</section>
 )
 
+const GebetsanliegenOverview = ({ anliegen }) => (
+  	<section id="GebetsanliegenOverview" className="sidebar">
+		<h3>Gebetsanliegen</h3>
+
+		<p>Wir freuen uns, wenn Sie die Veranstaltungen auf der Missionsstation im Gebet begleiten und unterstützen.</p>
+		<p>Weitere aktuelle Informationen und Details finden Sie im Bereich "News".</p>
+
+		<div className="gebetsfeed">
+			{anliegen.map(anliegen => (
+		      <GebetInfo key={anliegen.node.slug} node={anliegen} />
+		    ))}
+		</div>
+	</section>
+)
+
 export default EventsOverview;
-export { EventsList , EventDetails };
+export { EventDetails , GebetsanliegenOverview };
