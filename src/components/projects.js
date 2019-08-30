@@ -68,10 +68,11 @@ const ProjectThumb = ({ project }) => {
 	)
 }
 
-const ProjectList = ({ project }) => {
+const ProjectList = ({ project , handleClick }) => {
 	return (
 		<li>
 			<Link
+				onClick={handleClick}
 				to={`/about#${project.slug}`}
 				className={`project-link icon-pseudo icon-project-${project.slug}`}
 				>

@@ -14,12 +14,28 @@ import '../styles/about.scss';
 
 
 class Projects extends Component {
+
+  state = {
+    currentHash: this.props.location.hash.substr(1).toLowerCase()
+  }
+
+
+  // handle Click on project item - load new item and change url without refresh and scrolling
+  handleClick = (e) => {
+    e.preventDefault();
+    const newUrl = new URL(e.target);
+    const newHash = newUrl.hash.substr(1).toLowerCase();
+    this.setState({currentHash: newHash});
+    history.pushState(null, null, '#'+newHash);
+    console.log(newHash)
+
+  }
+
   render() {
 
     const projects = this.props.data.projects.edges
-    let currentHash = this.props.location.hash.substr(1).toLowerCase()
     let currentProject = projects.filter(project => {
-      return project.node.slug.toLowerCase() === currentHash
+      return project.node.slug.toLowerCase() === this.state.currentHash
     })[0]
 
     return (
@@ -47,12 +63,12 @@ class Projects extends Component {
 
               <ul className="projects-list">
                 {projects.map(project => (
-                  <ProjectList project={project.node} key={project.node.slug} />
+                  <ProjectList project={project.node} key={project.node.slug} handleClick={this.handleClick}/>
                 ))}
               </ul>
 
               { currentProject ? (
-                <ProjectDetails project={currentProject.node} />
+                <ProjectDetails project={currentProject.node}  />
               ) : null }
     
             </section>
