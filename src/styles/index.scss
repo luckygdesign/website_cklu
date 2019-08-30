@@ -120,6 +120,69 @@ button:hover, button:focus, {
 }
 
 
+// ==========
+// JSON PARSER
+// ==========
+
+.parser-img-container {
+  
+  .parser-img-img {
+
+    width: 100%;
+
+    img {
+      width: 100%;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  .parser-img-description {
+    a, p, span {
+      color: $secondarycolor;
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
+
+}
+
+.parser-file-container {
+
+  a {
+    color: $secondarycolor;
+    transition: color 0.3s;
+    margin-right: 0.5em;
+
+    &:hover, &:focus {
+      color: $secondarycolor0;
+    }
+  }
+
+  a:before {
+    content: "\f15b";
+    margin-right: 0.5em;
+    font-size: 2em;
+  }
+}
+
+.parser-link-inline {
+
+  color: $secondarycolor;
+  transition: color 0.3s;
+  margin-right: 0.5em;
+
+  &:hover, &:focus {
+    color: $secondarycolor0;
+  }
+  
+
+  &:before {
+    content: "\f35d";
+    margin-right: 0.5em;
+  }
+}
+
 
 // ==========
 // LOGO IMAGE

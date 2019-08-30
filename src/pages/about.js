@@ -57,21 +57,25 @@ class Projects extends Component {
               </div>
             </section>
 
-            <section id="AboutProjects">
+            {(projects.length > 0) ? (
 
-              <h2>Unsere Projekte</h2>
+              <section id="AboutProjects">
 
-              <ul className="projects-list">
-                {projects.map(project => (
-                  <ProjectList project={project.node} key={project.node.slug} handleClick={this.handleClick}/>
-                ))}
-              </ul>
+                <h2>Unsere Projekte</h2>
 
-              { currentProject ? (
-                <ProjectDetails project={currentProject.node}  />
-              ) : null }
-    
-            </section>
+                <ul className="projects-list">
+                  {projects.map(project => (
+                    <ProjectList project={project.node} key={project.node.slug} handleClick={this.handleClick}/>
+                  ))}
+                </ul>
+
+                { currentProject ? (
+                  <ProjectDetails project={currentProject.node}  />
+                ) : null }
+      
+              </section>
+
+            ) : null }
           </div> 
       </Layout>
     );

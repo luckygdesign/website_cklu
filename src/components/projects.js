@@ -4,55 +4,11 @@ import YouTube from 'react-youtube';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 
-import { BLOCKS } from '@contentful/rich-text-types';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const options = {
-	renderNode: {
-    	'embedded-asset-block': (node) =>
-      	`<img class="img-fluid" src="${node.data.target.fields.file['en-US'].url}"/>`
-	}
-};
 
-const richTextOptions = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { title, description, file } = node.data.target.fields;
-      const mimeType = file['en-US'].contentType
-      const mimeGroup = mimeType.split('/')[0]
+import { ParseJSON } from './misc';
 
-      switch (mimeGroup) {
-        case 'image':
-          return <img
-            title={ title ? title['en-US'] : null}
-            alt={description ?  description['en-US'] : null}
-            src={file['en-US'].url}
-          />
-        case 'application':
-          return <a
-            alt={description ?  description['en-US'] : null}
-            href={file['en-US'].url}
-            >{ title ? title['en-US'] : file['en-US'].details.fileName }
-          </a>
-        default:
-          return <span style={{backgroundColor: 'red', color: 'white'}}> {mimeType} embedded asset </span>
-      }
-      
-    },
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-      const fields = node.data.target.fields;
-      switch (node.data.target.sys.contentType.sys.id) {
-        case 'blockquote':
-          return <div>
-            <BlockQuote quoteText={fields.quoteText['en-US']} quoter={fields.quoter['en-US']}/>
-          </div>
-        default:
-          return <div>??????????????? {title} </div>
 
-      }
-    },
-  }
-}
 
 const ProjectList = ({ project , handleClick }) => {
 	return (
@@ -83,7 +39,7 @@ const ProjectDetails = ({ project }) => {
 
 			{/* content */}
 			{project.description ? (
-		    	<div className="text">{documentToReactComponents(project.description.json, richTextOptions)}</div>
+		    	<ParseJSON textjson={project.description} />
 		    ) : null}
 
 		</article>
