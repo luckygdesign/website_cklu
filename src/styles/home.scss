@@ -47,6 +47,10 @@
       grid-template-columns: auto auto auto;
       grid-auto-rows: 1fr;
 
+      .icon {
+        font-size: 3em;
+      }
+
       @media (max-width: $device-s) {
         grid-template-columns: auto;
       }

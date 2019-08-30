@@ -1,14 +1,5 @@
 import React from 'react';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
-import { faPrayingHands } from '@fortawesome/free-solid-svg-icons'
-import { faHandsHelping } from '@fortawesome/free-solid-svg-icons'
-import { faDonate } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faCircle, faPrayingHands, faHandsHelping, faDonate)
-
 export default () => (
 	<section id="About">
 	  <div className="Container">
@@ -23,9 +14,9 @@ export default () => (
 	  	<h3>Werden Sie Teil unserer Arbeit!</h3>
 	  	<div className="About-GetInTouch">
 	  		<div>
-	  			<span className="icon fa-stack fa-3x">
-		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
-					<FontAwesomeIcon icon="praying-hands" inverse className="fa-stack-1x" />
+	  			<span className="icon fa-stack fa-2x">
+	  				<i className="fas fa-circle fa-stack-2x" />
+					<i className="fas fa-praying-hands fa-inverse fa-stack-1x" />
 	  			</span>
 	  			<span className="content">
 	  				<span className="heading">Beten</span>
@@ -33,9 +24,9 @@ export default () => (
   				</span>
 	  		</div>
 	  		<div>
-	  			<span className="icon fa-stack fa-3x">
-		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
-					<FontAwesomeIcon icon="hands-helping" inverse className="fa-stack-1x" />
+	  			<span className="icon fa-stack fa-2x">
+		  			<i className="fas fa-circle fa-stack-2x" />
+					<i className="fas fa-hands-helping fa-inverse fa-stack-1x" />
 	  			</span>
 	  			<span className="content">
 		  			<span className="heading">Patenschaften</span>
@@ -43,9 +34,9 @@ export default () => (
 	  			</span>
 	  		</div>
 	  		<div>
-	  			<span className="icon fa-stack fa-3x">
-		  			<FontAwesomeIcon icon="circle" className="fa-stack-2x" />
-					<FontAwesomeIcon icon="donate" inverse className="fa-stack-1x" />
+	  			<span className="icon fa-stack fa-2x">
+		  			<i className="fas fa-circle fa-stack-2x" />
+					<i className="fas fa-donate fa-inverse fa-stack-1x" />
 	  			</span>
 	  			<span className="content">
 		  			<span className="heading">Spenden</span>
