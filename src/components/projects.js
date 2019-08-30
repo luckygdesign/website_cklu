@@ -54,20 +54,6 @@ const richTextOptions = {
   }
 }
 
-const ProjectThumb = ({ project }) => {
-	return (
-		<Link to={`/about#${project.slug}`} className="project-item">
-			    {project.heroImage ? (
-			    	<Img fluid={{...project.heroImage.fluid, aspectRatio: 1}} alt={project.heroImage.title} />
-			    ) : null}
-			    <div className="project-overlay">
-			    	<h4>{project.title}</h4>
-			    </div>
-		</Link>
-
-	)
-}
-
 const ProjectList = ({ project , handleClick }) => {
 	return (
 		<li>
@@ -124,7 +110,7 @@ class Player extends React.Component {
 	}
 }
 
-export default ({ projects }) => (
+const AboutSection = ({ projects }) => (
   <section id="HomeProjects">
 		<div className="Container">
 
@@ -140,10 +126,12 @@ export default ({ projects }) => (
 				</div>
 			</div>
 
-			<div className="project-overview">
-				{projects.map(singleproject => (
-			      <ProjectThumb key={singleproject.node.title} project={singleproject.node} />
-			    ))}
+			<div className="">
+				<ul className="projects-list">
+					{projects.map(singleproject => (
+				      <ProjectList key={singleproject.node.title} project={singleproject.node} handleClick={null} />
+				    ))}
+				</ul>
 			</div>
 
 			
@@ -154,4 +142,4 @@ export default ({ projects }) => (
 )
 
 
-export { ProjectDetails, ProjectList , ProjectThumb};
+export { AboutSection, ProjectDetails, ProjectList};

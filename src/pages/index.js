@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Header from '../components/header';
 import UeberUns from '../components/ueber-uns';
-import Projekte from '../components/projects';
+import { AboutSection } from '../components/projects';
 import News from '../components/news';
 import Events, {GebetsanliegenOverview} from '../components/events';
 import Spenden from '../components/spenden';
@@ -34,7 +34,7 @@ class IndexPage extends Component {
 
         <UeberUns />
 
-        <Projekte projects={projects} />
+        <AboutSection projects={projects} />
 
         <div id="Content" className="Container">
           <div>

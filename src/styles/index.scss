@@ -537,6 +537,66 @@ button:hover, button:focus, {
   }
 }
 
+// ============
+// PROJECT LIST
+// ============
+
+#AboutProjects, #HomeProjects {
+
+  .projects-list {
+    list-style-type: none;
+    padding-left: 0;
+
+    display: grid;
+    grid-template-columns: auto auto;
+
+    border-top: 2px solid $secondarycolor;
+    border-bottom: 2px solid $secondarycolor;
+
+
+    li {
+      margin: 20px 0;
+    }
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      padding: 5px 0;
+      
+      &:before {
+        margin-right: 0.5em;
+        width: 45px;
+        color: $secondarycolor;
+        font-size: 1.5em;
+        transition: color 0.3s;
+      }
+
+      &:hover, &:focus {
+        color: $secondarycolor;
+
+        &:before {
+          color: $secondarycolor0;
+        }
+      }
+
+    }
+
+    
+    @media screen and (max-width: $device-s) {
+      grid-template-columns: auto;
+
+      a:before {
+        margin: 0;
+      }
+    }
+  }
+
+  article h3 {
+    color: $secondarycolor;
+  }
+}
+
 // ========
 // NEWSLIST
 // ========
