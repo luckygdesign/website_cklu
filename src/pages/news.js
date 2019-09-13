@@ -31,13 +31,23 @@ class NewsPage extends Component {
 
                 <p>Freuen Sie sich über regelmäßige Neuigkeiten und Nachrichten aus Afrika. Wir freuen uns, wenn Sie die Nachrichten auch im Gebet bewegen - als Dank und Bitte. </p>
 
-                <div className="NewsFeed">
-                  {latest.map(article => (
-                      <ArticleThumb key={article.node.title} node={article} />
-                    ))}
-                </div>
+                {(latest.length > 0) ? (
 
-                <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" />
+                  <>
+
+                    <div className="NewsFeed">
+                      {latest.map(article => (
+                          <ArticleThumb key={article.node.title} node={article} />
+                        ))}
+                    </div>
+
+                    <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" />
+
+                    </>
+
+                  ) : (
+                    <p className="error-message">Leider haben wir gerade keine Neuigkeiten. Wir bitten um Verständnis und Geduld!</p>
+                  )}
 
               </section>
               <NewsList />
