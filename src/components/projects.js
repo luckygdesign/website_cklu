@@ -4,11 +4,7 @@ import YouTube from 'react-youtube';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 
-
-
 import { ParseJSON } from './misc';
-
-
 
 const ProjectList = ({ project , handleClick }) => {
 	return (

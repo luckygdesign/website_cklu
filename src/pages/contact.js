@@ -17,14 +17,17 @@ class Contact extends Component {
             <section id="AboutHeader">
 
               <h2>Kontakt</h2>
-              <div className="text">
-                <p>Sie möchten mit uns in Kontakt treten?</p>
-
+              <div className="text contactdetails">
+                <div>
+                  <span className="contact-name icon-pseudo">Christliches Kinderhilfswerk Luwero – Uganda e.V.</span>
+                  <span className="contact-vorstand icon-pseudo">Vorstand:<br />Andreas Wicki, Vaihingen a. d. Enz<br />Dr. Priscilla Schneckenburger, Stuttgart<br />Hanna Schneckenburger, Rutesheim</span>
+                  <span className="contact-phone icon-pseudo">07152 54758</span>
+                  <span className="contact-address icon-pseudo">Hegelstraße 44, 71277 Rutesheim</span>
+                </div>
               </div>
 
               <div className="contactform">
                 <h3>Nutzen Sie das Kontaktformular</h3>
-
                 <Contactform />
               </div>
             </section>

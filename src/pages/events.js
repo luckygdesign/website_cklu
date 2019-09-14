@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import Events, { EventsList , EventDetails , GebetsanliegenOverview } from '../components/events';
+import { ParseJSON } from '../components/misc';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
@@ -19,6 +20,7 @@ class EventsPage extends Component {
 
     const latest = this.props.data.upcoming.edges;
     const gebetsanliegen = this.props.data.allContentfulGebetsanliegen.edges;
+    const pageContent = this.props.data.page;
 
     return (
       <Layout location={this.props.location} >
@@ -26,9 +28,12 @@ class EventsPage extends Component {
             <div>
               <section id="Events">
 
-                <h2>Herzliche Einladung</h2>
-                <p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
-
+                <h2>{pageContent.title}</h2>
+                
+                {pageContent.content ? (
+                  <ParseJSON textjson={pageContent.content} />
+                ) : null}
+              
                 <div id="UpcomingEvents">
 
                   {latest.map(event => (
@@ -76,6 +81,12 @@ export const pageQuery = graphql`
             description
           }
         }
+      }
+    }
+    page: contentfulPage(contentful_id: {eq: "Ps1Mll3HZN00fKtuafmuW"}) {
+      title
+      content {
+        json
       }
     }
   }

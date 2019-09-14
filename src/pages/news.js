@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import News, { NewsList , ArticleThumb } from '../components/news';
-import { MiscButton } from '../components/misc';
+import { MiscButton, ParseJSON } from '../components/misc';
 
 import logo from '../images/logo.png';
 import eyecatcher from '../images/schoolchildren.jpg'
@@ -18,7 +18,10 @@ var eyecatcherBackground = {
 class NewsPage extends Component {
   render() {
 
-    const latest = this.props.data.latest.edges
+    const latest = this.props.data.latest.edges;
+    const pageContent = this.props.data.page;
+    console.log(pageContent);
+
 
     return (
       <Layout location={this.props.location} >
@@ -27,9 +30,11 @@ class NewsPage extends Component {
             <div>
               <section id="News">
 
-                <h2>Aktuelle Nachrichten</h2>
+                <h2>{pageContent.title}</h2>
 
-                <p>Freuen Sie sich über regelmäßige Neuigkeiten und Nachrichten aus Afrika. Wir freuen uns, wenn Sie die Nachrichten auch im Gebet bewegen - als Dank und Bitte. </p>
+                {pageContent.content ? (
+                  <ParseJSON textjson={pageContent.content} />
+                ) : null}
 
                 {(latest.length > 0) ? (
 
@@ -43,7 +48,7 @@ class NewsPage extends Component {
 
                     <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" />
 
-                    </>
+                  </>
 
                   ) : (
                     <p className="error-message">Leider haben wir gerade keine Neuigkeiten. Wir bitten um Verständnis und Geduld!</p>
@@ -82,6 +87,12 @@ export const pageQuery = graphql`
             summary
           }
         }
+      }
+    }
+    page: contentfulPage(contentful_id: {eq: "5DGQAcf8cNd5ThMX95NlfY"}) {
+      title
+      content {
+        json
       }
     }
   }

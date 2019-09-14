@@ -6,7 +6,9 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import Layout from '../components/layout';
-import { ProjectDetails , ProjectList , ProjectThumb} from '../components/projects'
+import { ProjectDetails , ProjectList , ProjectThumb} from '../components/projects';
+import { ParseJSON } from '../components/misc';
+
 
 import family from '../images/family.jpg';
 
@@ -27,16 +29,15 @@ class Projects extends Component {
     const newHash = newUrl.hash.substr(1).toLowerCase();
     this.setState({currentHash: newHash});
     history.pushState(null, null, '#'+newHash);
-    console.log(newHash)
-
   }
 
   render() {
 
-    const projects = this.props.data.projects.edges
+    const projects = this.props.data.projects.edges;
+    const pageContent = this.props.data.page;
     let currentProject = projects.filter(project => {
       return project.node.slug.toLowerCase() === this.state.currentHash
-    })[0]
+    })[0];
 
     return (
       <Layout location={this.props.location} >
@@ -44,17 +45,13 @@ class Projects extends Component {
 
             <section id="AboutHeader">
 
-              <h2>Wer wir sind</h2>
-              <div className="text">
-                <p>Hier sehen Sie einen kurzen Überblick über eine kleine, aber schnell wachsende Missionsstation mitten im Busch von Uganda:</p>
-                <img src={family} alt='Gabriel und Deborah Kijjambu mit Priscilla' />
-                <p>Gabriel und Deborah Kijjambu mit Priscilla</p>
-                <p>Sie wurde von dem ugandischen Ehepaar Gabriel und Deborah Kijjambu gegründet.</p>
-                <p>Diese Missionsstation liegt ca. 100 km nördlich der ugandischen Hauptstadt Kampala, in Luwero.
-                Uganda liegt im Herzen Afrikas. Vor allem die ländlichen Regionen sind von großer Armut und Krankheit betroffen. 
-                In Luwero hatten unter Idi Amin und seinem Nachfolger die schrecklichen Massaker an der ugandischen Bevölkerung stattgefunden und genau an diesem Platz wollte Pastor Gabriel für die schwächsten und ärmsten Ugander, besonders für die vielen Waisenkinder, Flüchtlingskinder und Aidswaisen eine Station aufbauen, die diesen Kindern neu Hoffnung und Lebenschancen gibt.</p>
-                <p>Inzwischen sind hier eine Kirche, Schule Farm, Waisenhaus und eine kleine Klinik entstanden!</p>
-              </div>
+              <h2>{pageContent.title}</h2>
+              
+              {pageContent.content ? (
+                <ParseJSON textjson={pageContent.content} />
+              ) : null}
+              
+
             </section>
 
             {(projects.length > 0) ? (
@@ -103,6 +100,12 @@ export const pageQuery = graphql`
             json
           }
         }
+      }
+    }
+    page: contentfulPage(contentful_id: {eq: "4sNLUWA5p7arg5gVUfdXfY"}) {
+      title
+      content {
+        json
       }
     }
   }
