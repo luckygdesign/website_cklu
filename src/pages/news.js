@@ -30,7 +30,7 @@ class NewsPage extends Component {
             <div>
               <section id="News">
 
-                <h2>{pageContent.title}</h2>
+                <h1>{pageContent.title}</h1>
 
                 {pageContent.content ? (
                   <ParseJSON textjson={pageContent.content} />

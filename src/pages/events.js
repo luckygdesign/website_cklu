@@ -28,7 +28,7 @@ class EventsPage extends Component {
             <div>
               <section id="Events">
 
-                <h2>{pageContent.title}</h2>
+                <h1>{pageContent.title}</h1>
                 
                 {pageContent.content ? (
                   <ParseJSON textjson={pageContent.content} />

@@ -58,7 +58,7 @@ class Projects extends Component {
 
             <section id="AboutProjects">
 
-              <h2>Unsere Projekte</h2>
+              <h1>Unsere Projekte</h1>
 
               <ul className="projects-list">
                 {projects.map(project => (
