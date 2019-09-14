@@ -5,7 +5,7 @@ node_js:
 script:
 - yarn install
 - yarn add -g firebase-tools
-- yarn run build
+- gatsby build
 - firebase deploy --token $FIREBASE_TOKEN
 notifications:
   slack:
