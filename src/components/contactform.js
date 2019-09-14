@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Mailto from 'react-protected-mailto';
-import Recaptcha from 'react-recaptcha';
 
 class Contactform extends React.Component {
   state = {
@@ -51,10 +50,6 @@ class Contactform extends React.Component {
     }).catch(err => {
       this.setState({ statusMessage: 'Email konnte nicht versendet werden', status:'form-failed'});
     })
-  }
-
-  verifyCallback = function () {
-    console.log('Done!!!!');
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -123,8 +118,6 @@ class Contactform extends React.Component {
           </label>
 
         </div>
-
-        <Recaptcha />
 
         <button className="button" type="submit">Absenden</button>
 
