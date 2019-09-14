@@ -7,7 +7,19 @@
 
 
 // STRUCTURE
+#Content > div {
 
+  @media (min-width: $device-m) {
+    #AboutHeader {
+      grid-row-end: span 3;
+    }
+
+    > article {
+      grid-row-end: span 3;
+    }
+  }
+  
+}
 
 // Styled Components
 
@@ -68,6 +80,7 @@
 	}
 
 	input {
+		box-sizing: border-box;
 		display: block;
 		width: 100%;
 		background-color: #f1f1f1;
@@ -90,6 +103,7 @@
 	}  
 
 	textarea {
+		box-sizing: border-box;
 		display: block;
 		width: 100%;
 		background-color: #f1f1f1;
@@ -110,6 +124,19 @@
 			border-left: #0a0 2px solid;
 		}
 
+	}
+
+	.dsgvo-confirm {
+		input {
+			width: auto;
+			margin-right: 1em;
+			float: left;
+		}
+
+		label {
+			width: auto;
+			font-style: italic;
+		}
 	}
 
 	.button:hover, .button:focus, {

@@ -1,5 +1,7 @@
-import React from 'react'
-
+import React from 'react';
+import { Link } from 'gatsby';
+import Mailto from 'react-protected-mailto';
+import Recaptcha from 'react-recaptcha';
 
 class Contactform extends React.Component {
   state = {
@@ -9,11 +11,17 @@ class Contactform extends React.Component {
       name: '',
       email: '',
       message: '',
+      confirm: false,
     },
   }
 
   submit = e => {
     e.preventDefault()
+
+    if (!this.state.data.confirm) {
+      this.setState({statusMessage: 'bitte bestätigen Sie die Übermittlung', status: 'form-pending'});
+      return;
+    }
 
     this.setState({statusMessage: 'Email wird gesendet, bitte warten', status: 'form-sending'});
 
@@ -43,6 +51,10 @@ class Contactform extends React.Component {
     }).catch(err => {
       this.setState({ statusMessage: 'Email konnte nicht versendet werden', status:'form-failed'});
     })
+  }
+
+  verifyCallback = function () {
+    console.log('Done!!!!');
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -95,6 +107,24 @@ class Contactform extends React.Component {
             onChange={this.handleChange}
           />
         </div>
+
+        <div className="small dsgvo-confirm">
+          <input
+            type="checkbox"
+            name="confirm"
+            required
+            placeholder="i"
+            value={data.confirm}
+            onChange={this.handleChange}
+          />
+          <label>
+            Ich habe die <Link to="/datenschutz">Datenschutzerklärung</Link> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.
+            Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <Mailto email='kontakt@ckluganda.de' /> widerrufen.
+          </label>
+
+        </div>
+
+        <Recaptcha />
 
         <button className="button" type="submit">Absenden</button>
 

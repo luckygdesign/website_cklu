@@ -41,39 +41,40 @@ class Projects extends Component {
 
     return (
       <Layout location={this.props.location} >
-          <div id="Content" className="Container">
+        <div id="Content" className="Container">
 
-            <section id="AboutHeader">
+          <section id="AboutHeader">
 
-              <h2>{pageContent.title}</h2>
-              
-              {pageContent.content ? (
-                <ParseJSON textjson={pageContent.content} />
-              ) : null}
-              
+            <h2>{pageContent.title}</h2>
+            
+            {pageContent.content ? (
+              <ParseJSON textjson={pageContent.content} />
+            ) : null}
+            
 
+          </section>
+
+          {(projects.length > 0) ? (
+
+            <section id="AboutProjects">
+
+              <h2>Unsere Projekte</h2>
+
+              <ul className="projects-list">
+                {projects.map(project => (
+                  <ProjectList project={project.node} key={project.node.slug} handleClick={this.handleClick}/>
+                ))}
+              </ul>
+
+              { currentProject ? (
+                <ProjectDetails project={currentProject.node}  />
+              ) : null }
+    
             </section>
 
-            {(projects.length > 0) ? (
+          ) : null }
 
-              <section id="AboutProjects">
-
-                <h2>Unsere Projekte</h2>
-
-                <ul className="projects-list">
-                  {projects.map(project => (
-                    <ProjectList project={project.node} key={project.node.slug} handleClick={this.handleClick}/>
-                  ))}
-                </ul>
-
-                { currentProject ? (
-                  <ProjectDetails project={currentProject.node}  />
-                ) : null }
-      
-              </section>
-
-            ) : null }
-          </div> 
+        </div>
       </Layout>
     );
   }

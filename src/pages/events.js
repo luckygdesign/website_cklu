@@ -33,14 +33,17 @@ class EventsPage extends Component {
                 {pageContent.content ? (
                   <ParseJSON textjson={pageContent.content} />
                 ) : null}
+
+                {latest ? (
+                  <div id="UpcomingEvents">
+                    {latest.map(event => (
+                      <EventDetails event={event.node} key={event.node.slug} />
+                    ))}
+                  </div>
+
+                ) : null}
               
-                <div id="UpcomingEvents">
-
-                  {latest.map(event => (
-                    <EventDetails event={event.node} key={event.node.slug} />
-                  ))}
-
-                </div>
+                
               </section>
               <GebetsanliegenOverview anliegen={gebetsanliegen} />
             </div>
@@ -56,7 +59,7 @@ export default EventsPage;
 
 export const pageQuery = graphql`
   query eventsPageQuery {
-    upcoming: allContentfulEvents(sort: {fields: startDate, order: ASC}, limit: 10) {
+    upcoming: allContentfulEvents(sort: {fields: startDate, order: ASC}) {
       edges {
         node {
           title

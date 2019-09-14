@@ -1,0 +1,12 @@
+language: node_js
+env: $FIREBASE_TOKEN
+node_js:
+- node
+script:
+- yarn install
+- yarn add -g firebase-tools
+- yarn run build
+- firebase deploy --token $FIREBASE_TOKEN
+notifications:
+  slack:
+    secure: "GZMlB0i7I9lyqKuVTP9UJlshaKU7vafbLqMax+6B/mf2oXV+pCdAk2EKxaIcqDsaEOMmbfjsQ1rUcFKX2+orm0qToyGc0kHujIdpeJJ+FS5leGvgehbWbr1Q4o38HabsJX4OiT1u+IohYkHMySDcK/ExdC0tajTNfHhJQtZITxK6zF9+2kJ7KK0ujbBYXVUyGjd3+FhBul0LETrU3szzve2YpRubFpDl5kHH27KMS2S7qmC0dWFJXb+yS6kw7bdYuu8lB9BjMJLldODdnWOuD8VXOtm2zs28YKhTi8UIZYXj3LGSi3b5BifkxTQzPl/6XhR07c4WtHR6gRUQTxEOE7UBNvYBtKEthxqbDV3Is9aFr+cDAqP1dAMnxVyLZi1psYo6hMWRv7srz8aL9VxRyJtSRIDCLPhWQXPa3WUle7I6kSoi8rDABPbTS5r9Vvqv9jvFYW0060Gs9SuMPgjT87eZbjV5OblhgyEqYJjVOleLaGZtAaxwv+M11MizmcpK7Kkekltp4orLE10GI9RY9/IxjfqAeRt7SlPlo1DmZHMFQK5CpyTqoKByV7QQkZjGbKeP+1mSKFx/Q+EeuOQGy3BGXoC6IL6ZnFUfgG60vVjLVtM1vKBrOB3QafePHXmFtYUwpazewL+chmDpYKlQRpHOQlhb6nsz8d4zAdZg8pM="

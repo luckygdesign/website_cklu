@@ -39,6 +39,14 @@ module.exports = {
         trackingId: "UA-146168256-1",
         anonymize: true,
       },
-    },  
+    },
+    {
+      resolve: `gatsby-plugin-recaptcha`,
+      options: {
+         async: false,
+         defer: false,
+         args: `?onload=onloadCallback&render=explicit`,
+      },
+   },
   ],
 }

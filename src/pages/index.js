@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
 import Header from '../components/header';
-import UeberUns from '../components/ueber-uns';
 import { AboutSection } from '../components/projects';
 import News from '../components/news';
 import Events, {GebetsanliegenOverview} from '../components/events';
 import Spenden from '../components/spenden';
 import { ParseJSON } from '../components/misc';
+import Footer from '../components/footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -42,7 +42,7 @@ class IndexPage extends Component {
             {pageContent.content ? (
               <ParseJSON textjson={pageContent.content} />
             ) : null} 
-            
+
           </div> 
           <div className="Container">
             <h3>Werden Sie Teil unserer Arbeit!</h3>
@@ -80,6 +80,7 @@ class IndexPage extends Component {
             </div>
           </div>
         </section>
+
         <AboutSection pageContent={pageContent} projects={projects} />
 
         <div id="Content" className="Container">
@@ -91,8 +92,7 @@ class IndexPage extends Component {
           </div>
         </div>
 
-        
-        
+        <Footer />
 
       </div>
     );

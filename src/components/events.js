@@ -9,6 +9,10 @@ import { MiscButton } from './misc';
 const EventInfo = ({ node }) => {
 	let event = node.node;
 
+	if (moment().isAfter(moment(event.startDate))) {
+		return null;
+	} 
+
 	return (
 		<Link to={`/events/${event.slug}`}>
 			<div className="eventinfo">
@@ -28,6 +32,10 @@ const EventInfo = ({ node }) => {
 
 const GebetInfo = ({ node }) => {
 	let gebet = node.node;
+
+	if (moment().isAfter(moment(gebet.startDate))) {
+		return null;
+	} 
 
 	return (
 		<div className="eventinfo">
@@ -64,6 +72,10 @@ class EventDetails extends React.Component {
 	render() {
 
 		let { event } = this.state;
+
+		if (moment().isAfter(moment(event.startDate))) {
+			return null;
+		} 
 
 		return (
 
@@ -108,11 +120,13 @@ const EventsOverview = ({ events }) => (
 		<p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
 		<p>Weitere Informationen erhalten Sie durch Klicken auf einen Termin.</p>
 
-		<div className="eventsfeed">
-			{events.map(event => (
-		      <EventInfo key={event.node.slug} node={event} />
-		    ))}
-		</div>
+		{events ? (
+			<div className="eventsfeed">
+				{events.map(event => (
+			      <EventInfo key={event.node.slug} node={event} />
+			    ))}
+			</div>
+		) : null }
 
 		<MiscButton link="/events" cssclass="button button-primary" text="Alle Termine" />
 	</section>
@@ -125,11 +139,14 @@ const GebetsanliegenOverview = ({ anliegen }) => (
 		<p>Wir freuen uns, wenn Sie die Veranstaltungen auf der Missionsstation im Gebet begleiten und unterstützen.</p>
 		<p>Weitere aktuelle Informationen und Details finden Sie im Bereich "News".</p>
 
-		<div className="gebetsfeed">
-			{anliegen.map(anliegen => (
-		      <GebetInfo key={anliegen.node.slug} node={anliegen} />
-		    ))}
-		</div>
+		{anliegen ? (
+			<div className="gebetsfeed">
+				{anliegen.map(anliegen => (
+			      <GebetInfo key={anliegen.node.slug} node={anliegen} />
+			    ))}
+		    </div>
+		) : null }
+		
 	</section>
 )
 

@@ -52,6 +52,7 @@ const FileBlock = ({fields}) => {
 		            alt={description ?  description['en-US'] : null}
 		            href={file['en-US'].url}
 		            className="icon-pseudo"
+                target="_blanc"
 	            >
 		            { title ? title['en-US'] : file['en-US'].details.fileName }
 				</a>
