@@ -73,8 +73,8 @@ const AboutSection = ({ projects }) => (
 					<Player />
 				</div>
 				<div className="project-text">
-					<span className="quote">We thank god who helped us, who gave us this big vision.</span>
-					<span className="source">Pastor Gabriel Kijjambu, Uganda</span>
+					<span className="quote">Wer andere erfrischt, wird selbst erfrischt werden.</span>
+					<span className="source">Sprüche 11,25</span>
 				</div>
 			</div>
 
