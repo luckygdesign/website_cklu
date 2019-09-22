@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'gatsby';
 
-import Navigation from './navigation'
+import Navigation from './navigation';
 
 import logo from '../images/logo-xs.png';
 import eyecatcher from '../images/schoolchildren.jpg';
@@ -33,8 +34,11 @@ class Header extends React.Component {
 			<header className="HeroImage" style={eyecatcherBackground}>
 		      <div className="Container">
 		        <div id="LogoImage" >
-		          <img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} />
+    		      	<Link to="/">
+			         	<img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={logo} />
+			       	</Link>
 		        </div>
+
 	        	<button id="NavigationToggle" onClick={this.handleClick}>Menü</button>
 		        <div  onClick={this.handleClick} id="Navigation" className={this.state.navbar}>
 		        	<Navigation />
