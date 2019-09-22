@@ -70,6 +70,9 @@ export const pageQuery = graphql`
             description
           }
           address
+          contactName
+          contactPhone
+          contactEmail
         }
       }
     }

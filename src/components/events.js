@@ -3,6 +3,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 import moment from 'moment';
 import { Link } from 'gatsby';
+import Mailto from 'react-protected-mailto';
 
 import { MiscButton } from './misc';
 
@@ -56,7 +57,7 @@ class EventDetails extends React.Component {
 
 	state = {
 		event: this.props.event,
-		open: false,
+		open: true,
 	}
 
 	handleClick = () => {
@@ -90,19 +91,31 @@ class EventDetails extends React.Component {
 
 				{this.state.open ? (
 					<div className="event-item-content">
-						<span className="event-item-address">Adresse: {event.address}</span>
-						<p>{event.description.description}</p>
+						<p className="event-item-address">Anfahrt: {event.address}</p>
+
+
+						{ (event.contactName && (event.contactEmail || event.contactPhone)) ? (
+							
+							<p className="event-item-contactname">Kontakt: {event.contactName} (
+							
+							{ event.contactPhone ? (
+								<span className="event-item-contactphone"> Telefon: <Mailto tel={event.contactPhone} /> </span>
+							) : null }
+							
+							{ event.contactEmail ? (
+								<span className="event-item-contactemail"> E-Mail: <Mailto email={event.contactEmail} /> </span>
+							) : null }
+
+							)</p>
+
+						) : null }
+
+						{ event.description ? (
+							<p>{event.description.description}</p>
+						) : null }
 					</div>
 
-				) : null }
-
-				<div className="event-item-link">
-					<a className="" onClick={this.handleClick}>
-					{this.state.open ? "weniger lesen" : "mehr lesen"}
-
-					</a>
-					
-				</div>
+				) : null } 
 
 
 				
