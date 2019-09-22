@@ -15,7 +15,7 @@ const EventInfo = ({ node }) => {
 	} 
 
 	return (
-		<Link to={`/events/${event.slug}`}>
+		<Link to={`/events#${event.slug}`}>
 			<div className="eventinfo">
 				<div className="eventdate">
 		            <span className="eventday">{moment(event.startDate).format('D.')}</span>
@@ -80,7 +80,7 @@ class EventDetails extends React.Component {
 
 		return (
 
-			<div className="event-item">
+			<div className="event-item" id={event.slug}>
 				<h3>{event.title}</h3>
 
 				<div className="event-item-info">
