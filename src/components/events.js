@@ -24,7 +24,7 @@ const EventInfo = ({ node }) => {
 				<div className="eventcontent">
 		    		<span className="eventtitle">{event.title}</span>
 		    		<span className="eventlocation">{event.location}</span>
-		            <span className="eventtime">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+		            <span className="eventtime">{`${moment(event.startDate).format('HH:mm')} Uhr`}</span>
 		    	</div>
 			</div>
 		</Link>
@@ -86,7 +86,7 @@ class EventDetails extends React.Component {
 				<div className="event-item-info">
 					<span className="event-item-location icon-pseudo">{event.location}</span>
 					<span className="event-item-date icon-pseudo">{moment(event.startDate).format('D. MMMM')}</span>
-					<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('hh:mm')} Uhr`}</span>
+					<span className="event-item-time icon-pseudo">{`${moment(event.startDate).format('HH:mm')} Uhr`}</span>
 				</div>
 
 				{this.state.open ? (
