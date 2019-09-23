@@ -54,7 +54,7 @@ class IndexPage extends Component {
                 </span>
                 <span className="content">
                   <span className="heading">Beten</span>
-                  <span>Herzlich willkommen auf unserer Website!</span>
+                  <span>Sie können uns durch Ihr Gebet unterstützen</span>
                 </span>
               </div>
               <div>
@@ -64,7 +64,7 @@ class IndexPage extends Component {
                 </span>
                 <span className="content">
                   <span className="heading">Patenschaften</span>
-                  <span>Herzlich willkommen auf unserer Website!</span>
+                  <span>Übernehmen Sie eine Patenschaft</span>
                 </span>
               </div>
               <div>
@@ -74,7 +74,7 @@ class IndexPage extends Component {
                 </span>
                 <span className="content">
                   <span className="heading">Spenden</span>
-                  <span>Herzlich willkommen auf unserer Website!</span>
+                  <span>Unterstützen Sie uns durch Ihre Spend</span>
                 </span>
               </div>
             </div>

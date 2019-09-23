@@ -49,7 +49,15 @@ const GebetInfo = ({ node }) => {
 			</div>
 			<div className="eventcontent">
 	    		<span className="eventtitle">{gebet.title}</span>
-	            <span className="eventtime">{`${moment(gebet.startDate).format('D. MMM')} bis ${moment(gebet.endDate).format('D. MMM')}`}</span>
+	            <span className="eventtime">
+	            	{moment(gebet.startDate).format('D. MMM')}
+	            	{ gebet.endDate ? (
+            			` bis ${moment(gebet.endDate).format('D. MMM')}`
+            		) : null }
+	            </span>
+	            { gebet.description ? (
+					<p className="eventdescription">{gebet.description.description}</p>
+				) : null }
 	    	</div>
 		</div>	
 	)
