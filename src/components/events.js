@@ -4,8 +4,11 @@ import Img from 'gatsby-image';
 import moment from 'moment';
 import { Link } from 'gatsby';
 import Mailto from 'react-protected-mailto';
+import 'moment/locale/de'
 
 import { MiscButton } from './misc';
+
+moment.locale('de');
 
 const EventInfo = ({ node }) => {
 	let event = node.node;
