@@ -44,12 +44,21 @@
       list-style-type: none;
       margin: 0;
       justify-content: space-between;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-auto-rows: 1fr;
 
       .icon {
         font-size: 3em;
       }
+
+      .icon, .heading {
+        transition: color 0.3s;
+      }
+
+      a {
+        display: block;
+        text-decoration: none !important;
+      }      
 
       @media (max-width: $device-s) {
         grid-template-columns: auto;
@@ -58,7 +67,7 @@
 
       @media (min-width: $device-l) {
       
-        div {
+        a {
           .icon {
             color: $primarycolor;
             float: left;
@@ -79,7 +88,7 @@
       }
 
       @media (max-width: $device-l) {
-        div {
+        a {
 
           text-align: center;
 
@@ -101,6 +110,12 @@
             color: $primarycolor;
             margin-top: 20px;
           }
+        }
+      }
+
+      a:hover, a:focus {
+        .icon, .heading {
+          color: $primarycolor2;
         }
       }
     }

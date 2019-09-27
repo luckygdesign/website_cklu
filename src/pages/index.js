@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { graphql } from 'gatsby';
+import { graphql , Link } from 'gatsby';
 
 import Header from '../components/header';
 import { AboutSection } from '../components/projects';
@@ -47,36 +47,36 @@ class IndexPage extends Component {
           <div className="Container">
             <h3>Werden Sie Teil unserer Arbeit!</h3>
             <div className="About-GetInTouch">
-              <div>
+              <Link to="#GebetsanliegenOverview">
                 <span className="icon fa-stack fa-2x">
                   <i className="fas fa-circle fa-stack-2x" />
-                <i className="fas fa-praying-hands fa-inverse fa-stack-1x" />
+                  <i className="fas fa-praying-hands fa-inverse fa-stack-1x" />
                 </span>
                 <span className="content">
                   <span className="heading">Beten</span>
                   <span>Sie können uns durch Ihr Gebet unterstützen</span>
                 </span>
-              </div>
-              <div>
+              </Link>
+              <Link to="about#waisenarbeit">
                 <span className="icon fa-stack fa-2x">
                   <i className="fas fa-circle fa-stack-2x" />
-                <i className="fas fa-hands-helping fa-inverse fa-stack-1x" />
+                  <i className="fas fa-hands-helping fa-inverse fa-stack-1x" />
                 </span>
                 <span className="content">
                   <span className="heading">Patenschaften</span>
                   <span>Übernehmen Sie eine Patenschaft</span>
                 </span>
-              </div>
-              <div>
+              </Link>
+              <Link to="#Spenden">
                 <span className="icon fa-stack fa-2x">
                   <i className="fas fa-circle fa-stack-2x" />
-                <i className="fas fa-donate fa-inverse fa-stack-1x" />
+                  <i className="fas fa-donate fa-inverse fa-stack-1x" />
                 </span>
                 <span className="content">
                   <span className="heading">Spenden</span>
                   <span>Unterstützen Sie uns durch Ihre Spenden</span>
                 </span>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
