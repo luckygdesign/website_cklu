@@ -141,7 +141,7 @@ const EventsOverview = ({ events }) => (
   	<section id="EventsOverview" className="sidebar">
 		<h3>Termine</h3>
 
-		<p>Sie möchten Pastor Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
+		<p>Sie möchten Bischof Gabriel Kijjambu persönlich kennen lernen? Im Rahmen von regelmäßigen Vortragsreisen möchten wir Ihnen die Gelegenheit geben, von der Arbeit aus erster Hand zu erfahren.</p>
 		<p>Weitere Informationen erhalten Sie durch Klicken auf einen Termin.</p>
 
 		{events ? (

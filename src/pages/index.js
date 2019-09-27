@@ -74,7 +74,7 @@ class IndexPage extends Component {
                 </span>
                 <span className="content">
                   <span className="heading">Spenden</span>
-                  <span>Unterstützen Sie uns durch Ihre Spend</span>
+                  <span>Unterstützen Sie uns durch Ihre Spenden</span>
                 </span>
               </div>
             </div>
