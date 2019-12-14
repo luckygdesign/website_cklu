@@ -1,20 +1,18 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 
-import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+//import Img from 'gatsby-image';
+import Link from 'next/link';
 
-import { ParseJSON } from './misc';
+import { ParseJSON , ImageBlock} from './Misc';
 
 const ProjectList = ({ project , handleClick }) => {
 	return (
 		<li>
 			<Link
-				onClick={handleClick}
-				to={`/about#${project.slug}`}
-				className={`project-link icon-pseudo icon-project-${project.slug}`}
-				>
-				{project.title}
+				href={`/about#${project.slug}`}	
+				><a onClick={handleClick} className={`project-link icon-pseudo icon-project-${project.slug}`}>{project.title}</a>
+				
 			</Link>
 		</li>
 	)
@@ -30,7 +28,8 @@ const ProjectDetails = ({ project }) => {
 
 			{/* heroimage */}
 			{project.heroImage ? (
-		    	<Img fluid={{...project.heroImage.fluid, aspectRatio: 2.5}} alt={project.heroImage.title} />
+				<ImageBlock fields={project.heroImage.fields} />
+		    	// TODO <Img fluid={{...project.heroImage.fluid, aspectRatio: 2.5}} alt={project.heroImage.title} />
 		    ) : null}
 
 			{/* content */}
@@ -85,9 +84,6 @@ const AboutSection = ({ projects }) => (
 				    ))}
 				</ul>
 			</div>
-
-			
-
 
 		</div>
 	</section>

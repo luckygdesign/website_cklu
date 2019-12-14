@@ -125,6 +125,23 @@ class Contentful {
     });
   }
   
+  fetchProjects = async function() : Promise<I.IProjectEntry[]> {
+      
+    return new Promise<I.IProjectEntry[]>((resolve, reject) => {
+        // get page content
+      this.client
+        .getEntries({'content_type': 'project'})
+        .then((response:EntryCollection<I.IProjectEntry>) => {
+          const feed: I.IProjectEntry[] = []
+          response.items.forEach(article => feed.push(article.fields))
+          resolve(feed);
+        }) 
+        .catch(err => {
+          console.log(err)
+          reject()
+        })
+    });
+  }
 
 }
 

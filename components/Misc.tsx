@@ -15,24 +15,24 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const ImageBlock = ({fields}) => {
 
-      const { title, description, file } = fields;
-
-      return (
+	// TODO: add preloading
+	const { title, description, file } = fields;
+	return (
 
       	<div className="parser-img-container">
       		<div className="parser-img-img">
 
       			<img
-			        title={ title ? title['en-US'] : null}
-			        alt={description ?  description['en-US'] : null}
-			        src={file['en-US'].url}
+			        title={ title ? title : null}
+			        alt={description ?  description : null}
+			        src={file.url}
 			      />
 
       		</div>
 
       		{description ?  (
 				<div className="parser-img-description">
-      				<p>{description['en-US']}</p>
+      				<p>{description}</p>
       			</div>
       		) : null}
       		
@@ -79,7 +79,7 @@ const richTextOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { title, description, file } = node.data.target.fields;
-      const mimeType = file['en-US'].contentType
+      const mimeType = file.contentType
       const mimeGroup = mimeType.split('/')[0]
 
       switch (mimeGroup) {
@@ -141,4 +141,4 @@ const MiscButton = ({ link, text, cssclass }) => (
 	</Link>
 );
 
-export { ParseJSON, MiscButton, ReadMoreButton };
+export { ParseJSON, MiscButton, ReadMoreButton, ImageBlock };

@@ -1,9 +1,6 @@
 import * as React from 'react'
 import Contentful , {withContentful} from '../components/contentDelivery'
 
-// import Interfaces
-import * as I from '../interfaces/contentDelivery'
-
 // import modules
 import Layout from '../components/Layout'
 import Contactform from '../components/Contactform';

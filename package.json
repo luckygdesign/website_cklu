@@ -23,6 +23,7 @@
     "react-dom": "^16.10.2",
     "react-instafeed": "^1.0.0",
     "react-protected-mailto": "^1.0.3",
+    "react-youtube": "^7.9.0",
     "sass-loader": "^8.0.0"
   },
   "devDependencies": {

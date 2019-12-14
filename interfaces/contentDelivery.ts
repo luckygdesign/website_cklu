@@ -29,6 +29,13 @@ export type IGebetsEntry = {
   description: string
 }
 
+export type IProjectEntry = {
+  title: string,
+  slug: string,
+  heroImage: object,
+  description: object
+}
+
 export type IPageContent = {
   title: string,
   slug: string,

@@ -49,7 +49,6 @@ class NewsList extends React.Component<IProps, IState> {
 	render() {
 
 		let { news } = this.state
-		console.log(news)
 
 		return (
 			<div id="NewsList" className="sidebar">
