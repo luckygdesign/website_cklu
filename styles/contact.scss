@@ -1,0 +1,173 @@
+@import './params.scss';
+
+
+// =====
+// CONTACT
+// =====
+
+
+// STRUCTURE
+#Content > div {
+
+  @media (min-width: $device-m) {
+    #AboutHeader {
+      grid-row-end: span 3;
+    }
+
+    > article {
+      grid-row-end: span 3;
+    }
+  }
+  
+}
+
+// Styled Components
+
+.contactdetails {
+
+	> div {
+		border-left: 3px $primarycolor solid;
+		padding-left: 20px;
+
+		span {
+			display: block;
+		}
+		
+		.contact-name {
+			font-weight: 900;
+			color: $primarycolor;
+		}
+
+		.contact-phone:before {
+			content: "\f098";
+			margin-right: 0.2em;
+		}
+
+		.contact-address:before {
+			content: "\f015";
+			margin-right: 0.2em;
+		}
+
+	}
+
+}
+
+#ContactForm {
+
+	.inputgroupbig {
+		float: left;
+		width: 100%;
+	}  
+
+	.inputgroupsmall {
+
+	  float: left;
+	  width: 100%;
+
+	  @media (min-width: 1024px) {
+	    width: 47%;
+	    margin-left: 0%;
+
+	    :nth-of-type(2) {
+	     	margin-left: 6%;
+	    }
+	  }
+	}
+
+	label {
+		margin-top: 30px;
+		display: block;
+	}
+
+	input {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		background-color: #f1f1f1;
+		font-size: 16px;
+		padding: 10px;
+		margin: 10px 0px;
+		border: none;
+		border-left: #666 1px solid;
+		outline: none;
+		
+		:focus {
+			border-left: #666 2px solid;
+		}
+		:invalid {
+			border-left: #a00 2px solid;
+		}
+		:valid {
+			border-left: #0a0 2px solid;
+		}
+	}  
+
+	textarea {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		background-color: #f1f1f1;
+		font-size: 16px;
+		padding: 10px 10px;
+		margin: 10px 0px;
+		border: none;
+		border-left: #666 1px solid;
+		outline: none;
+		
+		:focus {
+			border-left: #666 2px solid;
+		}
+		:invalid {
+			border-left: #a00 2px solid;
+		}
+		:valid {
+			border-left: #0a0 2px solid;
+		}
+
+	}
+
+	.dsgvo-confirm {
+		input {
+			width: auto;
+			margin-right: 1em;
+			float: left;
+		}
+
+		label {
+			width: auto;
+			font-style: italic;
+		}
+	}
+
+	.button:hover, .button:focus, {
+	  background: rgb(179, 184, 32)
+	}
+
+	.formstatus {
+
+		display: inline;
+		margin-left: 1em;
+
+		span:before {
+			display: inline-block;
+			font-style: normal;
+			font-variant: normal;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			font-family: Font Awesome\ 5 Free;
+			font-weight: 900;
+			margin-right: 0.5em;
+		}
+	}
+	.form-success span:before {
+		content: "\f058";
+		color: $primarycolor;
+	}
+	.form-failed span:before {
+		content: "\f057";
+		color: #933;
+	}
+	.form-sending span:before {
+		content: "\f110";
+	}
+}

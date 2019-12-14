@@ -1,10 +1,12 @@
 import React from 'react';
 
-import Img from 'gatsby-image';
+//import Img from 'gatsby-image';
 import moment from 'moment';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import Mailto from 'react-protected-mailto';
 import 'moment/locale/de'
+
+import { IEventsEntry } from '../interfaces/contentDelivery';
 
 import { MiscButton } from './misc';
 
@@ -18,7 +20,7 @@ const EventInfo = ({ node }) => {
 	} 
 
 	return (
-		<Link to={`/events#${event.slug}`}>
+		<Link href={`/events#${event.slug}`}>
 			<div className="eventinfo">
 				<div className="eventdate">
 		            <span className="eventday">{moment(event.startDate).format('D.')}</span>
@@ -63,8 +65,16 @@ const GebetInfo = ({ node }) => {
 	)
 }
 
+type IProps = {
+	event: IEventsEntry,
+}
 
-class EventDetails extends React.Component {
+type IState = {
+	event: IEventsEntry,
+	open: boolean
+}
+
+class EventDetails extends React.Component<IProps, IState> {
 
 	state = {
 		event: this.props.event,
@@ -84,10 +94,10 @@ class EventDetails extends React.Component {
 	render() {
 
 		let { event } = this.state;
-
-		if (moment().isAfter(moment(event.startDate))) {
-			return null;
-		} 
+		
+		// if (moment().isAfter(moment(event.startDate))) {
+		// 	return null;
+		// } 
 
 		return (
 
@@ -122,7 +132,7 @@ class EventDetails extends React.Component {
 						) : null }
 
 						{ event.description ? (
-							<p>{event.description.description}</p>
+							<p>{event.description}</p>
 						) : null }
 					</div>
 

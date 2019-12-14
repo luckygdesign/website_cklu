@@ -1,0 +1,759 @@
+@charset "UTF-8"; 
+@import './params.scss';
+@import url("https://use.fontawesome.com/releases/v5.10.0/css/all.css"); /* FA CSS import */
+@import './icons.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+// =======
+// GENERAL
+// =======
+
+.Container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.layout > header {
+  margin-bottom: 60px;
+}
+
+.HeroImage {
+  height: 200px;
+  padding: 50px 0px;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .HeroImage {
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 375px) {
+  .HeroImage {
+    max-height: 150px;
+  }
+}
+
+h1 {
+  color: $secondarycolor;
+  font-size: 32pt;
+}
+
+h2 {
+  color: $secondarycolor;
+  font-size: 24pt;
+}
+
+h3 {
+  margin: 40px 0 20px 0;
+  color: $primarycolor;
+  font-size: 18pt;
+}
+
+p, span, a, h4, time, button, label {
+  color: #666;
+  margin: 10px 0;
+  font-size: 14pt;
+}
+
+@media (max-width: $device-m) {
+  p, span, a, h4, time {
+    font-size: 12pt;
+  }
+}
+
+
+.text img {
+  width: 100%;
+  max-width: 600px;
+}
+
+button {
+  box-shadow: none;
+  outline: none;
+  border: 0px;
+}
+
+.button, .button:hover, .button:focus, .button:active {
+  color: #fff;
+  background: #D9E021;
+  padding: 10px 15px;
+  border-radius: $borderradius1;
+  text-decoration: none;
+  transition: background 0.5s;
+  margin: 20px 0px;
+
+}
+
+button:hover, button:focus, {
+  background: rgb(179, 184, 32)
+}
+
+.readmore, .readmore:hover, .readmore:focus, .readmore:visited {
+  color: $primarycolor;
+  font-style: italic;
+}
+
+.readmore:hover, .readmore:focus {
+  color: $primarycolor2
+}
+
+.icon-pseudo:before, .icon-pseudo:after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: Font Awesome\ 5 Free;
+  font-weight: 900;
+}
+
+
+// ==========
+// JSON PARSER
+// ==========
+
+.parser-img-container {
+  
+  .parser-img-img {
+
+    width: 100%;
+
+    img {
+      width: 100%;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  .parser-img-description {
+    a, p, span {
+      color: $secondarycolor;
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
+
+}
+
+.parser-file-container {
+
+  a {
+    color: $secondarycolor;
+    transition: color 0.3s;
+    margin-right: 0.5em;
+
+    &:hover, &:focus {
+      color: $secondarycolor0;
+    }
+  }
+
+  a:before {
+    content: "\f15b";
+    margin-right: 0.5em;
+    font-size: 2em;
+  }
+}
+
+.parser-link-inline {
+
+  color: $secondarycolor;
+  transition: color 0.3s;
+  margin-right: 0.5em;
+
+  &:hover, &:focus {
+    color: $secondarycolor0;
+  }
+  
+
+  &:before {
+    content: "\f35d";
+    margin-right: 0.5em;
+  }
+}
+
+
+// ==========
+// LOGO IMAGE
+// ==========
+#LogoImage img {
+  max-width: 100%;
+}
+#LogoImage {
+  width: 150px;
+  float: left;
+}
+
+@media (max-width: $device-m) {
+  #LogoImage {
+    width: 100px;
+    float: left;
+  }
+}
+
+// ==========
+// NAVIGATION
+// ==========
+
+
+@media (min-width: $device-m) {
+
+  #Navigation {
+    float: right;
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      margin: 0 20px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16pt;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    a:hover, a:focus {
+      color: $primarycolor;
+    }
+  }
+
+  #NavigationToggle {
+    display: none;
+  }
+
+}
+
+@media (max-width: $device-m) {
+
+  #Navigation {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #bbb;
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 0.5s;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16pt;
+      cursor: pointer;
+      transition: color 0.15s;
+      padding: 20px;
+      display: block;
+    }
+
+    a:hover, a:focus {
+      color: $primarycolor;
+    }
+  }
+
+  .menu-collapse {
+    max-height: 0px !important;
+
+  }
+
+  #NavigationToggle {
+    color: #fff;
+    background: transparent;
+    padding: 10px 15px;
+    border-radius: $borderradius1;
+    text-decoration: none;
+    border: 2px #fff solid;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16pt;
+    cursor: pointer;
+    transition: color 0.15s border-color 0.15s;
+    display: block;
+    float: right;
+  }
+
+  #NavigationToggle:hover, #NavigationToggle:focus {
+    color: $primarycolor;
+    border-color: $primarycolor;
+  }
+}
+
+
+// ========
+// NEWS NAV
+// ========
+
+.news-article {
+  header {
+
+    width: 100%;
+    float: left;
+    margin-bottom: 40px;
+
+    .news-title {
+      width: 100%;
+      border-bottom: #ccc 2px solid;
+      padding-bottom: 20px;
+      margin-bottom: 5px;
+    }
+
+    .news-publishDate {
+      float: left;
+    }
+
+    .news-publishDate:before {
+      content: "\f073";
+      padding-right: 0.5em;
+    }
+
+    .news-nav {
+      float: right;
+      margin-top: 10px;
+
+      a:last-child {
+        margin-left: 2em;
+      }
+
+      a {
+        color: $primarycolor;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      .news-nav-prev:before {
+        content: "\f104";
+        padding-right: 0.5em;
+      }
+      .news-nav-next:after {
+        content: "\f105";
+        padding-left: 0.5em;
+      }
+
+      a:hover, a:focus {
+        color: $primarycolor2;
+      }
+
+      @media (max-width: $device-s) {
+        display: none;
+      }
+    }
+  }
+
+  content {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+// ========================
+// === SIDEBAR ============
+// ========================
+
+
+// STRUCTURE
+#Content > div {
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @media (min-width: $device-m) {
+    grid-template-columns: 3fr 2fr;
+    grid-column-gap: 20px;
+
+    #NewsOverview {
+      grid-row-end: span 3;
+    }
+
+  }
+
+  @media (min-width: $device-l) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+}
+
+
+
+// ====
+// NEWS
+// ====
+
+#NewsOverview {
+  padding: 60px 0;
+
+  .NewsFeed {
+    padding: 20px 0;
+    display: grid;
+    grid-row-gap: 40px;
+    margin-bottom: 40px;
+
+    article {
+
+      .gatsby-image-wrapper {
+        float: left;
+        margin-right: 20px;
+      }
+
+      @media (max-width: $device-m) {
+        .gatsby-image-wrapper {
+          float: none;
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+
+      h4 {
+        color: $secondarycolor;
+        margin: 0;
+      }
+
+      img {
+        border-radius: $borderradius1;
+      }
+
+      a {
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+  .button-primary {
+    margin-top: 40px;
+    background-color: #bbb;
+  }
+
+  .button-primary:hover,
+  .button-primary:focus,{
+    background-color: $secondarycolor;
+  }
+}
+
+
+.sidebar {
+  border-radius: $borderradius2;
+  padding: 40px 20px;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+}
+
+// ======
+// EVENTS
+// ======
+
+#EventsOverview, #GebetsanliegenOverview {
+  background-color: $secondarycolor;
+
+  .eventinfo {
+    width: 100%;
+    overflow-y: hidden;
+    margin: 20px 0;
+    cursor: pointer;
+
+    // display day and month in square
+    .eventdate {
+      float: left;
+      background-color: #fff;
+      border-radius: $borderradius2;
+      height: 60px;
+      width: 60px;
+      text-align: center;
+      padding-top: 9px;
+      box-sizing: border-box;
+      margin-right: 10px;
+      opacity: 1;
+      transition: opacity 0.15s;
+
+      span {
+        color: $secondarycolor;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+
+      .eventday {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .eventmonth {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+
+    // display name and location and time
+    .eventcontent {
+
+      span, time {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    
+      .eventtitle {
+        font-weight: bold;
+        display: block;
+      }
+
+      .eventtime {
+        padding-left: 0.5em;
+        margin-left: 0.5em;
+        border-left: #fff 1px solid; 
+      }
+
+    }
+
+  }
+
+  .eventsfeed {
+    margin-bottom: 40px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    color: $secondarycolor;
+  }
+
+  // hover / focus effect
+  .eventinfo:hover, .eventinfo:focus {
+    opacity: 0.85;
+  }
+
+
+}
+
+#GebetsanliegenOverview {
+  background-color: $primarycolor;
+
+  .eventinfo {
+    cursor: default;
+  }
+
+  .eventinfo .eventdate span {
+    color: $primarycolor;
+  }
+
+  .eventinfo .eventcontent .eventtime {
+    padding-left: 0;
+    margin-left: 0;
+    border-left: 0px;
+  }
+}
+
+// =======
+// Spenden
+// =======
+
+#Spenden {
+  background-color: $grey1;
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    color: $grey1;
+    display: inline-block;
+  }
+}
+
+// ============
+// PROJECT LIST
+// ============
+
+#AboutProjects, #HomeProjects {
+
+  .projects-list {
+    list-style-type: none;
+    padding-left: 0;
+
+    display: grid;
+    grid-template-columns: auto auto;
+
+    border-top: 2px solid $secondarycolor;
+    border-bottom: 2px solid $secondarycolor;
+
+
+    li {
+      margin: 20px 0;
+    }
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      padding: 5px 0;
+      
+      &:before {
+        margin-right: 0.5em;
+        width: 45px;
+        color: $secondarycolor;
+        font-size: 1.5em;
+        transition: color 0.3s;
+      }
+
+      &:hover, &:focus {
+        color: $secondarycolor;
+
+        &:before {
+          color: $secondarycolor0;
+        }
+      }
+
+    }
+
+    
+    @media screen and (max-width: $device-s) {
+      grid-template-columns: auto;
+
+      a:before {
+        margin: 0;
+      }
+    }
+  }
+
+  article h3 {
+    color: $secondarycolor;
+  }
+}
+
+// ========
+// NEWSLIST
+// ========
+
+#NewsList {
+
+  background-color: $grey1;
+  border-radius: $borderradius2;
+  padding: 40px 20px;
+  overflow: hidden;
+
+  p, span, a, h3, time, div {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .button-primary, .button-primary:hover,
+  .button-primary:focus, .button-primary:active {
+    background-color: #fff;
+  }
+
+  // hover / focus effect
+  .button-primary:hover, .button-primary:focus {
+    opacity: 0.85;
+  }
+
+
+  ul.news-list {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 5px 0;
+    }
+
+    .title:before {
+      content: "\f105";
+      margin-right: 0.2em;
+      transition: content 0.2;
+    }
+
+    .publishDate {
+      font-size: 12pt;
+      opacity: 0.75;
+      margin-left: 1em;
+    }
+    .publishDate:before {
+      font-size: 0.8em;
+      content: "\f073";
+      padding-right: 0.5em;
+    }
+
+    li:hover {
+      .title:before {
+        content: "\f054";
+      }
+    }
+  }
+}
+
+// ======
+// FOOTER
+// ======
+
+#Footer {
+  margin-top: 60px;
+  width: 100%;
+  background-color: #333;
+  color: #666;
+  padding: 40px 0;
+  font-size: 12px;
+  overflow-y: hidden;
+  
+  span {
+    float: left;
+  }
+
+  .legal {
+    float: right;
+    margin-left: 0.5em;
+    transition: color 0.3s;
+
+    &:hover, &:focus {
+      color: #999;
+    }
+  }
+}

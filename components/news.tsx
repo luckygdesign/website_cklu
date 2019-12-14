@@ -7,15 +7,16 @@ import { ReadMoreButton, MiscButton } from './misc'
 
 const ArticleThumb = ({ article }) => (
 	<article>
-	    <content>
+	    <div>
 	    	<h4>{article.title}</h4>
 	   		<p>
 	   			{article.summary}
 	   			<ReadMoreButton link={`/news/${article.slug}`} />
 	   		</p>
-    	</content>
+    	</div>
 	</article>
  )
+
 
 // const NewsList = () => (
 
@@ -60,7 +61,7 @@ const NewsOverview = ({ news }) => (
 
 		<div className="NewsFeed">
 			{news.map(article => (
-		      <ArticleThumb key={article.node.title} node={article} />
+		      <ArticleThumb key={article.title} article={article} />
 		    ))}
 		</div>
 

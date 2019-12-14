@@ -1,0 +1,77 @@
+@import './params.scss';
+
+
+#Content > div {
+
+  @media (min-width: $device-m) {
+    #Events {
+      grid-row-end: span 3;
+    }
+
+    > article {
+      grid-row-end: span 3;
+    }
+  }
+  
+}
+
+
+// Upcoming Events
+
+#UpcomingEvents {
+
+	margin-left: 20px;
+	padding-left: 20px;
+	border-left: 2px solid $primarycolor;
+
+	h3 {
+		margin-bottom: 0px;
+	}
+
+	.event-item-info span {
+		margin-right: 0.5em;
+	}
+
+	.event-item-info span:before {
+		margin-right: 0.25em;
+		font-size: 0.8em;
+	}
+
+	.event-item-location:before {
+		content: "\f3c5";
+	}
+
+	.event-item-date:before {
+		content: "\f073";
+	}
+
+	.event-item-time:before {
+		content: "\f017";
+	}
+
+	.event-item-content {
+
+		margin: 20px 0;
+		span, p, a {
+			color: #999;
+		}
+	}
+
+	.event-item-link { 
+		a {
+			color: $primarycolor;
+	    	font-style: italic;
+	    	cursor: pointer;
+	    	transition: color 0.15s;
+	    }
+
+    	a:hover, a:focus {
+    		color: $primarycolor2;
+    	}
+
+
+	}
+
+
+
+}
