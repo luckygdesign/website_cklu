@@ -6,7 +6,7 @@ import 'moment/locale/de'
 
 // import modules
 import { IEventsEntry } from '../interfaces/contentDelivery';
-import { MiscButton } from './misc';
+import { MiscButton } from './Misc';
 
 moment.locale('de');
 
@@ -21,17 +21,19 @@ const EventInfo = ({ event }) => {
 
 	return (
 		<Link href={`/events#${event.slug}`}>
-			<div className="eventinfo">
-				<div className="eventdate">
-		            <span className="eventday">{moment(event.startDate).format('D.')}</span>
-		            <span className="eventmonth">{moment(event.startDate).format('MMM')}</span>
+			<a>
+				<div className="eventinfo">
+					<div className="eventdate">
+						<span className="eventday">{moment(event.startDate).format('D.')}</span>
+						<span className="eventmonth">{moment(event.startDate).format('MMM')}</span>
+					</div>
+					<div className="eventcontent">
+						<span className="eventtitle">{event.title}</span>
+						<span className="eventlocation">{event.location}</span>
+						<span className="eventtime">{`${moment(event.startDate).format('HH:mm')} Uhr`}</span>
+					</div>
 				</div>
-				<div className="eventcontent">
-		    		<span className="eventtitle">{event.title}</span>
-		    		<span className="eventlocation">{event.location}</span>
-		            <span className="eventtime">{`${moment(event.startDate).format('HH:mm')} Uhr`}</span>
-		    	</div>
-			</div>
+			</a>
 		</Link>
 	)
 }

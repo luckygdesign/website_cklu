@@ -6,8 +6,8 @@ import * as I from '../interfaces/contentDelivery'
 
 // import modules
 import Layout from '../components/Layout'
-import { ParseJSON } from '../components/misc';
-import { EventDetails , GebetsanliegenOverview } from '../components/events';
+import { ParseJSON } from '../components/Misc';
+import { EventDetails , GebetsanliegenOverview } from '../components/Events';
 
 // import style
 import '../styles/events.scss';
@@ -93,10 +93,6 @@ class EventsPage extends React.Component<IProps, IState> {
             <GebetsanliegenOverview anliegen={gebets} />
           </div>
         </div>
- 
-        <style jsx>{`
-
-        `}</style>
       </Layout>
     );
   }

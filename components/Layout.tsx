@@ -2,7 +2,7 @@ import * as React from 'react'
 import Head from 'next/head'
 
 import Header from './Header'
-import Footer from './footer'
+import Footer from './Footer'
 
 type IProps = {
   title?: string
@@ -23,7 +23,7 @@ const Layout: React.FunctionComponent<IProps> = ({
       {children}
       <Footer />
     </div>
-    </div>
+  </div>
 )
 
 export default Layout

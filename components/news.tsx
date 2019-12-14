@@ -4,8 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import moment from 'moment';
 
-import { ReadMoreButton, MiscButton } from './misc'
-import { render } from 'react-dom';
+import { ReadMoreButton, MiscButton } from './Misc'
 
 import { INewsEntry } from '../interfaces/contentDelivery'
 import Contentful from './contentDelivery';

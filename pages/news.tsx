@@ -6,8 +6,8 @@ import * as I from '../interfaces/contentDelivery'
 
 // import modules
 import Layout from '../components/Layout'
-import { ArticleThumb , NewsList } from '../components/news';
-import { ParseJSON } from '../components/misc';
+import { ArticleThumb , NewsList } from '../components/News';
+import { ParseJSON } from '../components/Misc';
 
 // import style
 import '../styles/news.scss';

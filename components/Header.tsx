@@ -39,7 +39,9 @@ class Header extends React.Component<IProps, IState> {
 		      <div className="Container">
 		        <div id="LogoImage" >
     		      	<Link href="/">
-			         	<img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={'/images/logo-xs.png'} />
+						  <a>
+						  	<img className="logo-default" alt="Logo Christliches Kinderhilfswerk Luwero - Uganda e.V." src={'/images/logo-xs.png'} />
+						  </a>
 			       	</Link>
 		        </div>
 

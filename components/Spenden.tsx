@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Img from 'gatsby-image';
-import { MiscButton } from './misc';
+import { MiscButton } from './Misc';
 
 export default () => (
   	<section id="Spenden" className="sidebar">

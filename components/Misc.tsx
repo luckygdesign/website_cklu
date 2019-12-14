@@ -48,14 +48,11 @@ const FileBlock = ({fields}) => {
 
       	<div className="parser-file-container">
   			<p>
-      			<a
-		            alt={description ?  description['en-US'] : null}
-		            href={file['en-US'].url}
-		            className="icon-pseudo"
-                target="_blanc"
-	            >
-		            { title ? title['en-US'] : file['en-US'].details.fileName }
-				</a>
+      			<Link href={file['en-US'].url}> {// alt={description ?  description['en-US'] : null}	>
+				  }<a className="icon-pseudo"	target="_blanc">
+						{ title ? title['en-US'] : file['en-US'].details.fileName }
+					</a>    
+				</Link>
 
 
 	      		{description ? description['en-US'] : null}
@@ -66,6 +63,10 @@ const FileBlock = ({fields}) => {
   	)
 }
 
+// TODO: add blockquote support
+const BlockQuote = (quoteText, quoter) => {
+	return (<p>coming soon</p>)
+}
 
 const options = {
 	renderNode: {
@@ -95,11 +96,11 @@ const richTextOptions = {
       const fields = node.data.target.fields;
       switch (node.data.target.sys.contentType.sys.id) {
         case 'blockquote':
-          return <div>
+          return (<div>
             <BlockQuote quoteText={fields.quoteText['en-US']} quoter={fields.quoter['en-US']}/>
-          </div>
+          </div>)
         default:
-          return <div>??????????????? {title} </div>
+          return <div>{fields.title}</div>
 
       }
     },
@@ -135,7 +136,9 @@ const ReadMoreButton = ({link}) => (
 
 // Misc Button
 const MiscButton = ({ link, text, cssclass }) => (
-	<Link href={link} className={cssclass}>{text}</Link>
+	<Link href={link}>
+		<a className={cssclass}>{text}</a>
+	</Link>
 );
 
 export { ParseJSON, MiscButton, ReadMoreButton };

@@ -1,8 +1,23 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import Mailto from 'react-protected-mailto';
 
-class Contactform extends React.Component {
+type IProps = {
+
+}
+
+type IState = {
+  status: string,
+  statusMessage: string,
+  data: {
+    name: string,
+    email: string,
+    message: string,
+    confirm: string
+  }
+}
+
+class Contactform extends React.Component<IProps, IState> {
   state = {
     status: 'default',
     statusMessage: '',
@@ -10,14 +25,14 @@ class Contactform extends React.Component {
       name: '',
       email: '',
       message: '',
-      confirm: false,
+      confirm: 'false',
     },
   }
 
   submit = e => {
     e.preventDefault()
 
-    if (!this.state.data.confirm) {
+    if (this.state.data.confirm == 'false' ) {
       this.setState({statusMessage: 'bitte bestätigen Sie die Übermittlung', status: 'form-pending'});
       return;
     }
@@ -42,7 +57,7 @@ class Contactform extends React.Component {
       }),
     }).then(res => {
       if (!res.ok) {
-        throw Error(res.text());
+        throw Error(res.toString());
       }
       return res;
     }).then(res => {
@@ -97,7 +112,7 @@ class Contactform extends React.Component {
             name="message"
             required
             placeholder="Hallo..."
-            rows="7"
+            rows={7}
             value={data.message}
             onChange={this.handleChange}
           />
@@ -113,7 +128,7 @@ class Contactform extends React.Component {
             onChange={this.handleChange}
           />
           <label>
-            Ich habe die <Link to="/datenschutz">Datenschutzerklärung</Link> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.
+            Ich habe die <Link href="/datenschutz"><a>Datenschutzerklärung</a></Link> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.
             Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <Mailto email='kontakt@ckluganda.de' /> widerrufen.
           </label>
 
@@ -129,7 +144,5 @@ class Contactform extends React.Component {
     )
   }
 }
-
-// tbd
 
 export default Contactform
