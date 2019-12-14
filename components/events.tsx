@@ -1,23 +1,23 @@
 import React from 'react';
-
-//import Img from 'gatsby-image';
 import moment from 'moment';
 import Link from 'next/link';
 import Mailto from 'react-protected-mailto';
 import 'moment/locale/de'
 
+// import modules
 import { IEventsEntry } from '../interfaces/contentDelivery';
-
 import { MiscButton } from './misc';
 
 moment.locale('de');
 
-const EventInfo = ({ node }) => {
-	let event = node.node;
+const EventInfo = ({ event }) => {
 
-	if (moment().isAfter(moment(event.startDate))) {
-		return null;
-	} 
+	// TODO - activate time filter
+
+	// if (moment().isAfter(moment(event.startDate))) {
+	// 	return null;
+	// } 
+
 
 	return (
 		<Link href={`/events#${event.slug}`}>
@@ -36,35 +36,39 @@ const EventInfo = ({ node }) => {
 	)
 }
 
-const GebetInfo = ({ node }) => {
-	let gebet = node.node;
+const GebetInfo = ({ anliegen }) => {
 
-	if (moment().isAfter(moment(gebet.startDate))) {
-		return null;
-	} 
+
+	// TODO - activate time
+
+	// if (moment().isAfter(moment(anliegen.startDate))) {
+	// 	return null;
+	// } 
 
 	return (
 		<div className="eventinfo">
 			<div className="eventdate">
-	            <span className="eventday">{moment(gebet.startDate).format('D.')}</span>
-	            <span className="eventmonth">{moment(gebet.startDate).format('MMM')}</span>
+	            <span className="eventday">{moment(anliegen.startDate).format('D.')}</span>
+	            <span className="eventmonth">{moment(anliegen.startDate).format('MMM')}</span>
 			</div>
 			<div className="eventcontent">
-	    		<span className="eventtitle">{gebet.title}</span>
+	    		<span className="eventtitle">{anliegen.title}</span>
 	            <span className="eventtime">
-	            	{moment(gebet.startDate).format('D. MMM')}
-	            	{ gebet.endDate ? (
-            			` bis ${moment(gebet.endDate).format('D. MMM')}`
+	            	{moment(anliegen.startDate).format('D. MMM')}
+	            	{ anliegen.endDate ? (
+            			` bis ${moment(anliegen.endDate).format('D. MMM')}`
             		) : null }
 	            </span>
-	            { gebet.description ? (
-					<p className="eventdescription">{gebet.description.description}</p>
+	            { anliegen.description ? (
+					<p className="eventdescription">{anliegen.description}</p>
 				) : null }
 	    	</div>
 		</div>	
 	)
 }
 
+// EventDetails
+// TODO : remove open/close -> refactor to variable, not class
 type IProps = {
 	event: IEventsEntry,
 }
@@ -157,7 +161,7 @@ const EventsOverview = ({ events }) => (
 		{events ? (
 			<div className="eventsfeed">
 				{events.map(event => (
-			      <EventInfo key={event.node.slug} node={event} />
+			      <EventInfo key={event.slug} event={event} />
 			    ))}
 			</div>
 		) : null }
@@ -166,9 +170,13 @@ const EventsOverview = ({ events }) => (
 	</section>
 )
 
+
+
 const GebetsanliegenOverview = ({ anliegen }) => (
   	<section id="GebetsanliegenOverview" className="sidebar">
 		<h3>Gebetsanliegen</h3>
+
+		{console.log(anliegen)}
 
 		<p>Wir freuen uns, wenn Sie die Veranstaltungen auf der Missionsstation im Gebet begleiten und unterstützen.</p>
 		<p>Weitere aktuelle Informationen und Details finden Sie im Bereich "News".</p>
@@ -176,7 +184,7 @@ const GebetsanliegenOverview = ({ anliegen }) => (
 		{anliegen ? (
 			<div className="gebetsfeed">
 				{anliegen.map(anliegen => (
-			      <GebetInfo key={anliegen.node.slug} node={anliegen} />
+			      <GebetInfo key={anliegen.slug} anliegen={anliegen} />
 			    ))}
 		    </div>
 		) : null }

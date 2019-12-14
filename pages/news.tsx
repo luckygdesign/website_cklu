@@ -6,7 +6,7 @@ import * as I from '../interfaces/contentDelivery'
 
 // import modules
 import Layout from '../components/Layout'
-import { ArticleThumb } from '../components/news';
+import { ArticleThumb , NewsList } from '../components/news';
 import { ParseJSON } from '../components/misc';
 
 // import style
@@ -45,33 +45,10 @@ class NewsPage extends React.Component<IProps, IState> {
     .then(response => {this.setState({pageContent: response})})
   }
 
-
   fetchNewsFeed() {
     this.props.contentful.fetchNews()
     .then(response => {this.setState({feed: response})})
-  }  
-
-  // fetchNewsFeed() {
-  //   // get news feed
-  //   this.props.contentful.client
-  //      .getEntries({'content_type': 'news'})
-  //      .then((response:EntryCollection<INewsEntry>) => {
-  //       const feed: INewsEntry[] = []
-  //       response.items.forEach(article => feed.push(article.fields))
-  //       this.setState({feed: feed})
-  //      })
-  //      .catch(err => console.log(err));
-  // }
-
-  // fetchPageContent() {
-  //   // get page content
-  //   this.props.contentful.client
-  //   .getEntry('5DGQAcf8cNd5ThMX95NlfY')
-  //   .then((response:Entry<IPageContent>) => {
-  //     this.setState({pageContent: response.fields})
-  //   }) 
-  //   .catch(err => console.log(err))
-  // }
+  }
   
   render() {
 
@@ -112,6 +89,7 @@ class NewsPage extends React.Component<IProps, IState> {
                 )}
 
             </section>
+            <NewsList contentful={this.props.contentful} />
           </div>
         </div> 
 

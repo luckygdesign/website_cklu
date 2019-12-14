@@ -6,21 +6,19 @@ import * as I from '../interfaces/contentDelivery'
 
 // import modules
 import Layout from '../components/Layout'
-import {ArticleThumb } from '../components/news';
 import { ParseJSON } from '../components/misc';
-import { EventDetails } from '../components/events';
+import { EventDetails , GebetsanliegenOverview } from '../components/events';
 
 // import style
 import '../styles/events.scss';
-
-
 
 interface IProps {
   contentful: Contentful;
 }
 
 interface IState {
-  feed: I.IEventsEntry[],
+  events: I.IEventsEntry[],
+  gebets: I.IGebetsEntry[],
   pageContent: I.IPageContent
 }
 
@@ -30,7 +28,8 @@ class EventsPage extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      feed: [],
+      events: [],
+      gebets: [],
       pageContent: {
         title: '',
         slug: null,
@@ -41,6 +40,7 @@ class EventsPage extends React.Component<IProps, IState> {
   
     this.fetchPageContent()
     this.fetchEventsFeed();
+    this.fetchGebetsFeed();
  
   }
 
@@ -51,13 +51,21 @@ class EventsPage extends React.Component<IProps, IState> {
 
   fetchEventsFeed() {
     this.props.contentful.fetchEvents()
-    .then(response => {this.setState({feed: response})})
+    .then(response => {this.setState({events: response})})
   }  
   
+  fetchGebetsFeed() {
+    this.props.contentful.fetchGebets()
+    .then(response => {this.setState({gebets: response})})
+  }
+
   render() {
 
-    const feed = this.state.feed;
+    const events = this.state.events;
+    const gebets = this.state.gebets;
     const pageContent = this.state.pageContent;
+
+    // TODO: refactor events list and display message if no events
 
     return (
       <Layout title="Veranstaltungen" >
@@ -73,16 +81,16 @@ class EventsPage extends React.Component<IProps, IState> {
               ) : null}
 
               {/* display events feed */}
-              {feed ? (
+              {events ? (
                 <div id="UpcomingEvents">
-                  {feed.map(event => (
+                  {events.map(event => (
                     <EventDetails event={event} key={event.slug} />
                   ))}
                 </div>
               ) : null}
               
             </section>
-            {/* <GebetsanliegenOverview anliegen={gebetsanliegen} /> */}
+            <GebetsanliegenOverview anliegen={gebets} />
           </div>
         </div>
  

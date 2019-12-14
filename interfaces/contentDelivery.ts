@@ -12,12 +12,21 @@ export type IEventsEntry = {
   title: string,
   slug: string,
   location: string,
-  startDate: Object,
-  description: Object,
+  startDate: object,
+  description: object,
   address: string,
   contactName: string,
   contactPhone: string,
   contactEmail: string
+}
+
+export type IGebetsEntry = {
+  title: string,
+  slug: string,
+  location: string,
+  startDate: string,
+  endDate: string,
+  description: string
 }
 
 export type IPageContent = {

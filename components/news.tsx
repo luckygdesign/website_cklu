@@ -1,9 +1,14 @@
 import React from 'react';
 // import Img from 'gatsby-image';
 // import { StaticQuery, graphql, Link } from 'gatsby';
+import Link from 'next/link';
 import moment from 'moment';
 
 import { ReadMoreButton, MiscButton } from './misc'
+import { render } from 'react-dom';
+
+import { INewsEntry } from '../interfaces/contentDelivery'
+import Contentful from './contentDelivery';
 
 const ArticleThumb = ({ article }) => (
 	<article>
@@ -17,40 +22,58 @@ const ArticleThumb = ({ article }) => (
 	</article>
  )
 
+interface IProps {
+	contentful: Contentful
+}
 
-// const NewsList = () => (
+interface IState {
+	news: INewsEntry[]
+}
 
-// 	 <StaticQuery
-// 	    query={graphql`
-// 	      query moduleNewsList {
-// 	        allContentfulNews(sort: {fields: publishDate, order: DESC}) {
-// 		      edges {
-// 		        node {
-// 		          title
-// 		          slug
-// 		          publishDate
-// 		        }
-// 		      }
-// 		    }
-// 	      }
-// 	    `}
-// 	    render={data => (
-// 	  		<div id="NewsList" className="sidebar">
-//                 <h3>Alle News</h3>
-// 				<ul className="news-list">
-// 					{data.allContentfulNews.edges.map(article => (
-// 							<li key={article.node.slug}>
-// 								<Link to={`/news/${article.node.slug}`}>
-// 									<span className="icon-pseudo title">{article.node.title}</span>
-// 									<span className="icon-pseudo publishDate">{moment(article.node.publishDate).format('MMM YYYY')}</span>
-// 								</Link>
-// 							</li>
-// 						))}
-// 				</ul>
-// 			</div>
-// 		)}
-// 	/>
-// )
+
+class NewsList extends React.Component<IProps, IState> {
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			news: [],
+		}
+
+		this.fetchNewsFeed();
+	}
+
+	fetchNewsFeed() {
+		this.props.contentful.getNewsFeed()
+		.then(response => this.setState({news: response}))
+	}
+
+	render() {
+
+		let { news } = this.state
+		console.log(news)
+
+		return (
+			<div id="NewsList" className="sidebar">
+				<h3>Alle News</h3>
+				
+				{news ? (
+					<ul className="news-list">
+						{news.map(article => (
+							<li key={article.slug}>
+								<Link href={`/news/${article.slug}`}>
+									<a>
+										<span className="icon-pseudo title">{article.title}</span>
+										<span className="icon-pseudo publishDate">{moment(article.publishDate).format('MMM YYYY')}</span>
+									</a>
+								</Link>
+							</li>
+						))}
+					</ul>
+				) : null }
+			</div>
+		)
+	}	
+}
 
 const NewsOverview = ({ news }) => (
  	<section id="NewsOverview">
@@ -71,4 +94,4 @@ const NewsOverview = ({ news }) => (
 )
 
 export default NewsOverview;
-export {ArticleThumb };
+export { ArticleThumb , NewsList };
