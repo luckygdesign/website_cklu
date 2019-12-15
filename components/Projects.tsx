@@ -8,7 +8,6 @@ import { ParseJSON , ImageBlock} from './Misc';
 
 const ProjectList = ({ project , handleClick }) => {
 
-	console.log(project)
 	return (
 		<li>
 			<Link

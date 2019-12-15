@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import Contentful , { withContentful, ContentfulContext } from '../components/contentDelivery'
+import Contentful , { withContentful } from '../components/contentDelivery'
 import { IPageContent } from '../interfaces/contentDelivery'
 
 import { ParseJSON } from '../components/Misc'
@@ -30,8 +30,9 @@ class  AboutPage extends React.Component<IProps, IState> {
     }
 
     getInitialProps = async function() {
-        
-        this.props.contentful.fetchPageContent('2JgkBgWgBRf4qlpOwFLxcL')
+
+        console.log(this)
+        this.props.contentful.fetchPageContent('73MfkJzLwvzK4RNJq8NTkE')
             .then(response => {this.setState({pageContent: response})})
     }
 
