@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Contentful , {withContentful} from '../components/contentDelivery'
 
-// import Interfaces
+// import context and interfaces
+import Contentful , { ContentfulContext } from '../components/contentDelivery'
 import * as I from '../interfaces/contentDelivery'
 
 // import modules
@@ -12,90 +12,59 @@ import { EventDetails , GebetsanliegenOverview } from '../components/Events';
 // import style
 import '../styles/events.scss';
 
-interface IProps {
-  contentful: Contentful;
-}
 
-interface IState {
-  events: I.IEventsEntry[],
-  gebets: I.IGebetsEntry[],
-  pageContent: I.IPageContent
-}
+const EventsPage: React.FunctionComponent = () => {
 
-class EventsPage extends React.Component<IProps, IState> {
+  // use context to get content from contentful
+  const contentful: Contentful = React.useContext(ContentfulContext)
 
-  constructor(props) {
-    super(props);
+  // state hook for pageContent
+  const [page, setPage] = React.useState<I.IPageContent>({ 
+      title:'Impressum',
+      slug:null,
+      content:null
+    })
+  contentful.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
+    .then(response => {setPage(response)})
 
-    this.state = {
-      events: [],
-      gebets: [],
-      pageContent: {
-        title: '',
-        slug: null,
-        content: null
-      },
+  // state hook for events
+  const [events, setEvents] = React.useState<I.IEventsEntry[]>([])
+  contentful.getEventsFeed()
+    .then(response => {setEvents(response)})
 
-    }
+  // state hook for gebets
+  const [gebets, setGebets] = React.useState<I.IGebetsEntry[]>([])
+  contentful.getGebetsFeed()
+    .then(response => {setGebets(response)})
   
-    this.fetchPageContent()
-    this.fetchEventsFeed();
-    this.fetchGebetsFeed();
- 
-  }
+  return (
+    <Layout title="Veranstaltungen" >
+      <div id="Content" className="Container">
+        <div>
+          <section id="Events">
 
-  fetchPageContent() {
-    this.props.contentful.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
-    .then(response => {this.setState({pageContent: response})})
-  }
+            {/* general page content - title and description */}
+            <h1>{page.title}</h1>
 
-  fetchEventsFeed() {
-    this.props.contentful.fetchEvents()
-    .then(response => {this.setState({events: response})})
-  }  
-  
-  fetchGebetsFeed() {
-    this.props.contentful.fetchGebets()
-    .then(response => {this.setState({gebets: response})})
-  }
+            {page.content ? (
+              <ParseJSON textjson={page.content} />
+            ) : null}
 
-  render() {
-
-    const events = this.state.events;
-    const gebets = this.state.gebets;
-    const pageContent = this.state.pageContent;
-
-    // TODO: refactor events list and display message if no events
-
-    return (
-      <Layout title="Veranstaltungen" >
-        <div id="Content" className="Container">
-          <div>
-            <section id="Events">
-
-              {/* general page content - title and description */}
-              <h1>{pageContent.title}</h1>
-
-              {pageContent.content ? (
-                <ParseJSON textjson={pageContent.content} />
-              ) : null}
-
-              {/* display events feed */}
-              {events ? (
-                <div id="UpcomingEvents">
-                  {events.map(event => (
-                    <EventDetails event={event} key={event.slug} />
-                  ))}
-                </div>
-              ) : null}
-              
-            </section>
-            <GebetsanliegenOverview anliegen={gebets} />
-          </div>
+            {/* display events feed */}
+            {events ? (
+              <div id="UpcomingEvents">
+                {events.map(event => (
+                  <EventDetails event={event} key={event.slug} />
+                ))}
+              </div>
+            ) : null}
+            
+          </section>
+          <GebetsanliegenOverview anliegen={gebets} />
         </div>
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  );
 }
 
-export default withContentful(EventsPage);
+export default EventsPage;

@@ -1,13 +1,15 @@
 import * as React from 'react'
-import Layout from '../components/Layout'
-import { ContentfulContext } from '../components/contentDelivery'
 
+// import context and interface
+import Contentful , { ContentfulContext } from '../components/contentDelivery'
 import { IPageContent } from '../interfaces/contentDelivery'
 
+// import components
+import Layout from '../components/Layout'
 import { ParseJSON } from '../components/Misc'
 
 
-const AboutPage: React.FunctionComponent = () => {
+const ImpressumPage: React.FunctionComponent = () => {
 
     // state hook for pageContent
     const [page, setPage] = React.useState<IPageContent>
@@ -18,7 +20,7 @@ const AboutPage: React.FunctionComponent = () => {
         })
 
     // use context to get content from contentful
-    const contentful = React.useContext(ContentfulContext)
+    const contentful: Contentful = React.useContext(ContentfulContext)
     contentful.fetchPageContent('73MfkJzLwvzK4RNJq8NTkE')
         .then(response => {setPage(response)})
 
@@ -38,4 +40,4 @@ const AboutPage: React.FunctionComponent = () => {
     )
 }
 
-export default AboutPage
+export default ImpressumPage;
