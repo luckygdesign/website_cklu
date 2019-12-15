@@ -19,7 +19,7 @@ import { ParseJSON } from '../components/Misc';
 import '../styles/home.scss';
 
 interface IProps {
-  contentful: Contentful;
+  contentful: Contentful
 }
 
 interface IState {
