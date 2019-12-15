@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { ParseJSON , ImageBlock} from './Misc';
 
 const ProjectList = ({ project , handleClick }) => {
+
+	console.log(project)
 	return (
 		<li>
 			<Link
@@ -80,7 +82,7 @@ const AboutSection = ({ projects }) => (
 			<div className="">
 				<ul className="projects-list">
 					{projects.map(singleproject => (
-				      <ProjectList key={singleproject.node.title} project={singleproject.node} handleClick={null} />
+				      <ProjectList key={singleproject.title} project={singleproject} handleClick={null} />
 				    ))}
 				</ul>
 			</div>

@@ -16,6 +16,7 @@ class Contentful {
   news: I.INewsEntry[];
   events: I.IEventsEntry[];
   gebets: I.IGebetsEntry[];
+  projects: I.IProjectEntry[];
 
   constructor() {
     this.client = createClient({
@@ -26,6 +27,7 @@ class Contentful {
     this.news = [];
     this.events = [];
     this.gebets = [];
+    this.projects = [];
 
   }
 
@@ -43,6 +45,78 @@ class Contentful {
           const feed: I.INewsEntry[] = []
           response.items.forEach(article => feed.push(article.fields))
           this.news = feed;
+          resolve(feed);
+        }) 
+        .catch(err => {
+          console.log(err)
+          reject()
+        })
+      }  
+    });  
+  }
+
+  getEventsFeed = async function() : Promise<I.IEventsEntry[]> {
+    
+    return new Promise<I.IEventsEntry[]>((resolve, reject) => {
+
+      if (this.news.length > 0 ) {
+        resolve(this.news)
+      } else {
+        // get page content
+        this.client
+        .getEntries({'content_type': 'events'})
+        .then((response:EntryCollection<I.IEventsEntry>) => {
+          const feed: I.IEventsEntry[] = []
+          response.items.forEach(article => feed.push(article.fields))
+          this.events = feed;
+          resolve(feed);
+        }) 
+        .catch(err => {
+          console.log(err)
+          reject()
+        })
+      }  
+    });  
+  }
+
+  getGebetsFeed = async function() : Promise<I.IGebetsEntry[]> {
+    
+    return new Promise<I.IGebetsEntry[]>((resolve, reject) => {
+
+      if (this.news.length > 0 ) {
+        resolve(this.news)
+      } else {
+        // get page content
+        this.client
+        .getEntries({'content_type': 'gebetsanliegen'})
+        .then((response:EntryCollection<I.IGebetsEntry>) => {
+          const feed: I.IGebetsEntry[] = []
+          response.items.forEach(article => feed.push(article.fields))
+          this.gebets = feed;
+          resolve(feed);
+        }) 
+        .catch(err => {
+          console.log(err)
+          reject()
+        })
+      }  
+    });  
+  }
+
+  getProjectsFeed = async function() : Promise<I.IProjectEntry[]> {
+    
+    return new Promise<I.IProjectEntry[]>((resolve, reject) => {
+
+      if (this.news.length > 0 ) {
+        resolve(this.news)
+      } else {
+        // get page content
+        this.client
+        .getEntries({'content_type': 'project'})
+        .then((response:EntryCollection<I.IProjectEntry>) => {
+          const feed: I.IProjectEntry[] = []
+          response.items.forEach(article => feed.push(article.fields))
+          this.projects = feed;
           resolve(feed);
         }) 
         .catch(err => {

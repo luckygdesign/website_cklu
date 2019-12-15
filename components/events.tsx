@@ -93,7 +93,6 @@ class EventDetails extends React.Component<IProps, IState> {
 		} else {
 			this.setState({open: false})
 		}
-		console.log('klick');
 	}
 
 
@@ -177,8 +176,6 @@ const EventsOverview = ({ events }) => (
 const GebetsanliegenOverview = ({ anliegen }) => (
   	<section id="GebetsanliegenOverview" className="sidebar">
 		<h3>Gebetsanliegen</h3>
-
-		{console.log(anliegen)}
 
 		<p>Wir freuen uns, wenn Sie die Veranstaltungen auf der Missionsstation im Gebet begleiten und unterstützen.</p>
 		<p>Weitere aktuelle Informationen und Details finden Sie im Bereich "News".</p>
