@@ -68,13 +68,6 @@ const BlockQuote = (quoteText, quoter) => {
 	return (<p>coming soon</p>)
 }
 
-const options = {
-	renderNode: {
-    	'embedded-asset-block': (node) =>
-      	`<img class="img-fluid" src="${node.data.target.fields.file['en-US'].url}"/>`
-	}
-};
-
 const richTextOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -116,8 +109,6 @@ const richTextOptions = {
   		)
 	},
 	[INLINES.ASSET_HYPERLINK]: (node) => {
-		console.log(node)
-		console.log(node.content[0].value			)
 		const {file , title } = node.data.target.fields
 		return (
 			<BlancButton link={file.url} text={node.content[0].value} cssclass="icon-pseudo parser-link-inline" />
@@ -128,7 +119,6 @@ const richTextOptions = {
 
 const ParseJSON = ({textjson}) => (
 	<div className="text">
-		{console.log(textjson)}
 		{documentToReactComponents(textjson, richTextOptions)}
 	</div>	
 )

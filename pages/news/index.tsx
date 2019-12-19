@@ -42,7 +42,7 @@ const NewsPage: NextPage<IProps> = props => {
 
               <>
 
-                <div className="Newsnews">
+                <div className="NewsFeed">
                   {news.map(article => (
                       <ArticleThumb key={article.title} article={article} />
                     ))}
@@ -71,7 +71,7 @@ const NewsPage: NextPage<IProps> = props => {
 NewsPage.getInitialProps = async () => {
 
   // get content
-  const page: I.IPageContent = await CF.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
+  const page: I.IPageContent = await CF.fetchPageContent('5DGQAcf8cNd5ThMX95NlfY')
   const news: I.INewsEntry[] = await CF.fetchNews()
   
   return {page, news}

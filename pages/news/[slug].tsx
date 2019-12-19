@@ -82,7 +82,6 @@ NewsArticle.getInitialProps = async (ctx: IContext) => {
     // get sting
     let slug: string
     if (typeof(ctx.query.slug) !== 'string') {
-        console.log(ctx.query)
         slug = ctx.query.slug.toString();
     } else {
         slug = ctx.query.slug;
