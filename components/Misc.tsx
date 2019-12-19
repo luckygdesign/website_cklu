@@ -114,12 +114,21 @@ const richTextOptions = {
       			{node.content[0].value}
   			</a>
   		)
-    },
+	},
+	[INLINES.ASSET_HYPERLINK]: (node) => {
+		console.log(node)
+		console.log(node.content[0].value			)
+		const {file , title } = node.data.target.fields
+		return (
+			<BlancButton link={file.url} text={node.content[0].value} cssclass="icon-pseudo parser-link-inline" />
+		)
+  	},
   }
 }
 
 const ParseJSON = ({textjson}) => (
 	<div className="text">
+		{console.log(textjson)}
 		{documentToReactComponents(textjson, richTextOptions)}
 	</div>	
 )
@@ -133,6 +142,12 @@ const ParseJSON = ({textjson}) => (
 const ReadMoreButton = ({link}) => (
 	<MiscButton link={link} cssclass="readmore" text="weiterlesen" />
 );
+
+const BlancButton = ({ link, text, cssclass }) => (
+	<Link href={link}>
+		<a className={cssclass} target="_blanc">{text}</a>
+	</Link>
+)
 
 // Misc Button
 const MiscButton = ({ link, text, cssclass }) => (
