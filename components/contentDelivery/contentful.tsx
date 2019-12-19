@@ -10,6 +10,47 @@ const config = {
     accessToken: 'W57H2oIuWAlbOrjyiBwAlxFb5zHpLk0tlRRSuUuHsuk'
 };
 
+async function fetchNews(): Promise<I.INewsEntry[]> {
+      
+  return new Promise<I.INewsEntry[]>((resolve, reject) => {
+      // get page content
+    createClient({
+      space: config.space,
+      accessToken: config.accessToken
+    }).getEntries({'content_type': 'news'})
+      .then((response:EntryCollection<I.INewsEntry>) => {
+        const feed: I.INewsEntry[] = []
+        response.items.forEach(article => feed.push(article.fields))
+        resolve(feed);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
+async function fetchNewsArticle(entrySlug: string) : Promise<I.INewsEntry> {
+      
+  return new Promise<I.INewsEntry>((resolve, reject) => {
+      // get page content
+      createClient({
+        space: config.space,
+        accessToken: config.accessToken
+      }).getEntries({
+        'content_type': 'news',
+        'fields.slug[in]': entrySlug
+      })
+      .then((response:EntryCollection<I.INewsEntry>) => {
+        resolve(response.items[0].fields);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
 class Contentful {
 
   client: ContentfulClientApi;
@@ -143,6 +184,25 @@ class Contentful {
     });
   }
 
+  fetchNewsArticle = async function(entrySlug: string | string[]) : Promise<I.INewsEntry> {
+      
+    return new Promise<I.INewsEntry>((resolve, reject) => {
+        // get page content
+      this.client
+        .getEntries({
+          'content_type': 'news',
+          'fields.slug[in]': entrySlug
+        })
+        .then((response:EntryCollection<I.INewsEntry>) => {
+          resolve(response.items[0].fields);
+        }) 
+        .catch(err => {
+          console.log(err)
+          reject()
+        })
+    });
+  }
+
   // TODO: combine fetch Functions to one: pass type
 
   fetchEvents = async function() : Promise<I.IEventsEntry[]> {
@@ -220,3 +280,4 @@ class Contentful {
 }
 
 export default Contentful;
+export { fetchNews, fetchNewsArticle }

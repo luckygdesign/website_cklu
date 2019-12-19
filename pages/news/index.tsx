@@ -1,16 +1,16 @@
 import * as React from 'react'
-import Contentful , {withContentful} from '../components/contentDelivery'
+import Contentful , {withContentful} from '../../components/contentDelivery'
 
 // import Interfaces
-import * as I from '../interfaces/contentDelivery'
+import * as I from '../../interfaces/contentDelivery'
 
 // import modules
-import Layout from '../components/Layout'
-import { ArticleThumb , NewsList } from '../components/News';
-import { ParseJSON } from '../components/Misc';
+import Layout from '../../components/Layout'
+import { ArticleThumb , NewsList } from '../../components/News';
+import { ParseJSON } from '../../components/Misc';
 
 // import style
-import '../styles/news.scss';
+import '../../styles/news.scss';
 
 interface IProps {
   contentful: Contentful;

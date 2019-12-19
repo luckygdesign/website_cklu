@@ -1,11 +1,23 @@
 
+export type Image = {
+  fields: {
+    file: {
+      contentType: string,
+      details: object,
+      fileName: string,
+      url: string
+    },
+    title: string
+  }
+}
+
 export type INewsEntry = {
   title: string,
   slug: string,
-  heroimage: Object,
-  summary: string,
-  content: Object,
-  publishDate: string
+  heroImage?: Image,
+  summary?: string,
+  content?: Object,
+  publishDate?: string
 }
 
 export type IEventsEntry = {

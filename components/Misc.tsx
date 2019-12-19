@@ -13,7 +13,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // image with description
 
-const ImageBlock = ({fields}) => {
+const ImageBlock = ({ fields}) => {
 
 	// TODO: add preloading
 	const { title, description, file } = fields;
