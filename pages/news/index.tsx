@@ -1,7 +1,8 @@
 import * as React from 'react'
-import Contentful , {withContentful} from '../../components/contentDelivery'
+import { NextPage } from 'next'
 
-// import Interfaces
+// import context and interface
+import { CF } from '../../components/contentDelivery'
 import * as I from '../../interfaces/contentDelivery'
 
 // import modules
@@ -13,92 +14,68 @@ import { ParseJSON } from '../../components/Misc';
 import '../../styles/news.scss';
 
 interface IProps {
-  contentful: Contentful;
+  page: I.IPageContent,
+  news: I.INewsEntry[],
 }
 
-interface IState {
-  feed: I.INewsEntry[],
-  pageContent: I.IPageContent
+const NewsPage: NextPage<IProps> = props => {
+
+  // use content from contentful
+  const { page, news } = props
+
+  return (
+    <Layout title={page.title} >
+      <div id="Content" className="Container">
+
+        <div>
+          <section id="News">
+
+            {/* general page content - title and description */}
+            <h1>{page.title}</h1>
+
+            {page.content ? (
+              <ParseJSON textjson={page.content} />
+            ) : null}
+
+            {/* display news news */}
+            {(news.length > 0) ? (
+
+              <>
+
+                <div className="Newsnews">
+                  {news.map(article => (
+                      <ArticleThumb key={article.title} article={article} />
+                    ))}
+                </div>
+
+                {/* <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" /> */}
+
+              </>
+
+              ) : (
+                <p className="error-message">Leider haben wir gerade keine Neuigkeiten. Wir bitten um Verständnis und Geduld!</p>
+              )}
+
+          </section>
+          <NewsList />
+        </div>
+      </div> 
+
+      <style jsx>{`
+
+      `}</style>
+    </Layout>
+  );
 }
 
-class NewsPage extends React.Component<IProps, IState> {
+NewsPage.getInitialProps = async () => {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      feed: [],
-      pageContent: {
-        title: "Aktuelle Nachrichten",
-        slug: null,
-        content: null
-      }
-    }
-    
-    this.fetchPageContent();
-    this.fetchNewsFeed();
-
-  }
-
-  fetchPageContent() {
-    this.props.contentful.fetchPageContent('5DGQAcf8cNd5ThMX95NlfY')
-    .then(response => {this.setState({pageContent: response})})
-  }
-
-  fetchNewsFeed() {
-    this.props.contentful.fetchNews()
-    .then(response => {this.setState({feed: response})})
-  }
+  // get content
+  const page: I.IPageContent = await CF.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
+  const news: I.INewsEntry[] = await CF.fetchNews()
   
-  render() {
+  return {page, news}
 
-    const feed = this.state.feed;
-    const pageContent = this.state.pageContent;
-
-    return (
-      <Layout title={pageContent.title} >
-        <div id="Content" className="Container">
-
-          <div>
-            <section id="News">
-
-              {/* general page content - title and description */}
-              <h1>{pageContent.title}</h1>
-
-              {pageContent.content ? (
-                <ParseJSON textjson={pageContent.content} />
-              ) : null}
-
-              {/* display news feed */}
-              {(feed.length > 0) ? (
-
-                <>
-
-                  <div className="NewsFeed">
-                    {feed.map(article => (
-                        <ArticleThumb key={article.title} article={article} />
-                      ))}
-                  </div>
-
-                  {/* <MiscButton link="/news" cssclass="button button-primary" text="Alle Nachrichten" /> */}
-
-                </>
-
-                ) : (
-                  <p className="error-message">Leider haben wir gerade keine Neuigkeiten. Wir bitten um Verständnis und Geduld!</p>
-                )}
-
-            </section>
-            <NewsList contentful={this.props.contentful} />
-          </div>
-        </div> 
-
-        <style jsx>{`
-
-        `}</style>
-      </Layout>
-    );
-  }
 }
 
-export default withContentful(NewsPage);
+export default NewsPage;

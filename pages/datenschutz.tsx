@@ -1,30 +1,22 @@
 import * as React from 'react'
+import { NextPage, NextPageContext } from 'next'
 
-// import context
-import { ContentfulContext } from '../components/contentDelivery'
-
-// import interface
+// import context and interface
+import { CF } from '../components/contentDelivery'
 import { IPageContent } from '../interfaces/contentDelivery'
 
 // import components
 import Layout from '../components/Layout'
 import { ParseJSON } from '../components/Misc'
 
+interface IProps {
+    article: IPageContent,
+}
 
-const DatenschutzPage: React.FunctionComponent = () => {
+const DatenschutzPage: NextPage<IProps> = props => {
 
+    const page: IPageContent = props.article
     // state hook for pageContent
-    const [page, setPage] = React.useState<IPageContent>
-        ({
-            title:'Datenschutz',
-            slug:null,
-            content:null
-        })
-
-    // use context to get content from contentful
-    const contentful = React.useContext(ContentfulContext)
-    contentful.fetchPageContent('2JgkBgWgBRf4qlpOwFLxcL')
-        .then(response => {setPage(response)})
 
     return (
         <Layout title={page.title}>
@@ -40,6 +32,14 @@ const DatenschutzPage: React.FunctionComponent = () => {
             </div> 
         </Layout>
     )
+}
+
+DatenschutzPage.getInitialProps = async (ctx: NextPageContext) => {
+
+    // get article
+    const article: IPageContent = await CF.fetchPageContent('2JgkBgWgBRf4qlpOwFLxcL')
+    return {article}
+
 }
 
 export default DatenschutzPage;

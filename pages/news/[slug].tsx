@@ -1,19 +1,15 @@
 import * as React from 'react'
-import { useRouter } from 'next/router'
 import { NextPage, NextPageContext } from 'next'
-import Link from 'next/link'
 import moment from 'moment'
 
 // import context and interface
-import Contentful , { ContentfulContext } from '../../components/contentDelivery'
-import * as CF from '../../components/contentDelivery/contentful'
+import { CF } from '../../components/contentDelivery'
 import { INewsEntry } from '../../interfaces/contentDelivery'
 
 // import components
 import Layout from '../../components/Layout'
 import { ParseJSON , ImageBlock } from '../../components/Misc'
 import { NewsList } from '../../components/News'
-import { DH_NOT_SUITABLE_GENERATOR } from 'constants'
 
 interface IProps {
     article: INewsEntry,
@@ -24,8 +20,6 @@ const NewsArticle: NextPage<IProps> = props => {
 
     // use context to get content from contentful
     // const contentful: Contentful = React.useContext(ContentfulContext)
-
-    console.log(props)
 
     const article: INewsEntry = props.article
 

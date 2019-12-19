@@ -1,7 +1,8 @@
 import * as React from 'react'
+import { NextPage } from 'next'
 
-// import context and interfaces
-import Contentful , { ContentfulContext } from '../components/contentDelivery'
+// import context and interface
+import { CF } from '../components/contentDelivery'
 import * as I from '../interfaces/contentDelivery'
 
 // import modules
@@ -12,30 +13,16 @@ import { EventDetails , GebetsanliegenOverview } from '../components/Events';
 // import style
 import '../styles/events.scss';
 
+interface IProps {
+  page: I.IPageContent,
+  events: I.IEventsEntry[],
+  gebets: I.IGebetsEntry[]
+}
 
-const EventsPage: React.FunctionComponent = () => {
+const EventsPage: NextPage<IProps> = props => {
 
-  // use context to get content from contentful
-  const contentful: Contentful = React.useContext(ContentfulContext)
-
-  // state hook for pageContent
-  const [page, setPage] = React.useState<I.IPageContent>({ 
-      title:'Impressum',
-      slug:null,
-      content:null
-    })
-  contentful.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
-    .then(response => {setPage(response)})
-
-  // state hook for events
-  const [events, setEvents] = React.useState<I.IEventsEntry[]>([])
-  contentful.getEventsFeed()
-    .then(response => {setEvents(response)})
-
-  // state hook for gebets
-  const [gebets, setGebets] = React.useState<I.IGebetsEntry[]>([])
-  contentful.getGebetsFeed()
-    .then(response => {setGebets(response)})
+  // use content from contentful
+  const { page, events, gebets } = props
   
   return (
     <Layout title="Veranstaltungen" >
@@ -65,6 +52,17 @@ const EventsPage: React.FunctionComponent = () => {
       </div>
     </Layout>
   );
+}
+
+EventsPage.getInitialProps = async () => {
+
+  // get content
+  const page: I.IPageContent = await CF.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
+  const events: I.IEventsEntry[] = await CF.fetchEvents()
+  const gebets: I.IGebetsEntry[] = await CF.fetchGebets()
+  
+  return {page, events, gebets}
+
 }
 
 export default EventsPage;

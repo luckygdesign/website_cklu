@@ -10,7 +10,7 @@ const config = {
     accessToken: 'W57H2oIuWAlbOrjyiBwAlxFb5zHpLk0tlRRSuUuHsuk'
 };
 
-async function fetchNews(): Promise<I.INewsEntry[]> {
+export async function fetchNews(): Promise<I.INewsEntry[]> {
       
   return new Promise<I.INewsEntry[]>((resolve, reject) => {
       // get page content
@@ -30,7 +30,67 @@ async function fetchNews(): Promise<I.INewsEntry[]> {
   });
 }
 
-async function fetchNewsArticle(entrySlug: string) : Promise<I.INewsEntry> {
+export async function fetchEvents(): Promise<I.IEventsEntry[]> {
+      
+  return new Promise<I.IEventsEntry[]>((resolve, reject) => {
+      // get page content
+    createClient({
+      space: config.space,
+      accessToken: config.accessToken
+    }).getEntries({'content_type': 'events'})
+      .then((response:EntryCollection<I.IEventsEntry>) => {
+        const feed: I.IEventsEntry[] = []
+        response.items.forEach(article => feed.push(article.fields))
+        resolve(feed);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
+export async function fetchGebets(): Promise<I.IGebetsEntry[]> {
+      
+  return new Promise<I.IGebetsEntry[]>((resolve, reject) => {
+      // get page content
+    createClient({
+      space: config.space,
+      accessToken: config.accessToken
+    }).getEntries({'content_type': 'gebetsanliegen'})
+      .then((response:EntryCollection<I.IGebetsEntry>) => {
+        const feed: I.IGebetsEntry[] = []
+        response.items.forEach(article => feed.push(article.fields))
+        resolve(feed);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
+export async function fetchProjects(): Promise<I.IProjectEntry[]> {
+      
+  return new Promise<I.IProjectEntry[]>((resolve, reject) => {
+      // get page content
+    createClient({
+      space: config.space,
+      accessToken: config.accessToken
+    }).getEntries({'content_type': 'project'})
+      .then((response:EntryCollection<I.IProjectEntry>) => {
+        const feed: I.IProjectEntry[] = []
+        response.items.forEach(article => feed.push(article.fields))
+        resolve(feed);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
+export async function fetchNewsArticle(entrySlug: string) : Promise<I.INewsEntry> {
       
   return new Promise<I.INewsEntry>((resolve, reject) => {
       // get page content
@@ -43,6 +103,24 @@ async function fetchNewsArticle(entrySlug: string) : Promise<I.INewsEntry> {
       })
       .then((response:EntryCollection<I.INewsEntry>) => {
         resolve(response.items[0].fields);
+      }) 
+      .catch(err => {
+        console.log(err)
+        reject()
+      })
+  });
+}
+
+export async function fetchPageContent(entryId: string) : Promise<I.IPageContent> {
+      
+  return new Promise<I.IPageContent>((resolve, reject) => {
+      // get page content
+      createClient({
+        space: config.space,
+        accessToken: config.accessToken
+      }).getEntry(entryId)
+      .then((response:Entry<I.IPageContent>) => {
+        resolve(response.fields);
       }) 
       .catch(err => {
         console.log(err)
@@ -280,4 +358,3 @@ class Contentful {
 }
 
 export default Contentful;
-export { fetchNews, fetchNewsArticle }

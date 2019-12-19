@@ -1,28 +1,22 @@
 import * as React from 'react'
+import { NextPage, NextPageContext } from 'next'
 
 // import context and interface
-import Contentful , { ContentfulContext } from '../components/contentDelivery'
+import { CF } from '../components/contentDelivery'
 import { IPageContent } from '../interfaces/contentDelivery'
 
 // import components
 import Layout from '../components/Layout'
 import { ParseJSON } from '../components/Misc'
 
+interface IProps {
+    article: IPageContent,
+}
 
-const ImpressumPage: React.FunctionComponent = () => {
+const ImpressumPage: NextPage<IProps> = props => {
 
+    const page: IPageContent = props.article
     // state hook for pageContent
-    const [page, setPage] = React.useState<IPageContent>
-        ({
-            title:'Impressum',
-            slug:null,
-            content:null
-        })
-
-    // use context to get content from contentful
-    const contentful: Contentful = React.useContext(ContentfulContext)
-    contentful.fetchPageContent('73MfkJzLwvzK4RNJq8NTkE')
-        .then(response => {setPage(response)})
 
     return (
         <Layout title={page.title}>
@@ -38,6 +32,14 @@ const ImpressumPage: React.FunctionComponent = () => {
             </div> 
         </Layout>
     )
+}
+
+ImpressumPage.getInitialProps = async (ctx: NextPageContext) => {
+
+    // get article
+    const article: IPageContent = await CF.fetchPageContent('73MfkJzLwvzK4RNJq8NTkE')
+    return {article}
+
 }
 
 export default ImpressumPage;

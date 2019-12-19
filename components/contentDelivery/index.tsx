@@ -1,6 +1,7 @@
 import ContentfulContext, { withContentful } from './context';
-import Contentful from './contentful';
+import * as CF from './contentful';
+import Contentful from './contentful'
 
 export default Contentful;
 
-export { ContentfulContext, withContentful};
+export { ContentfulContext, withContentful, CF};

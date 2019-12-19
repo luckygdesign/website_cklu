@@ -1,7 +1,8 @@
 import * as React from 'react'
-import Contentful , {withContentful} from '../components/contentDelivery'
+import { NextPage } from 'next'
 
-// import Interfaces
+// import context and interface
+import { CF } from '../components/contentDelivery'
 import * as I from '../interfaces/contentDelivery'
 
 // import modules
@@ -12,102 +13,81 @@ import { ProjectDetails , ProjectList } from '../components/Projects';
 import '../styles/about.scss';
 
 interface IProps {
-  contentful: Contentful;
-}
-
-interface IState {
+  page: I.IPageContent,
   projects: I.IProjectEntry[],
-  pageContent: I.IPageContent,
-  currentHash: string
 }
 
-class AboutPage extends React.Component<IProps, IState> {
+const AboutPage: NextPage<IProps> = props => {
 
-  constructor(props) {
-    super(props);
+  // use content from contentful
+  const { page, projects } = props
 
-    this.state = {
-      projects: [],
-      pageContent: {
-        title: "Wer wir sind",
-        slug: null,
-        content: null
-      },
-      currentHash: '' // TODO get hash from url
-    }
-    
-    this.fetchPageContent();
-    this.fetchProjects();
+  // state for actual project
+  const [ hash, setHash ] = React.useState('')
 
-  }
+  // TODO: get initial hash
 
   // handle Click on project item - load new item and change url without refresh and scrolling
-  handleClick = (e) => {
+  function handleClick(e) {
     e.preventDefault();
     const newUrl = new URL(e.target);
     const newHash = newUrl.hash.substr(1).toLowerCase();
-    this.setState({currentHash: newHash});
+    setHash(newHash)
     history.pushState(null, null, '#'+newHash);
   }
   
-  fetchPageContent() {
-    this.props.contentful.fetchPageContent('4sNLUWA5p7arg5gVUfdXfY')
-    .then(response => {this.setState({pageContent: response})})
-  }
+  let currentProject = projects.filter(project => {
+    return project.slug.toLowerCase() === hash
+  })[0];
 
-  fetchProjects() {
-    this.props.contentful.fetchProjects()
-    .then(response => {this.setState({projects: response})})
-  }
-  
-  render() {
+  return (
+    <Layout title={page.title} >
+      <div id="Content" className="Container">
 
-    const projects = this.state.projects;
-    const pageContent = this.state.pageContent;
+          <section id="AboutHeader">
 
-    let currentProject = projects.filter(project => {
-      return project.slug.toLowerCase() === this.state.currentHash
-    })[0];
+            {/* general page content - title and description */}
+            <h1>{page.title}</h1>
 
-    return (
-      <Layout title={pageContent.title} >
-        <div id="Content" className="Container">
+            {page.content ? (
+              <ParseJSON textjson={page.content} />
+            ) : null}
 
-            <section id="AboutHeader">
+          </section>
 
-              {/* general page content - title and description */}
-              <h1>{pageContent.title}</h1>
+          {/* display projects feed */}
+          {(projects.length > 0) ? (
 
-              {pageContent.content ? (
-                <ParseJSON textjson={pageContent.content} />
-              ) : null}
+            <section id="AboutProjects">
+
+              <h1>Unsere Projekte</h1>
+
+              <ul className="projects-list">
+                {projects.map(project => (
+                  <ProjectList project={project} key={project.slug} handleClick={handleClick}/>
+                ))}
+              </ul>
+
+              { currentProject ? (
+                <ProjectDetails project={currentProject}  />
+              ) : null }
 
             </section>
+          ) : null }
 
-            {/* display projects feed */}
-            {(projects.length > 0) ? (
-
-              <section id="AboutProjects">
-
-                <h1>Unsere Projekte</h1>
-
-                <ul className="projects-list">
-                  {projects.map(project => (
-                    <ProjectList project={project} key={project.slug} handleClick={this.handleClick}/>
-                  ))}
-                </ul>
-
-                { currentProject ? (
-                  <ProjectDetails project={currentProject}  />
-                ) : null }
-
-              </section>
-            ) : null }
-
-          </div>
-      </Layout>
-    );
-  }
+        </div>
+    </Layout>
+  );
 }
 
-export default withContentful(AboutPage);
+AboutPage.getInitialProps = async () => {
+
+  // get content
+  const page: I.IPageContent = await CF.fetchPageContent('4sNLUWA5p7arg5gVUfdXfY')
+  const projects: I.IProjectEntry[] = await CF.fetchProjects()
+  
+  return {page, projects}
+
+}
+
+export default AboutPage;
