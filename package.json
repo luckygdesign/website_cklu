@@ -29,7 +29,7 @@
     "react-protected-mailto": "^1.0.3",
     "react-recaptcha": "^2.3.10",
     "react-router-dom": "latest",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.3.0",
     "react-youtube": "^7.9.0",
     "sass": "^1.22.9"
   },

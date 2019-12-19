@@ -119,6 +119,7 @@ const richTextOptions = {
 
 const ParseJSON = ({textjson}) => (
 	<div className="text">
+		{console.log(textjson)}
 		{documentToReactComponents(textjson.json, richTextOptions)}
 	</div>	
 )
