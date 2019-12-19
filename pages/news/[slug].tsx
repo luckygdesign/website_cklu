@@ -3,7 +3,7 @@ import { NextPage, NextPageContext } from 'next'
 import moment from 'moment'
 
 // import context and interface
-import { CF } from '../../components/contentDelivery'
+import CF from '../../components/contentDelivery'
 import { INewsEntry } from '../../interfaces/contentDelivery'
 
 // import components

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage, NextPageContext } from 'next'
 
 // import context and interface
-import { CF } from '../components/contentDelivery'
+import CF from '../components/contentDelivery'
 import { IPageContent } from '../interfaces/contentDelivery'
 
 // import components

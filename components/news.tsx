@@ -5,7 +5,7 @@ import moment from 'moment';
 import { ReadMoreButton, MiscButton } from './Misc'
 
 import { INewsEntry } from '../interfaces/contentDelivery'
-import Contentful, { ContentfulContext } from './contentDelivery';
+import CF from './contentDelivery';
 
 const ArticleThumb = ({ article }) => (
 	<article>
@@ -20,18 +20,14 @@ const ArticleThumb = ({ article }) => (
  )
 
 interface IProps {
-	contentful?: Contentful,
 	slug?: string
 }
 
 const NewsList: React.FunctionComponent<IProps> = () => {
 
-    // use context to get content from contentful
-    const contentful: Contentful = React.useContext(ContentfulContext)
-
 	// state hook for newsList
 	const [news, setNews] = React.useState<INewsEntry[]>([])
-	contentful.getNewsFeed()
+	CF.fetchNews()
 		.then(response => {setNews(response)})
 
 	return (

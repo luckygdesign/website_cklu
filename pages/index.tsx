@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 
 // import context and interface
-import { CF } from '../components/contentDelivery'
+import CF from '../components/contentDelivery'
 import * as I from '../interfaces/contentDelivery'
 
 // import modules
