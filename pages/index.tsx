@@ -103,7 +103,7 @@ const IndexPage: NextPage<IProps> = props => {
 IndexPage.getInitialProps = async () => {
 
   // get content
-  const page: I.IPageContent = await CF.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
+  const page: I.IPageContent = await CF.fetchPageContent('41DF68TjRVlA6GixnCpcqg')
   const events: I.IEventsEntry[] = await CF.fetchEvents()
   const gebets: I.IGebetsEntry[] = await CF.fetchGebets()
   const projects: I.IProjectEntry[] = await CF.fetchProjects()
