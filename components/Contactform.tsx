@@ -13,7 +13,7 @@ type IState = {
     name: string,
     email: string,
     message: string,
-    confirm: string
+    confirm: boolean
   }
 }
 
@@ -25,15 +25,15 @@ class Contactform extends React.Component<IProps, IState> {
       name: '',
       email: '',
       message: '',
-      confirm: 'false',
+      confirm: false,
     },
   }
 
   submit = e => {
     e.preventDefault()
 
-    if (this.state.data.confirm == 'false' ) {
-      this.setState({statusMessage: 'bitte bestätigen Sie die Übermittlung', status: 'form-pending'});
+    if (!this.state.data.confirm) {
+      this.setState({statusMessage: 'bitte bestätigen Sie die Datenschutzerklärung', status: 'form-pending'});
       return;
     }
 
@@ -70,6 +70,12 @@ class Contactform extends React.Component<IProps, IState> {
   handleChange = ({ target: { name, value } }) => {
     this.setState(state => ({
       data: Object.assign({}, state.data, { [name]: value }),
+    }))
+  }
+
+  toggleDatenschutz = ({target: {checked}}) => {
+    this.setState(state => ({
+      data: Object.assign({}, state.data, { confirm: checked }),
     }))
   }
 
@@ -124,8 +130,7 @@ class Contactform extends React.Component<IProps, IState> {
             name="confirm"
             required
             placeholder="i"
-            value={data.confirm}
-            onChange={this.handleChange}
+            onChange={this.toggleDatenschutz}
           />
           <label>
             Ich habe die <Link href="/datenschutz"><a>Datenschutzerklärung</a></Link> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.
