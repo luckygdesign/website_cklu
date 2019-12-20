@@ -130,7 +130,7 @@ const ParseJSON = ({textjson}) => (
 
 // ReadMore Button with design, class and custom link
 const ReadMoreButton = ({link}) => (
-	<MiscButton link={link} cssclass="readmore" text="weiterlesen" />
+	<MiscButton link={link} cssclass="button readmore" text="weiterlesen" />
 );
 
 const BlancButton = ({ link, text, cssclass }) => (

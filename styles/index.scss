@@ -94,7 +94,7 @@ button {
 .button, .button:hover, .button:focus, .button:active {
   color: #fff;
   background: #D9E021;
-  padding: 10px 15px;
+  padding: 7px 15px;
   border-radius: $borderradius1;
   text-decoration: none;
   transition: background 0.5s;
@@ -107,12 +107,16 @@ button:hover, button:focus, {
 }
 
 .readmore, .readmore:hover, .readmore:focus, .readmore:visited {
-  color: $primarycolor;
-  font-style: italic;
+  display: inline-block;
+  color: $secondarycolor;
+  background-color: transparent;
+  border: $secondarycolor 1px solid;
+  margin: 0px;
 }
 
 .readmore:hover, .readmore:focus {
-  color: $primarycolor2
+  color: $secondarycolor0;
+  border-color: $secondarycolor0;
 }
 
 .icon-pseudo:before, .icon-pseudo:after {
@@ -726,6 +730,10 @@ button:hover, button:focus, {
       .title:before {
         content: "\f054";
       }
+    }
+
+    a.actual-article span {
+      color: #ddd;
     }
   }
 }

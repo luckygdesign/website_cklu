@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import moment from 'moment';
+import scss from 'styled-jsx/css'
 
 import { ReadMoreButton, MiscButton } from './Misc'
 
@@ -15,49 +16,74 @@ const ArticleThumb = ({ article }) => {
 		<article className="article-thumb">
 
 			<div className="article-image"
-			style={{backgroundImage: imageUrl}}
-			title={ title ? title : null}
-			/>
+				style={{backgroundImage: imageUrl}}
+				title={ title ? title : null}
+			>
+				<img src={file.url} alt={ title ? title : null} />
+				
+				</div>
 			
 			<div className="article-content">
 				<h4>{article.title}</h4>
 				<span className="icon-pseudo publishDate">{moment(article.publishDate).format('MMM YYYY')}</span>
 				<p>
 					{article.summary}
-					<ReadMoreButton link={`/news/${article.slug}`} />
 				</p>
+				<ReadMoreButton link={`/news/${article.slug}`} />
 			</div>
 
-		<style jsx>{`
-
-			.article-thumb {
-				background-color: #eee;
-				display: grid;
-				grid-template-columns: 1fr 2fr;
-				border-radius: 12px;
-				overflow: hidden;
-
-			}
-			.article-image {
-				background-size: cover;
-				background-position: 50%, 50%;
-				img {
-					width: 100%;
-				}
-			}
-			.article-content {
-				padding: 20px;
-			}
-		`}</style>
+		<style jsx>{SArticleThumb}</style>
 		</article>
 	)
 };
+
+const SArticleThumb = scss`
+	
+	.article-thumb {
+		background-color: #eee;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		border-radius: 12px;
+		overflow: hidden;
+
+		@media (max-width: 425px) {
+			grid-template-columns: auto;
+		}
+	}
+	.article-image {
+		background-size: cover;
+		background-position: 50%, 50%;
+		img {
+			display: none;
+			width: 100%;
+		}
+		@media (max-width: 425px) {
+			img {
+				display: float;
+			}
+		}
+	}
+	.article-content {
+		padding: 20px;
+
+		.publishDate {
+			font-size: 12pt;
+			opacity: 0.75;
+		}
+		.publishDate:before {
+			font-size: 0.8em;
+			content: "\f073";
+			padding-right: 0.5em;
+		}
+	  
+	}
+`
 
 interface IProps {
 	slug?: string
 }
 
-const NewsList: React.FunctionComponent<IProps> = () => {
+const NewsList: React.FunctionComponent<IProps> = (props) => {
 
 	// state hook for newsList
 	const [news, setNews] = React.useState<INewsEntry[]>([])
@@ -73,7 +99,9 @@ const NewsList: React.FunctionComponent<IProps> = () => {
 					{news.map(article => (
 						<li key={article.slug}>
 							<Link href={`/news/${article.slug}`}>
-								<a>
+								<a
+									className={props.slug == article.slug ? "actual-article" : null }
+								>
 									<span className="icon-pseudo title">{article.title}</span>
 									<span className="icon-pseudo publishDate">{moment(article.publishDate).format('MMM YYYY')}</span>
 								</a>
