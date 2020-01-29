@@ -26,6 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     "components/Gallery/index.js",
-    "next.config.js"
+    "next.config.js", "components/Layout.js"
   ]
 }

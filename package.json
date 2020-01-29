@@ -21,6 +21,7 @@
     "node-sass": "^4.13.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-ga": "^2.7.0",
     "react-instafeed": "^1.0.0",
     "react-protected-mailto": "^1.0.3",
     "react-youtube": "^7.9.0",

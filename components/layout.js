@@ -1,35 +1,37 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import * as React from 'react'
+import { initGA, logPageView } from './analytics/analytics';
+import Head from 'next/head'
 
-import Header from './header'
-import Footer from './footer'
-
-import '../styles/index.scss'
+import Header from './Header'
+import Footer from './Footer'
 
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+export default class Layout extends React.Component {
 
-library.add(fas)
 
-class Template extends React.Component {
-  render() {
-    const { location, children } = this.props
-    let header
-
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-      rootPath = __PATH_PREFIX__ + `/`
+  componentDidMount () {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
     }
+    logPageView()
+  }
 
+
+  render () {
     return (
-      <div className="wrapper layout">
-        <Header />
-        {children}
-        <Footer />
+      <div>
+        <Head>
+          <title>"Christliches Kinderhilfswerk Luwero-Uganda e.V."</title>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
+        <div className="wrapper layout">
+          <Header />
+          {this.props.children}
+          <Footer />
+        </div>
       </div>
     )
   }
 }
-
-export default Template
