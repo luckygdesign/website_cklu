@@ -45,7 +45,8 @@ export type IProjectEntry = {
   title: string,
   slug: string,
   heroImage: object,
-  description: object
+  description: object,
+  order: number
 }
 
 export type IPageContent = {

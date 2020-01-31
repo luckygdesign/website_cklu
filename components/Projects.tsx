@@ -62,33 +62,39 @@ class Player extends React.Component {
 	}
 }
 
-const AboutSection = ({ projects }) => (
-  <section id="HomeProjects">
-		<div className="Container">
+const AboutSection = ({ projects }) => {
 
-			<h2>Unsere Projekte</h2>
+	let orderedList = projects.sort((a,b) => a.order-b.order)
 
-			<div className="project-header">
-				<div className="project-video">
-					<Player />
+
+	return (
+		<section id="HomeProjects">
+			<div className="Container">
+
+				<h2>Unsere Projekte</h2>
+
+				<div className="project-header">
+					<div className="project-video">
+						<Player />
+					</div>
+					<div className="project-text">
+						<span className="quote">Wer andere erfrischt, wird selbst erfrischt werden.</span>
+						<span className="source">Sprüche 11,25</span>
+					</div>
 				</div>
-				<div className="project-text">
-					<span className="quote">Wer andere erfrischt, wird selbst erfrischt werden.</span>
-					<span className="source">Sprüche 11,25</span>
+
+				<div className="">
+					<ul className="projects-list">
+						{orderedList.map(singleproject => (
+						<ProjectList key={singleproject.title} project={singleproject} handleClick={null} />
+						))}
+					</ul>
 				</div>
-			</div>
 
-			<div className="">
-				<ul className="projects-list">
-					{projects.map(singleproject => (
-				      <ProjectList key={singleproject.title} project={singleproject} handleClick={null} />
-				    ))}
-				</ul>
 			</div>
-
-		</div>
-	</section>
-)
+		</section>
+	)
+}
 
 
 export { AboutSection, ProjectDetails, ProjectList};

@@ -36,6 +36,8 @@ const AboutPage: NextPage<IProps> = props => {
     history.pushState(null, null, '#'+newHash);
   }
   
+	let orderedList = projects.sort((a,b) => a.order-b.order)
+
   let currentProject = projects.filter(project => {
     return project.slug.toLowerCase() === hash
   })[0];
@@ -63,7 +65,7 @@ const AboutPage: NextPage<IProps> = props => {
               <h1>Unsere Projekte</h1>
 
               <ul className="projects-list">
-                {projects.map(project => (
+                {orderedList.map(project => (
                   <ProjectList project={project} key={project.slug} handleClick={handleClick}/>
                 ))}
               </ul>
