@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Mailto from 'react-protected-mailto'
 
 // import context and interface
 
@@ -22,7 +23,8 @@ const ContactPage: React.FunctionComponent = () => {
               <div>
                 <span className="contact-name icon-pseudo">Christliches Kinderhilfswerk Luwero – Uganda e.V.</span>
                 <span className="contact-vorstand icon-pseudo">Vorstand:<br />Andreas Wicki, Vaihingen a. d. Enz<br />Dr. Priscilla Schneckenburger, Stuttgart<br />Hanna Schneckenburger, Rutesheim</span>
-                <span className="contact-phone icon-pseudo">07152 54758</span>
+                <span className="contact-email icon-pseudio"><Mailto email="kontakt@ckluganda.de"/></span>
+                <span className="contact-phone icon-pseudo"><Mailto tel="07152 54758" /></span>
                 <span className="contact-address icon-pseudo">Hegelstraße 44, 71277 Rutesheim</span>
               </div>
             </div>

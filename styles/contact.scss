@@ -38,6 +38,11 @@
 			color: $primarycolor;
 		}
 
+		.contact-email:before {
+			content: "\f0e0";
+			margin-right: 0.2em;
+		}
+
 		.contact-phone:before {
 			content: "\f098";
 			margin-right: 0.2em;
