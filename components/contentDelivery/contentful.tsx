@@ -50,26 +50,6 @@ export async function fetchEvents(): Promise<I.IEventsEntry[]> {
   });
 }
 
-export async function fetchGebets(): Promise<I.IGebetsEntry[]> {
-      
-  return new Promise<I.IGebetsEntry[]>((resolve, reject) => {
-      // get page content
-    createClient({
-      space: config.space,
-      accessToken: config.accessToken
-    }).getEntries({'content_type': 'gebetsanliegen'})
-      .then((response:EntryCollection<I.IGebetsEntry>) => {
-        const feed: I.IGebetsEntry[] = []
-        response.items.forEach(article => feed.push(article.fields))
-        resolve(feed);
-      }) 
-      .catch(err => {
-        console.log(err)
-        reject()
-      })
-  });
-}
-
 export async function fetchProjects(): Promise<I.IProjectEntry[]> {
       
   return new Promise<I.IProjectEntry[]>((resolve, reject) => {

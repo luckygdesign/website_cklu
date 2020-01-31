@@ -23,14 +23,13 @@ import '../styles/home.scss';
 interface IProps {
   news: I.INewsEntry[],
   events: I.IEventsEntry[],
-  gebets: I.IGebetsEntry[],
   projects: I.IProjectEntry[],
   page: I.IPageContent,
 }
 
 const IndexPage: NextPage<IProps> = props => {
 
-  const { page, news, events, gebets, projects } = props
+  const { page, news, events, projects } = props
 
   return (
     <div id="LandingPage"className="App">
@@ -106,11 +105,10 @@ IndexPage.getInitialProps = async () => {
   // get content
   const page: I.IPageContent = await CF.fetchPageContent('41DF68TjRVlA6GixnCpcqg')
   const events: I.IEventsEntry[] = await CF.fetchEvents()
-  const gebets: I.IGebetsEntry[] = await CF.fetchGebets()
   const projects: I.IProjectEntry[] = await CF.fetchProjects()
   const news: I.INewsEntry[] = await CF.fetchNews()
   
-  return {page, events, gebets, projects, news}
+  return {page, events, projects, news}
 
 }
 

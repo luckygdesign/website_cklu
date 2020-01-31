@@ -33,15 +33,6 @@ export type IEventsEntry = {
   contactEmail: string
 }
 
-export type IGebetsEntry = {
-  title: string,
-  slug: string,
-  location: string,
-  startDate: string,
-  endDate: string,
-  description: string
-}
-
 export type IProjectEntry = {
   title: string,
   slug: string,
