@@ -17,7 +17,8 @@ export type INewsEntry = {
   heroImage?: Image,
   summary?: string,
   content?: Object,
-  publishDate?: string
+  publishDate?: string,
+  type?: string
 }
 
 export type IEventsEntry = {

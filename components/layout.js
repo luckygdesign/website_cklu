@@ -22,7 +22,7 @@ export default class Layout extends React.Component {
     return (
       <div>
         <Head>
-          <title>"Christliches Kinderhilfswerk Luwero-Uganda e.V."</title>
+          <title>Christliches Kinderhilfswerk Luwero-Uganda e.V.</title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>

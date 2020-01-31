@@ -8,7 +8,8 @@ import * as I from '../interfaces/contentDelivery'
 // import modules
 import Layout from '../components/Layout'
 import { ParseJSON } from '../components/Misc';
-import { EventDetails , GebetsanliegenOverview } from '../components/Events';
+import { EventDetails } from '../components/Events';
+import { GebetsanliegenOverview } from '../components/Gebet';
 
 // import style
 import '../styles/events.scss';
@@ -16,13 +17,12 @@ import '../styles/events.scss';
 interface IProps {
   page: I.IPageContent,
   events: I.IEventsEntry[],
-  gebets: I.IGebetsEntry[]
 }
 
 const EventsPage: NextPage<IProps> = props => {
 
   // use content from contentful
-  const { page, events, gebets } = props
+  const { page, events } = props
   
   return (
     <Layout title="Veranstaltungen" >
@@ -47,7 +47,7 @@ const EventsPage: NextPage<IProps> = props => {
             ) : null}
             
           </section>
-          <GebetsanliegenOverview anliegen={gebets} />
+          <GebetsanliegenOverview />
         </div>
       </div>
     </Layout>
@@ -59,9 +59,8 @@ EventsPage.getInitialProps = async () => {
   // get content
   const page: I.IPageContent = await CF.fetchPageContent('Ps1Mll3HZN00fKtuafmuW')
   const events: I.IEventsEntry[] = await CF.fetchEvents()
-  const gebets: I.IGebetsEntry[] = await CF.fetchGebets()
   
-  return {page, events, gebets}
+  return {page, events }
 
 }
 

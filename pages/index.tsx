@@ -9,7 +9,8 @@ import * as I from '../interfaces/contentDelivery'
 // import modules
 import Layout from '../components/Layout'
 import News from '../components/News';
-import Events , { GebetsanliegenOverview } from '../components/Events';
+import Events  from '../components/Events';
+import { GebetsanliegenOverview } from '../components/Gebet';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Spenden from '../components/Spenden';
@@ -89,7 +90,7 @@ const IndexPage: NextPage<IProps> = props => {
         <div>
           <News news={news} />
           <Events events={events} />
-          <GebetsanliegenOverview anliegen={gebets} />
+          <GebetsanliegenOverview  />
           <Spenden />
         </div>
       </div>

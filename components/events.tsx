@@ -38,37 +38,6 @@ const EventInfo = ({ event }) => {
 	)
 }
 
-const GebetInfo = ({ anliegen }) => {
-
-
-	// TODO - activate time
-
-	// if (moment().isAfter(moment(anliegen.startDate))) {
-	// 	return null;
-	// } 
-
-	return (
-		<div className="eventinfo">
-			<div className="eventdate">
-	            <span className="eventday">{moment(anliegen.startDate).format('D.')}</span>
-	            <span className="eventmonth">{moment(anliegen.startDate).format('MMM')}</span>
-			</div>
-			<div className="eventcontent">
-	    		<span className="eventtitle">{anliegen.title}</span>
-	            <span className="eventtime">
-	            	{moment(anliegen.startDate).format('D. MMM')}
-	            	{ anliegen.endDate ? (
-            			` bis ${moment(anliegen.endDate).format('D. MMM')}`
-            		) : null }
-	            </span>
-	            { anliegen.description ? (
-					<p className="eventdescription">{anliegen.description}</p>
-				) : null }
-	    	</div>
-		</div>	
-	)
-}
-
 // EventDetails
 // TODO : remove open/close -> refactor to variable, not class
 type IProps = {
@@ -171,25 +140,5 @@ const EventsOverview = ({ events }) => (
 	</section>
 )
 
-
-
-const GebetsanliegenOverview = ({ anliegen }) => (
-  	<section id="GebetsanliegenOverview" className="sidebar">
-		<h3>Gebetsanliegen</h3>
-
-		<p>Wir freuen uns, wenn Sie die Veranstaltungen auf der Missionsstation im Gebet begleiten und unterstützen.</p>
-		<p>Weitere aktuelle Informationen und Details finden Sie im Bereich "News".</p>
-
-		{anliegen ? (
-			<div className="gebetsfeed">
-				{anliegen.map(anliegen => (
-			      <GebetInfo key={anliegen.slug} anliegen={anliegen} />
-			    ))}
-		    </div>
-		) : null }
-		
-	</section>
-)
-
 export default EventsOverview;
-export { EventDetails , GebetsanliegenOverview };
+export { EventDetails };
